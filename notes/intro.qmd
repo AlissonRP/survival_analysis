@@ -20,19 +20,6 @@ Ok porque não usar usar modelos de regressão em geral para modelar o Tempo (*T
 Quando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos é chamado de **censurado**
 
 
-\usepackage{tcolorbox}
-\tcbuselibrary{theorems}
-
-\newtcbtheorem[number within=section]{mytheo}{My Theorem}%
-{colback=green!5,colframe=green!35!black,fonttitle=\bfseries}{th}
-
-\begin{document}
-\begin{mytheo}{This is my title}{theoexample}
-  This is the text of the theorem. The counter is automatically assigned and,
-  in this example, prefixed with the section number. This theorem is numbered with
-  \ref{th:theoexample} and is given on page \pageref{th:theoexample}.
-\end{mytheo}
-
 
 
 
