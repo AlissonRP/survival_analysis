@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "notes",
+    "section": "",
+    "text": "Notas de Aula do curso de análise de sobrevivência, as duas referências principais vão ser\n\nColosimo (2006)\n\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher."
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introdução",
+    "section": "",
+    "text": "Análise de sobrevivência é a área que estuda o tempo até acontecer um evento de interesse acontecer. Como por exemplo:\nNote portanto, que o evento pode encapsular mais de um fato como falhar duas vezes"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "Referencias",
+    "section": "",
+    "text": "Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006.\nAnálise de Sobrevivência Aplicada.\nEditora Blucher."
+  },
+  {
+    "objectID": "intro.html#testes",
+    "href": "intro.html#testes",
+    "title": "1  Introdução",
+    "section": "1.2 Testes",
+    "text": "1.2 Testes\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\n\nKnuth, Donald E. 1984. «Literate Programming». Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "intro.html#porque-estudar-análise-de-sobrevivência",
+    "href": "intro.html#porque-estudar-análise-de-sobrevivência",
+    "title": "1  Introdução",
+    "section": "1.1 Porque estudar análise de sobrevivência?",
+    "text": "1.1 Porque estudar análise de sobrevivência?\nOk porque não usar usar modelos de regressão em geral para modelar o Tempo (T)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura\n\n1.1.1 Censura\nQuando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos é chamado de censurado\n% {colback=green!5,colframe=green!35!black,fonttitle=}{th}\n\\begin{document}"
+  }
+]

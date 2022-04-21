@@ -1,0 +1,38 @@
+
+# Introdução
+
+
+Análise de sobrevivência é a área que estuda o **tempo** até acontecer um evento de interesse acontecer. Como por exemplo:
+
+* Tempo até o modelo convergir
+* Tempo até a linguagem Julia ser mais popular que a linguagem R
+* Tempo até o equipamento falhar duas vezes
+* Tempo para o desenvolvimento da Covid-19
+
+Note portanto, que o evento pode encapsular mais de um fato como  **falhar duas vezes**
+
+
+
+## Porque estudar análise de sobrevivência?
+Ok porque não usar usar modelos de regressão em geral para modelar o Tempo (*T*)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura
+
+### Censura
+Quando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos é chamado de **censurado**
+
+
+\usepackage{tcolorbox}
+\tcbuselibrary{theorems}
+
+\newtcbtheorem[number within=section]{mytheo}{My Theorem}%
+{colback=green!5,colframe=green!35!black,fonttitle=\bfseries}{th}
+
+\begin{document}
+\begin{mytheo}{This is my title}{theoexample}
+  This is the text of the theorem. The counter is automatically assigned and,
+  in this example, prefixed with the section number. This theorem is numbered with
+  \ref{th:theoexample} and is given on page \pageref{th:theoexample}.
+\end{mytheo}
+
+
+
+

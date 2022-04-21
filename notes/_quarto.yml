@@ -1,0 +1,35 @@
+project:
+  type: book
+
+lang: pt
+
+
+book:
+  title: "Notas de Aula Análise de Sobrevivência"
+  author: "Alisson Rosa"
+  date: "21/04/2022"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - summary.qmd
+    - references.qmd
+  fav-icon: "https://miro.medium.com/max/1400/1*cdEgKVCDGUfSq1zU-uJKHA.png"
+  navbar:
+    search: true
+    location: navbar
+    type: overlay
+    right:
+      - icon: github
+        href: https://github.com/AlissonRP/survival_analysis
+        
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: litera
+  pdf:
+    documentclass: scrreprt
+
+
+
