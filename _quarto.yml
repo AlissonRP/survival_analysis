@@ -7,10 +7,11 @@ lang: pt
 book:
   title: "Notas de Aula \n Análise de Sobrevivência"
   author: "Alisson Rosa"
-  date: "21/04/2022"
+  date: ""
   chapters:
     - index.qmd
     - intro.qmd
+    - def.qmd
     - prog.qmd
     - summary.qmd
     - references.qmd

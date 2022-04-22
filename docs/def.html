@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="quarto-0.9.242">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Notas de Aula Análise de Sobrevivência - 1&nbsp; Introdução</title>
+  <title>Notas de Aula Análise de Sobrevivência - 2&nbsp; Definições básicas</title>
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -20,8 +20,8 @@
   <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
   <script src="site_libs/quarto-search/fuse.min.js"></script>
   <script src="site_libs/quarto-search/quarto-search.js"></script>
-  <link href="./def.html" rel="next">
-  <link href="./index.html" rel="prev">
+  <link href="./prog.html" rel="next">
+  <link href="./intro.html" rel="prev">
   <link href="./clock.png" rel="icon" type="image/png">
   <script src="site_libs/quarto-html/quarto.js"></script>
   <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -51,6 +51,7 @@
       "search-submit-button-title": "Enviar"
     }
   }</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -80,7 +81,7 @@
     </nav>
   <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
     <div class="container-fluid d-flex justify-content-between">
-      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definições básicas</span></h1>
       <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
         <i class="bi bi-chevron-right"></i>
       </button>
@@ -105,12 +106,12 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./def.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definições básicas</span></a>
+  <a href="./def.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definições básicas</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -136,11 +137,10 @@
         <nav id="TOC" role="doc-toc">
 <h2 id="toc-title">Índice</h2>
 <ul>
-<li><a href="#breve-história" id="toc-breve-história" class="nav-link active" data-scroll-target="#breve-história"> <span class="header-section-number">1.1</span> Breve História</a></li>
-<li><a href="#porque-estudar-análise-de-sobrevivência" id="toc-porque-estudar-análise-de-sobrevivência" class="nav-link" data-scroll-target="#porque-estudar-análise-de-sobrevivência"> <span class="header-section-number">1.2</span> Porque estudar análise de sobrevivência?</a></li>
-<li><a href="#censura" id="toc-censura" class="nav-link" data-scroll-target="#censura"> <span class="header-section-number">1.3</span> Censura</a>
+<li><a href="#função-de-sobrevivência" id="toc-função-de-sobrevivência" class="nav-link active" data-scroll-target="#função-de-sobrevivência"> <span class="header-section-number">2.1</span> Função de Sobrevivência</a></li>
+<li><a href="#função-taxa-de-falha" id="toc-função-taxa-de-falha" class="nav-link" data-scroll-target="#função-taxa-de-falha"> <span class="header-section-number">2.2</span> Função taxa de falha</a>
 <ul class="collapse">
-<li><a href="#tipos-de-censura" id="toc-tipos-de-censura" class="nav-link" data-scroll-target="#tipos-de-censura"> <span class="header-section-number">1.3.1</span> Tipos de censura</a></li>
+<li><a href="#consequências" id="toc-consequências" class="nav-link" data-scroll-target="#consequências"> <span class="header-section-number">2.2.1</span> Consequências</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -149,28 +149,56 @@
 <main class="content" id="quarto-document-content">
 <header id="title-block-header" class="quarto-title-block default">
 
-<div class="quarto-title"><h1 class="title d-none d-lg-block display-7"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1></div></header>
+<div class="quarto-title"><h1 class="title d-none d-lg-block display-7"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definições básicas</span></h1></div></header>
 
-<p>Análise de sobrevivência é a área que estuda o <strong>tempo</strong> até acontecer um evento de interesse acontecer. Como por exemplo:</p>
+<p>Seja <span class="math inline">\(f(t)\)</span> a função densidade de probabilidade da variável aleatória <span class="math inline">\(T\)</span> (tempo até o evento ocorrer). Definimos a função de distribuição acumulada da variável aleatória <span class="math inline">\(T\)</span> como sendo:</p>
+<p><span class="math display">\[
+F(t) = P(T &lt; t) = \int_{0}^{t}f(u)du
+\]</span></p>
+<section id="função-de-sobrevivência" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="função-de-sobrevivência"><span class="header-section-number">2.1</span> Função de Sobrevivência</h2>
+<p>A função de sobrevivência é o complemento da função de distribuição acumulada, isso é:<br>
+A probabilidade de uma observação não falhar até um tempo <span class="math inline">\(t\)</span>: <span class="math display">\[
+S(t) = P(T&gt;t) = 1 - F(t)
+\]</span></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-plot" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="def_files/figure-html/fig-plot-1.png" class="img-fluid figure-img" width="672"></p>
+<p></p><figcaption aria-hidden="true" class="figure-caption">Figura 2.1: Exemplo de uma função de sobrevivência</figcaption><p></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Pela <a href="#fig-plot">Figura&nbsp;<span>2.1</span></a> podemos ter um vislumbre que <span class="math inline">\(S(0) = 1\)</span> e <span class="math inline">\(S(\infty) = 0\)</span>.<br>
+A demonstração de tais fatos fica a cargo do leitor, basta notar que <span class="math inline">\(S(t) = 1 - F(t)\)</span> e usar as propriedades da <span class="math inline">\(F\)</span>.</p>
+<p>Por consequência a probabilidade de não sobreviver até um certo tempo <span class="math inline">\(t\)</span> é: <span class="math display">\[
+1- S(t)
+\]</span> Assim a probailidade de não sobreviver em um intervalo <span class="math inline">\((t_1,t_2)\)</span> é dado por:</p>
+<p><span class="math display">\[
+1-S(t_2) - (1-S(t_1)) = S(t_1) - S(t_2)
+\]</span></p>
+</section>
+<section id="função-taxa-de-falha" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="função-taxa-de-falha"><span class="header-section-number">2.2</span> Função taxa de falha</h2>
+<p>Fornece o potencial instântaneo do evento <strong>ocorrer</strong>, dado que o indivíduo sobreviveu até o tempo <span class="math inline">\(t\)</span>:</p>
+<p><span class="math display">\[
+\lambda(t)= \dfrac{P(t \leq T &lt; t + \Delta t| T \geq t )}{\Delta t}
+\]</span></p>
+<p>Note que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o <strong>oposto</strong> da função de sobrevivência.</p>
+<section id="consequências" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="consequências"><span class="header-section-number">2.2.1</span> Consequências</h3>
 <ul>
-<li>Tempo até os modelos convergirem</li>
-<li>Tempo até o equipamento falhar duas vezes</li>
-<li>Tempo para o desenvolvimento da Covid-19</li>
+<li><span class="math inline">\(\lambda(t) \geq 0\)</span>
+<details>
+<summary>
+Demonstração
+</summary>
+É trivial pois por definição medidas de probabilidade <span class="math inline">\(\in [0,1]\)</span> e <span class="math inline">\(\Delta_t \geq 0\)</span> portanto um produto de números positivos
+</details></li>
+<li><span class="math inline">\(\lambda(t) =\dfrac{f(t)}{S(t)} = -\dfrac{d}{dt}\bigg(log(S(t))\bigg)\)</span></li>
 </ul>
-<p>Note portanto, que o evento pode encapsular mais de um fato como <strong>falhar duas vezes</strong></p>
-<section id="breve-história" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="breve-história"><span class="header-section-number">1.1</span> Breve História</h2>
-<p>Originalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico <a href="https://en.wikipedia.org/wiki/John_Graunt">John Graunt</a>, por um longo a análise de sobrevivência foi considerada um instrumento analitico para estudos de biomedicina e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas decadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviaveis</p>
-</section>
-<section id="porque-estudar-análise-de-sobrevivência" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="porque-estudar-análise-de-sobrevivência"><span class="header-section-number">1.2</span> Porque estudar análise de sobrevivência?</h2>
-<p>Ok, porque não usar usar modelos de regressão em geral para modelar o Tempo (<em>T</em>)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura</p>
-</section>
-<section id="censura" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="censura"><span class="header-section-number">1.3</span> Censura</h2>
-<p>Quando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de <strong>censurados</strong></p>
-<section id="tipos-de-censura" class="level3" data-number="1.3.1">
-<h3 data-number="1.3.1" class="anchored" data-anchor-id="tipos-de-censura"><span class="header-section-number">1.3.1</span> Tipos de censura</h3>
 
 
 
@@ -255,13 +283,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefácio</span>
+      <a href="./intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./def.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definições básicas</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prog.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programando</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
