@@ -5,15 +5,16 @@ lang: pt
 
 
 book:
-  title: "Notas de Aula Análise de Sobrevivência"
+  title: "Notas de Aula \n Análise de Sobrevivência"
   author: "Alisson Rosa"
   date: "21/04/2022"
   chapters:
     - index.qmd
     - intro.qmd
+    - prog.qmd
     - summary.qmd
     - references.qmd
-  fav-icon: "https://miro.medium.com/max/1400/1*cdEgKVCDGUfSq1zU-uJKHA.png"
+  favicon: "clock.png"
   navbar:
     search: true
     location: navbar
@@ -23,7 +24,7 @@ book:
         href: https://github.com/AlissonRP/survival_analysis
         
 
-bibliography: references.bib
+bibliography: references.bib  
 
 format:
   html:

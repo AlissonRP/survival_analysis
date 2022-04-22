@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Notas de Aula Análise de Sobrevivência",
     "section": "",
-    "text": "Notas de Aula do curso de análise de sobrevivência, as duas referências principais vão ser\n\nColosimo (2006)\n\nTo learn more about Quarto books visit https://quarto.org/docs/books.\n\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher."
+    "text": "Notas de Aula do curso de análise de sobrevivência, as duas referências principais vão ser\n\nColosimo (2006)\n\nEm termos práticos, os códigos vão ser desenvolvidos usando as linguagens Julia, Python e R, portanto assume-se conhecimentos básicos de ao menos umas dessas linguagens para um bom aproveitamento.\nEncontrou algum erro? Pode encaminhar uma issue no repósitório ou se preferir pode fazer um pull request, qualquer contribuição construtiva é bem vinda.\n\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher."
   },
   {
     "objectID": "intro.html",
@@ -18,12 +18,33 @@
     "href": "intro.html#porque-estudar-análise-de-sobrevivência",
     "title": "1  Introdução",
     "section": "1.1 Porque estudar análise de sobrevivência?",
-    "text": "1.1 Porque estudar análise de sobrevivência?\nOk porque não usar usar modelos de regressão em geral para modelar o Tempo (T)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura\n\n1.1.1 Censura\nQuando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos é chamado de censurado"
+    "text": "1.1 Porque estudar análise de sobrevivência?\nOk porque não usar usar modelos de regressão em geral para modelar o Tempo (T)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura"
+  },
+  {
+    "objectID": "intro.html#censura",
+    "href": "intro.html#censura",
+    "title": "1  Introdução",
+    "section": "1.2 Censura",
+    "text": "1.2 Censura\nQuando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de censurado"
+  },
+  {
+    "objectID": "prog.html",
+    "href": "prog.html",
+    "title": "2  Programando",
+    "section": "",
+    "text": "Nessa seção vamos aplicar o conceitos em três linguagens de programação, a saber: Python, R e Julia"
+  },
+  {
+    "objectID": "prog.html#layout-básico",
+    "href": "prog.html#layout-básico",
+    "title": "2  Programando",
+    "section": "2.1 Layout Básico",
+    "text": "2.1 Layout Básico\nOs dados de sobbrevivência possuem um layout estabelecido, que é dado a seguir:\n\n\n\nId\nT\n\\(s_i\\)\n\\(X_i\\)\n…\n\\(X_p\\)\n\n\n\n\n1\n\\(t_1\\)\n\\(s_1\\)\nx_{1i}\n…\n\\(x_{1p}\\)\n\n\n2\n\\(t_2\\)\n\\(s_2\\)\nx_{2i}\n…\n\\(x_{2p}\\)\n\n\n.\n.\n.\n.\n.\n.\n\n\n.\n.\n.\n.\n.\n.\n\n\nn\n\\(t_n\\)\n\\(s_n\\)\n\\(x_{ni}\\)\n…\n\\(x_{np}\\)"
   },
   {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "3  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever."
   },

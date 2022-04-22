@@ -1,0 +1,14 @@
+# Programando
+
+Nessa seção vamos aplicar o conceitos em três linguagens de programação, a saber: Python, R e Julia
+
+## Layout Básico
+Os dados de sobbrevivência possuem um layout estabelecido, que é dado a seguir:
+
+| Id | T   | $s_i$ | $X_i$ | ... | $X_p$ |
+|----|-----|-------|-----|-----|-----|
+| 1  | $t_1$ | $s_1$   | x_{1i} | ... | $x_{1p}$ |
+| 2  | $t_2$ | $s_2$   | x_{2i} | ... | $x_{2p}$ |
+| .  | .   | .     | .   | .   | .   |
+| .  | .   | .     | .   | .   | .   |
+| n  | $t_n$ | $s_n$   | $x_{ni}$ | ... | $x_{np}$ |

@@ -1,11 +1,9 @@
-
 # Introdução
 
 
 Análise de sobrevivência é a área que estuda o **tempo** até acontecer um evento de interesse acontecer. Como por exemplo:
 
-* Tempo até o modelo convergir
-* Tempo até a linguagem Julia ser mais popular que a linguagem R
+* Tempo até os modelos convergirem
 * Tempo até o equipamento falhar duas vezes
 * Tempo para o desenvolvimento da Covid-19
 
@@ -16,10 +14,5 @@ Note portanto, que o evento pode encapsular mais de um fato como  **falhar duas 
 ## Porque estudar análise de sobrevivência?
 Ok porque não usar usar modelos de regressão em geral para modelar o Tempo (*T*)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura
 
-### Censura
-Quando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos é chamado de **censurado**
-
-
-
-
-
+## Censura
+Quando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de **censurado**
