@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
+  <meta charset="utf-8">
+  <meta name="generator" content="quarto-0.9.242">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Notas de Aula Análise de Sobrevivência - 4&nbsp; Análise Descritiva</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+
+  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
+  <script src="../site_libs/clipboard/clipboard.min.js"></script>
+  <meta name="quarto:offset" content="../">
+  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+  <script src="../site_libs/quarto-search/fuse.min.js"></script>
+  <script src="../site_libs/quarto-search/quarto-search.js"></script>
+  <link href="../caps/summary.html" rel="next">
+  <link href="../caps/prog.html" rel="prev">
+  <link href="../clock.png" rel="icon" type="image/png">
+  <script src="../site_libs/quarto-html/quarto.js"></script>
+  <script src="../site_libs/quarto-html/popper.min.js"></script>
+  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+  <script src="../site_libs/quarto-html/anchor.min.js"></script>
+  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+  <link id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+  <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <script id="quarto-search-options" type="application/json">{
+    "location": "navbar",
+    "copy-button": false,
+    "collapse-after": 3,
+    "panel-placement": "end",
+    "type": "overlay",
+    "limit": 20,
+    "language": {
+      "search-no-results-text": "Nenhum resultado",
+      "search-matching-documents-text": "documentos correspondentes",
+      "search-copy-link-title": "Copiar link para a busca",
+      "search-hide-matches-text": "Esconder correspondências adicionais",
+      "search-more-match-text": "mais correspondência neste documento",
+      "search-more-matches-text": "mais correspondências neste documento",
+      "search-clear-button-title": "Limpar",
+      "search-detached-cancel-button-title": "Cancelar",
+      "search-submit-button-title": "Enviar"
+    }
+  }</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body class="floating nav-fixed">
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Notas de Aula Análise de Sobrevivência</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AlissonRP/survival_analysis"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/intro.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/def.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definições básicas</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/prog.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programando</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/eda.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../references.html" class="sidebar-item-text sidebar-link">Referencias</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+<h2 id="toc-title">Índice</h2>
+<ul>
+<li><a href="#estimando-a-função-de-sobrevivência" id="toc-estimando-a-função-de-sobrevivência" class="nav-link active" data-scroll-target="#estimando-a-função-de-sobrevivência"> <span class="header-section-number">4.1</span> Estimando a função de sobrevivência</a>
+<ul class="collapse">
+<li><a href="#sem-dados-de-censura" id="toc-sem-dados-de-censura" class="nav-link" data-scroll-target="#sem-dados-de-censura"> <span class="header-section-number">4.1.1</span> Sem dados de censura</a></li>
+</ul></li>
+<li><a href="#estimador-de-kaplan-meier" id="toc-estimador-de-kaplan-meier" class="nav-link" data-scroll-target="#estimador-de-kaplan-meier"> <span class="header-section-number">5</span> Estimador de Kaplan-Meier</a>
+<ul class="collapse">
+<li><a href="#outra-maneira-de-layout-para-os-dados" id="toc-outra-maneira-de-layout-para-os-dados" class="nav-link" data-scroll-target="#outra-maneira-de-layout-para-os-dados"> <span class="header-section-number">5.1</span> Outra maneira de layout para os dados</a></li>
+<li><a href="#formalizando" id="toc-formalizando" class="nav-link" data-scroll-target="#formalizando"> <span class="header-section-number">5.2</span> Formalizando</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+<header id="title-block-header" class="quarto-title-block default">
+
+<div class="quarto-title"><h1 class="title d-none d-lg-block display-7"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></h1></div></header>
+
+<p>Em Estatística é bastante usual fazer análise descritiva dos dados, como medidas resumo, gráficos e tabelas. Aqui também iremos elaborar análise descritivas, porém com foco nas medidas de sobrevivência e risco.</p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O símbolo <strong>#</strong> aqui é utilizado para indicar a cardinalidade de um conjunto.</p>
+<p>Por exemplo o conjunto <span class="math inline">\(A = \{a,b,d\}\)</span>, possui cardinalidade 3, isso é #A <span class="math inline">\(=3\)</span></p>
+</div>
+</div>
+<section id="estimando-a-função-de-sobrevivência" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="estimando-a-função-de-sobrevivência"><span class="header-section-number">4.1</span> Estimando a função de sobrevivência</h2>
+<p>Vamos nessa subseção estudar algumas maneiras de estimar a função de sobrevivência <span class="math inline">\(S(t)\)</span></p>
+<section id="sem-dados-de-censura" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="sem-dados-de-censura"><span class="header-section-number">4.1.1</span> Sem dados de censura</h3>
+<p>Uma maneira bastante intuitiva para estimarmos <span class="math inline">\(S(t)\)</span> é tomarmos a quantidade de indíviduos que não falharam até o tempo <span class="math inline">\(t\)</span> dividindo pelo total de indíviduos no estudo <span class="math display">\[
+\hat{S}(t) = \dfrac{\# \text{Observações que não falharam até t}}{\# \text{Observações}}
+\]</span></p>
+<p>Exemplo:</p>
+<div class="cell">
+
+</div>
+</section>
+</section>
+<section id="estimador-de-kaplan-meier" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Estimador de Kaplan-Meier</h1>
+<p>O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia ‘ingênua’ que utilizamos na seção anterior. Ele fornece uma maneira simples mas eficiente de estimar a função de sobrevivência. De forma intuitiva, dividimos o tempo <span class="math inline">\(t\)</span> em uma série de intervalos de intervalos de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais</p>
+<section id="outra-maneira-de-layout-para-os-dados" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="outra-maneira-de-layout-para-os-dados"><span class="header-section-number">5.1</span> Outra maneira de layout para os dados</h2>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 16%">
+<col style="width: 22%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>t ordenados</th>
+<th>int</th>
+<th># de falhas</th>
+<th><span class="math inline">\(n_j\)</span></th>
+<th><span class="math inline">\(m_j\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><span class="math inline">\([0,t_1)\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(k\)</span></td>
+<td><span class="math inline">\(x_{1p}\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(t_1\)</span></td>
+<td><span class="math inline">\([t_1,t_2)\)</span></td>
+<td><span class="math inline">\(d_2\)</span></td>
+<td><span class="math inline">\(k-d_1\)</span></td>
+<td><span class="math inline">\(x_{2p}\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(t_2\)</span></td>
+<td><span class="math inline">\([t_2,t_3)\)</span>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td>.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>k</td>
+<td><span class="math inline">\([t_{k},t_{k+\epsilon})\)</span></td>
+<td><span class="math inline">\(d_k\)</span></td>
+<td><span class="math inline">\(k - \sum_i d_i\)</span></td>
+<td><span class="math inline">\(x_{np}\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>int</strong>: São os intervalos</li>
+<li><strong># de falhas</strong>: É o número de falhas naquele intervalo</li>
+<li><strong><span class="math inline">\(n_j\)</span></strong> : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indíviduos sob risco)</li>
+</ul>
+<p>Assim fica fácil ver que no tempo 0, porque como vamos ver a seguir a construção dos intervalos começa a partir do primeiro tempo que acontece, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse</p>
+</section>
+<section id="formalizando" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="formalizando"><span class="header-section-number">5.2</span> Formalizando</h2>
+<p>Sabemos que <span class="math inline">\(S(t) = P(T&gt;t)\)</span>, vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: <span class="math display">\[S(3) = P(T&gt;3)\]</span></p>
+<p>Podemos fazer a seguinte manipulação: <span class="math display">\[
+S(3) = P(T&gt;3) = P(T&gt;1,T&gt;3) = P(T&gt;1)P(T&gt;5|T&gt;1)
+\]</span></p>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Nota
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Lembre que <span class="math inline">\(f(X|Y) = \dfrac{f(X,Y)}{f(Y)}\)</span></p>
+<p>E que se A é subconjunto de B, então A <span class="math inline">\(\cap\)</span> B <span class="math inline">\(=\)</span> A (relacione aos intervalos <span class="math inline">\((1,\infty)\)</span> e <span class="math inline">\((5,\infty)\)</span></p>
+</div>
+</div>
+
+
+
+</section>
+</section>
+</main> <!-- /main -->
+<script type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    setTimeout(function() {
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../caps/prog.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programando</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../caps/summary.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+</body></html>

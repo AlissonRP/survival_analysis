@@ -10,10 +10,11 @@ book:
   date: ""
   chapters:
     - index.qmd
-    - intro.qmd
-    - def.qmd
-    - prog.qmd
-    - summary.qmd
+    - caps/intro.qmd
+    - caps/def.qmd
+    - caps/prog.qmd
+    - caps/eda.qmd
+    - caps/summary.qmd
     - references.qmd
   favicon: "clock.png"
   navbar:

@@ -89,5 +89,110 @@
     "title": "2  Definições básicas",
     "section": "2.1 Função de Sobrevivência",
     "text": "2.1 Função de Sobrevivência\nA função de sobrevivência é o complemento da função de distribuição acumulada, isso é:\nA probabilidade de uma observação não falhar até um tempo \\(t\\): \\[\nS(t) = P(T>t) = 1 - F(t)\n\\]\n\n\n\n\n\nFigura 2.1: Exemplo de uma função de sobrevivência\n\n\n\n\nPela Figura 2.1 podemos ter um vislumbre que \\(S(0) = 1\\) e \\(S(\\infty) = 0\\).\nA demonstração de tais fatos fica a cargo do leitor, basta notar que \\(S(t) = 1 - F(t)\\) e usar as propriedades da \\(F\\).\nPor consequência a probabilidade de não sobreviver até um certo tempo \\(t\\) é: \\[\n1- S(t)\n\\] Assim a probailidade de não sobreviver em um intervalo \\((t_1,t_2)\\) é dado por:\n\\[\n1-S(t_2) - (1-S(t_1)) = S(t_1) - S(t_2)\n\\]"
+  },
+  {
+    "objectID": "caps/intro.html",
+    "href": "caps/intro.html",
+    "title": "1  Introdução",
+    "section": "",
+    "text": "Análise de sobrevivência é a área que estuda o tempo até acontecer um evento de interesse acontecer. Como por exemplo:\nNote portanto, que o evento pode encapsular mais de um fato como falhar duas vezes"
+  },
+  {
+    "objectID": "caps/intro.html#breve-história",
+    "href": "caps/intro.html#breve-história",
+    "title": "1  Introdução",
+    "section": "1.1 Breve História",
+    "text": "1.1 Breve História\nOriginalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico John Graunt, por um longo a análise de sobrevivência foi considerada um instrumento analitico para estudos de biomedicina e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas decadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviaveis"
+  },
+  {
+    "objectID": "caps/intro.html#porque-estudar-análise-de-sobrevivência",
+    "href": "caps/intro.html#porque-estudar-análise-de-sobrevivência",
+    "title": "1  Introdução",
+    "section": "1.2 Porque estudar análise de sobrevivência?",
+    "text": "1.2 Porque estudar análise de sobrevivência?\nOk, porque não usar usar modelos de regressão em geral para modelar o Tempo (T)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura"
+  },
+  {
+    "objectID": "caps/intro.html#censura",
+    "href": "caps/intro.html#censura",
+    "title": "1  Introdução",
+    "section": "1.3 Censura",
+    "text": "1.3 Censura\nQuando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de censurados\n\n1.3.1 Tipos de censura"
+  },
+  {
+    "objectID": "caps/def.html",
+    "href": "caps/def.html",
+    "title": "2  Definições básicas",
+    "section": "",
+    "text": "Seja \\(f(t)\\) a função densidade de probabilidade da variável aleatória \\(T\\) (tempo até o evento ocorrer). Definimos a função de distribuição acumulada da variável aleatória \\(T\\) como sendo:\n\\[\nF(t) = P(T < t) = \\int_{0}^{t}f(u)du\n\\]"
+  },
+  {
+    "objectID": "caps/def.html#função-de-sobrevivência",
+    "href": "caps/def.html#função-de-sobrevivência",
+    "title": "2  Definições básicas",
+    "section": "2.1 Função de Sobrevivência",
+    "text": "2.1 Função de Sobrevivência\nA função de sobrevivência é o complemento da função de distribuição acumulada, isso é:\nA probabilidade de uma observação não falhar até um tempo \\(t\\): \\[\nS(t) = P(T>t) = 1 - F(t)\n\\]\n\n\n\n\n\nFigura 2.1: Exemplo de uma função de sobrevivência\n\n\n\n\nPela Figura 2.1 podemos ter um vislumbre que \\(S(0) = 1\\) e \\(S(\\infty) = 0\\).\nA demonstração de tais fatos fica a cargo do leitor, basta notar que \\(S(t) = 1 - F(t)\\) e usar as propriedades da \\(F\\).\nPor consequência a probabilidade de não sobreviver até um certo tempo \\(t\\) é: \\[\n1- S(t)\n\\] Assim a probailidade de não sobreviver em um intervalo \\((t_1,t_2)\\) é dado por:\n\\[\n1-S(t_2) - (1-S(t_1)) = S(t_1) - S(t_2)\n\\]"
+  },
+  {
+    "objectID": "caps/def.html#função-taxa-de-falha",
+    "href": "caps/def.html#função-taxa-de-falha",
+    "title": "2  Definições básicas",
+    "section": "2.2 Função taxa de falha",
+    "text": "2.2 Função taxa de falha\nFornece o potencial instântaneo do evento ocorrer, dado que o indivíduo sobreviveu até o tempo \\(t\\):\n\\[\n\\lambda(t)= \\dfrac{P(t \\leq T < t + \\Delta t| T \\geq t )}{\\Delta t}\n\\]\nNote que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o oposto da função de sobrevivência.\n\n2.2.1 Consequências\n\n\\(\\lambda(t) \\geq 0\\)\n\n\nDemonstração\n\nÉ trivial pois por definição medidas de probabilidade \\(\\in [0,1]\\) e \\(\\Delta_t \\geq 0\\) portanto um produto de números positivos\n\n\\(\\lambda(t) =\\dfrac{f(t)}{S(t)} = -\\dfrac{d}{dt}\\bigg(log(S(t))\\bigg)\\)"
+  },
+  {
+    "objectID": "caps/prog.html",
+    "href": "caps/prog.html",
+    "title": "3  Programando",
+    "section": "",
+    "text": "Nessa seção vamos aplicar o conceitos em três linguagens de programação, a saber: Python, R e Julia"
+  },
+  {
+    "objectID": "caps/prog.html#layout-básico",
+    "href": "caps/prog.html#layout-básico",
+    "title": "3  Programando",
+    "section": "3.1 Layout Básico",
+    "text": "3.1 Layout Básico\nOs dados de sobrevivência possuem um layout estabelecido, que é dado a seguir:\n\n\n\nId\n\\(T\\)\n\\(s_i\\)\n\\(X_i\\)\n…\n\\(X_p\\)\n\n\n\n\n1\n\\(t_1\\)\n\\(s_1\\)\n\\(x_{1i}\\)\n…\n\\(x_{1p}\\)\n\n\n2\n\\(t_2\\)\n\\(s_2\\)\n\\(x_{2i}\\)\n…\n\\(x_{2p}\\)\n\n\n.\n.\n.\n.\n.\n.\n\n\n.\n.\n.\n.\n.\n.\n\n\nn\n\\(t_n\\)\n\\(s_n\\)\n\\(x_{ni}\\)\n…\n\\(x_{np}\\)\n\n\n\n\n\nR\n\n\ntempo <- c(1, 2, 3, 3, 3, 5, 5, 16, 16, 16, 16, 16, 16,16, 16, 1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16)\ncensura <- c(0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0)\ngrupo <- c(rep(1, 15), rep(0, 14))\ndados <- tempo  |> \n            cbind(censura)  |> \n            cbind(grupo)\ndados  |> \n        head()\n\n     tempo censura grupo\n[1,]     1       0     1\n[2,]     2       0     1\n[3,]     3       1     1\n[4,]     3       1     1\n[5,]     3       0     1\n[6,]     5       0     1\n\n\n\n\n\nPython\n\n\nimport pandas as pd\nimport numpy as np\n\ntempo = [1, 2, 3, 3, 3, 5, 5, 16, 16, 16, 16, 16, 16,16, 16, 1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16]\ncensura = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0]\ngrupo = np.concatenate((np.repeat(1, 15), np.repeat(0, 14)))\n\ndados = pd.DataFrame({'tempo':tempo,'censura':censura,'grupo':grupo})\ndados.head()\n\n   tempo  censura  grupo\n0      1        0      1\n1      2        0      1\n2      3        1      1\n3      3        1      1\n4      3        0      1"
+  },
+  {
+    "objectID": "caps/summary.html",
+    "href": "caps/summary.html",
+    "title": "5  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "caps/eda.html",
+    "href": "caps/eda.html",
+    "title": "4  Análise Descritiva",
+    "section": "",
+    "text": "Em Estatística é bastante usual fazer análise descritiva dos dados, como medidas resumo, gráficos e tabelas. Aqui também iremos elaborar análise descritivas, porém com foco nas medidas de sobrevivência e risco."
+  },
+  {
+    "objectID": "caps/eda.html#section",
+    "href": "caps/eda.html#section",
+    "title": "4  Análise Descritiva",
+    "section": "4.1 ",
+    "text": "4.1"
+  },
+  {
+    "objectID": "caps/eda.html#estimando-a-função-de-sobrevivência",
+    "href": "caps/eda.html#estimando-a-função-de-sobrevivência",
+    "title": "4  Análise Descritiva",
+    "section": "4.1 Estimando a função de sobrevivência",
+    "text": "4.1 Estimando a função de sobrevivência\nVamos nessa subseção estudar algumas maneiras de estimar a função de sobrevivência \\(S(t)\\)\n\n4.1.1 Sem dados de censura\nUma maneira bastante intuitiva para estimarmos \\(S(t)\\) é tomarmos a quantidade de indíviduos que não falharam até o tempo \\(t\\) dividindo pelo total de indíviduos no estudo \\[\n\\hat{S}(t) = \\dfrac{\\# \\text{Observações que não falharam até t}}{\\# \\text{Observações}}\n\\]\nExemplo:"
+  },
+  {
+    "objectID": "caps/eda.html#formalizando",
+    "href": "caps/eda.html#formalizando",
+    "title": "4  Análise Descritiva",
+    "section": "5.2 Formalizando",
+    "text": "5.2 Formalizando\nSabemos que \\(S(t) = P(T>t)\\), vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: \\[S(3) = P(T>3)\\]\nPodemos fazer a seguinte manipulação: \\[\nS(3) = P(T>3) = P(T>1,T>3) = P(T>1)P(T>5|T>1)\n\\]\n\n\n\n\n\n\nNota\n\n\n\nLembre que \\(f(X|Y) = \\dfrac{f(X,Y)}{f(Y)}\\)\nE que se A é subconjunto de B, então A \\(\\cap\\) B \\(=\\) A (relacione aos intervalos \\((1,\\infty)\\) e \\((5,\\infty)\\)"
+  },
+  {
+    "objectID": "caps/eda.html#outra-maneira-de-layout-para-os-dados",
+    "href": "caps/eda.html#outra-maneira-de-layout-para-os-dados",
+    "title": "4  Análise Descritiva",
+    "section": "5.1 Outra maneira de layout para os dados",
+    "text": "5.1 Outra maneira de layout para os dados\n\n\n\n\n\n\n\n\n\n\n\nt ordenados\nint\n# de falhas\n\\(n_j\\)\n\\(m_j\\)\n\n\n\n\n\n0\n\\([0,t_1)\\)\n\\(0\\)\n\\(k\\)\n\\(x_{1p}\\)\n\n\n\n\\(t_1\\)\n\\([t_1,t_2)\\)\n\\(d_2\\)\n\\(k-d_1\\)\n\\(x_{2p}\\)\n\n\n\n\\(t_2\\)\n\\([t_2,t_3)\\).\n.\n.\n.\n\n\n\n.\n.\n.\n.\n.\n\n\n\n.\n.\n.\n.\n.\n\n\n\nk\n\\([t_{k},t_{k+\\epsilon})\\)\n\\(d_k\\)\n\\(k - \\sum_i d_i\\)\n\\(x_{np}\\)\n\n\n\n\n\nint: São os intervalos\n# de falhas: É o número de falhas naquele intervalo\n\\(n_j\\) : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indíviduos sob risco)\n\nAssim fica fácil ver que no tempo 0, porque como vamos ver a seguir a construção dos intervalos começa a partir do primeiro tempo que acontece, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse"
   }
 ]

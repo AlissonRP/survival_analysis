@@ -1,0 +1,59 @@
+# Análise Descritiva
+Em Estatística é bastante usual fazer análise descritiva dos dados, como medidas resumo, gráficos e tabelas. Aqui também iremos elaborar análise descritivas, porém com foco nas medidas de sobrevivência e risco.
+
+:::{.callout-note}
+O símbolo **#** aqui é utilizado para indicar a cardinalidade de um conjunto.  
+
+Por exemplo o conjunto $A = \{a,b,d\}$, possui cardinalidade 3, isso é #A $=3$ 
+:::
+
+## Estimando a função de sobrevivência
+Vamos nessa subseção estudar algumas maneiras de estimar a função de sobrevivência $S(t)$
+
+### Sem dados de censura
+Uma maneira bastante intuitiva para estimarmos $S(t)$ é tomarmos a quantidade de indíviduos que não falharam até o tempo $t$ dividindo pelo total de indíviduos no estudo
+$$
+\hat{S}(t) = \dfrac{\# \text{Observações que não falharam até t}}{\# \text{Observações}}
+$$
+
+Exemplo:
+
+```{r}
+
+```
+
+# Estimador de Kaplan-Meier
+O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia 'ingênua' que utilizamos na seção anterior. Ele fornece uma maneira simples mas eficiente de estimar 
+a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma série de intervalos de intervalos de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais
+
+## Outra maneira de layout para os dados
+| t ordenados | int   | # de falhas | $n_j$ | $m_j$ |
+|----|-----|-------|-----|-----|-----|
+| 0  | $[0,t_1)$ | $0$   | $k$  |$x_{1p}$ |
+| $t_1$| $[t_1,t_2)$ | $d_2$   | $k-d_1$|  $x_{2p}$ |
+| $t_2$  |$[t_2,t_3)$.   | .     | . |  . |
+| .  | .   | .     | .   | .   | 
+| .  | .   | .     | .    |.   |
+| k  | $[t_{k},t_{k+\epsilon})$ | $d_k$   | $k - \sum_i d_i$  | $x_{np}$ |
+
+* **int**: São os intervalos
+* **# de falhas**: É o número de falhas naquele intervalo
+* **$n_j$** : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indíviduos sob risco)
+
+Assim fica fácil ver que no tempo 0, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que acontece, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse
+
+## Formalizando
+Sabemos que $S(t) = P(T>t)$, vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: $$S(3) = P(T>3)$$
+
+Podemos fazer a seguinte manipulação:
+$$
+S(3) = P(T>3) = P(T>1,T>3) = P(T>1)P(T>5|T>1)
+$$
+
+:::{.callout-note}
+Lembre que $f(X|Y) = \dfrac{f(X,Y)}{f(Y)}$ 
+
+E que se A é subconjunto de B, então A $\cap$ B $=$ A (relacione aos intervalos $(1,\infty)$ e $(5,\infty)$
+:::
+
+
