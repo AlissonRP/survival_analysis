@@ -191,7 +191,7 @@ Nota
 </section>
 <section id="estimador-de-kaplan-meier" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Estimador de Kaplan-Meier</h1>
-<p>O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia ‘ingênua’ que utilizamos na seção anterior. Ele fornece uma maneira simples mas eficiente de estimar a função de sobrevivência. De forma intuitiva, dividimos o tempo <span class="math inline">\(t\)</span> em uma série de intervalos de intervalos de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais</p>
+<p>O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia ‘ingênua’ que utilizamos na seção anterior. Ele fornece uma maneira simples mas eficiente de estimar a função de sobrevivência. De forma intuitiva, dividimos o tempo <span class="math inline">\(t\)</span> em uma série de intervalos de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais</p>
 <section id="outra-maneira-de-layout-para-os-dados" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="outra-maneira-de-layout-para-os-dados"><span class="header-section-number">5.1</span> Outra maneira de layout para os dados</h2>
 <table class="table">
@@ -275,7 +275,7 @@ Nota
 <h2 data-number="5.2" class="anchored" data-anchor-id="formalizando"><span class="header-section-number">5.2</span> Formalizando</h2>
 <p>Sabemos que <span class="math inline">\(S(t) = P(T&gt;t)\)</span>, vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: <span class="math display">\[S(3) = P(T&gt;3)\]</span></p>
 <p>Podemos fazer a seguinte manipulação: <span class="math display">\[
-S(3) = P(T&gt;3) = P(T&gt;1,T&gt;3) = P(T&gt;1)P(T&gt;5|T&gt;1)
+S(3) = P(T&gt;3) = P(T&gt;1,T&gt;3) = P(T&gt;1)P(T&gt;3|T&gt;1)
 \]</span></p>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">

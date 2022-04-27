@@ -24,7 +24,7 @@ Exemplo:
 
 # Estimador de Kaplan-Meier
 O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia 'ingênua' que utilizamos na seção anterior. Ele fornece uma maneira simples mas eficiente de estimar 
-a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma série de intervalos de intervalos de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais
+a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma série de intervalos  de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais
 
 ## Outra maneira de layout para os dados
 | t ordenados | int   | # de falhas | $n_j$ | $m_j$ |
@@ -47,7 +47,7 @@ Sabemos que $S(t) = P(T>t)$, vamos supor que já construímos a tabela e possuí
 
 Podemos fazer a seguinte manipulação:
 $$
-S(3) = P(T>3) = P(T>1,T>3) = P(T>1)P(T>5|T>1)
+S(3) = P(T>3) = P(T>1,T>3) = P(T>1)P(T>3|T>1)
 $$
 
 :::{.callout-note}

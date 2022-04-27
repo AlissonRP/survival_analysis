@@ -1,6 +1,6 @@
 # Programando
 
-Nessa seção vamos aplicar o conceitos em três linguagens de programação, a saber: Python, R e Julia
+Nessa seção vamos aplicar o conceitos em três linguagens de programação, a saber: Python e R 
 
 ## Layout Básico
 Os dados de sobrevivência possuem um layout estabelecido, que é dado a seguir:
