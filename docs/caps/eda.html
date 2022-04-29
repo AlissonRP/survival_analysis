@@ -131,7 +131,7 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../references.html" class="sidebar-item-text sidebar-link">Referencias</a>
+  <a href="../references.html" class="sidebar-item-text sidebar-link">Referências</a>
   </div>
 </li>
     </ul>
@@ -171,7 +171,7 @@ Nota
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>O símbolo <strong>#</strong> aqui é utilizado para indicar a cardinalidade de um conjunto.</p>
+<p>O símbolo <strong>#</strong> aqui é utilizado para indicar a cardinalidade (quantidade de elementos) de um conjunto.</p>
 <p>Por exemplo o conjunto <span class="math inline">\(A = \{a,b,d\}\)</span>, possui cardinalidade 3, isso é #A <span class="math inline">\(=3\)</span></p>
 </div>
 </div>
@@ -191,7 +191,7 @@ Nota
 </section>
 <section id="estimador-de-kaplan-meier" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Estimador de Kaplan-Meier</h1>
-<p>O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia ‘ingênua’ que utilizamos na seção anterior. Ele fornece uma maneira simples mas eficiente de estimar a função de sobrevivência. De forma intuitiva, dividimos o tempo <span class="math inline">\(t\)</span> em uma série de intervalos de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais</p>
+<p>O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia ‘ingênua’ que utilizamos na seção anterior. Ele fornece uma maneira simples, mas eficiente de estimar a função de sobrevivência. De forma intuitiva, dividimos o tempo <span class="math inline">\(t\)</span> em uma série de intervalos de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais</p>
 <section id="outra-maneira-de-layout-para-os-dados" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="outra-maneira-de-layout-para-os-dados"><span class="header-section-number">5.1</span> Outra maneira de layout para os dados</h2>
 <table class="table">
@@ -269,7 +269,7 @@ Nota
 <li><strong># de falhas</strong>: É o número de falhas naquele intervalo</li>
 <li><strong><span class="math inline">\(n_j\)</span></strong> : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indíviduos sob risco)</li>
 </ul>
-<p>Assim fica fácil ver que no tempo 0, porque como vamos ver a seguir a construção dos intervalos começa a partir do primeiro tempo que acontece, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse</p>
+<p>Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir a construção dos intervalos começa a partir do primeiro tempo que aconteceo evento, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse</p>
 </section>
 <section id="formalizando" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="formalizando"><span class="header-section-number">5.2</span> Formalizando</h2>
@@ -288,9 +288,91 @@ Nota
 </div>
 <div class="callout-body-container callout-body">
 <p>Lembre que <span class="math inline">\(f(X|Y) = \dfrac{f(X,Y)}{f(Y)}\)</span></p>
-<p>E que se A é subconjunto de B, então A <span class="math inline">\(\cap\)</span> B <span class="math inline">\(=\)</span> A (relacione aos intervalos <span class="math inline">\((1,\infty)\)</span> e <span class="math inline">\((5,\infty)\)</span></p>
+<p>E que se A é subconjunto de B, então A <span class="math inline">\(\cap\)</span> B <span class="math inline">\(=\)</span> A (relacione aos intervalos <span class="math inline">\((1,\infty)\)</span> e <span class="math inline">\((3,\infty)\)</span></p>
 </div>
 </div>
+<p>Vamos utilizar o seguinte exemplo para ilustrar a idéia anterior:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>t ordenados</th>
+<th>int</th>
+<th># de falhas (<span class="math inline">\(d_j\)</span>)</th>
+<th><span class="math inline">\(n_j\)</span></th>
+<th><span class="math inline">\(\hat{S}(.)\)</span></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td><span class="math inline">\([0,1)\)</span></td>
+<td><span class="math inline">\(0\)</span></td>
+<td><span class="math inline">\(14\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\([1,5)\)</span></td>
+<td><span class="math inline">\(3\)</span></td>
+<td><span class="math inline">\(14\)</span></td>
+<td><span class="math inline">\(0.78\)</span></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(5\)</span></td>
+<td><span class="math inline">\([5,7)\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(9\)</span></td>
+<td>.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(7\)</span></td>
+<td><span class="math inline">\([7,8)\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(8\)</span></td>
+<td>.</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(8\)</span></td>
+<td><span class="math inline">\([8,10)\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(7\)</span></td>
+<td>.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(10\)</span></td>
+<td><span class="math inline">\([10,16)\)</span></td>
+<td><span class="math inline">\(1\)</span></td>
+<td><span class="math inline">\(6\)</span></td>
+<td><span class="math inline">\(x_{np}\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Para calcular <span class="math inline">\(\hat{S}(1)\)</span>, fazemos então: <span class="math display">\[
+P(T&gt;1) = P(T&gt;0,T&gt;1) = P(T&gt;0)P(T&gt;1 |T&gt;0)
+\]</span> Sabemos que <span class="math inline">\(P(T&gt;0) = 1\)</span> como comentado anteriormente. Temos 3 acontecimentos do evento de interesse no tempo <span class="math inline">\(t=1\)</span> e 14 observações restantes, assim a probabilidade de ‘falhar’ nesse intervalo é <span class="math inline">\(\dfrac{3}{14}\)</span>, portanto a probabilidade de sobreviver é <span class="math inline">\(1 - \dfrac{3}{14}\)</span>, substituindo as informações tem-se portanto que <span class="math inline">\(\hat{S}(1) = 0.786\)</span></p>
+<p>Para <span class="math inline">\(\hat{S}(5)\)</span>, fazemos a mesma decomposição de probabilidade e chegamos em:</p>
+<p><span class="math display">\[
+\hat{S}(5) =  P(T&gt;1)P(T&gt;5|T&gt;1)
+\]</span> Como calculado anteriormente <span class="math inline">\(P(T&gt;1) = 1-\dfrac{3}{14}\)</span> e <span class="math inline">\(P(T&gt;5|T&gt;1) = 1 - \dfrac{1}{9}\)</span>.</p>
+<p>Fica claro então a relação de recursão, pois para o cálculo da estimativa utiliza-se todas as calculadas anteriormente, generalizando temos:</p>
+<p><span class="math display">\[
+S(t_j) =(1-q_1)(1-q_2)...(1-q_j)
+\]</span></p>
+<p>Onde <span class="math inline">\(q_j\)</span> é a probabilidade de uma observação ter o evento de interesse no intervalo <span class="math inline">\([t_{j-1},t_j)\)</span> sabendo-se que não teve em <span class="math inline">\(t_{j-1}\)</span>, formalizando tem-se:</p>
+<p><span class="math display">\[
+q_j = P(T \in [t_{j-1,t_j)}] | T&gt; t_{j-1})
+\]</span></p>
+<p>Assim o estimador reduz-se a estimar os <span class="math inline">\(q_j\)</span>, reescrevendo usando alguns termos já citados temos:</p>
+<p><span class="math display">\[
+\hat{q}_j = \dfrac{\# \quad \text{de falhas em} \quad t_j}{\# \quad  \text{Observações sobre risco}}
+\]</span></p>
 
 
 

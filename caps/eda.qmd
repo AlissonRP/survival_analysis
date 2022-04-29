@@ -2,7 +2,7 @@
 Em Estatística é bastante usual fazer análise descritiva dos dados, como medidas resumo, gráficos e tabelas. Aqui também iremos elaborar análise descritivas, porém com foco nas medidas de sobrevivência e risco.
 
 :::{.callout-note}
-O símbolo **#** aqui é utilizado para indicar a cardinalidade de um conjunto.  
+O símbolo **#** aqui é utilizado para indicar a cardinalidade (quantidade de elementos) de um conjunto.  
 
 Por exemplo o conjunto $A = \{a,b,d\}$, possui cardinalidade 3, isso é #A $=3$ 
 :::
@@ -23,7 +23,7 @@ Exemplo:
 ```
 
 # Estimador de Kaplan-Meier
-O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia 'ingênua' que utilizamos na seção anterior. Ele fornece uma maneira simples mas eficiente de estimar 
+O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia 'ingênua' que utilizamos na seção anterior. Ele fornece uma maneira simples, mas eficiente de estimar 
 a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma série de intervalos  de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais
 
 ## Outra maneira de layout para os dados
@@ -40,7 +40,7 @@ a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma s
 * **# de falhas**: É o número de falhas naquele intervalo
 * **$n_j$** : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indíviduos sob risco)
 
-Assim fica fácil ver que no tempo 0, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que acontece, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse
+Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que aconteceo evento, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse
 
 ## Formalizando
 Sabemos que $S(t) = P(T>t)$, vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: $$S(3) = P(T>3)$$
@@ -53,7 +53,47 @@ $$
 :::{.callout-note}
 Lembre que $f(X|Y) = \dfrac{f(X,Y)}{f(Y)}$ 
 
-E que se A é subconjunto de B, então A $\cap$ B $=$ A (relacione aos intervalos $(1,\infty)$ e $(5,\infty)$
+E que se A é subconjunto de B, então A $\cap$ B $=$ A (relacione aos intervalos $(1,\infty)$ e $(3,\infty)$
 :::
+Vamos utilizar o seguinte exemplo para ilustrar a idéia anterior:
 
+| t ordenados | int   | # de falhas ($d_j$) | $n_j$ | $\hat{S}(.)$ |
+|----|-----|-------|-----|-----|-----|
+| 0  | $[0,1)$ | $0$   | $14$  |$1$ |
+| $1$| $[1,5)$ | $3$   | $14$|  $0.78$ |
+| $5$  |$[5,7)$   | $1$     | $9$ |  . |
+| $7$  | $[7,8)$ | $1$   | $8$  | .   | 
+| $8$ | $[8,10)$  | $1$     | $7$    |.   |
+| $10$ | $[10,16)$ | $1$   | $6$  | $x_{np}$ |
 
+Para calcular $\hat{S}(1)$, fazemos então:
+$$
+P(T>1) = P(T>0,T>1) = P(T>0)P(T>1 |T>0)
+$$
+Sabemos que $P(T>0) = 1$ como comentado anteriormente. Temos 3 acontecimentos do evento de interesse no tempo $t=1$ e 14 observações restantes, assim a probabilidade de 'falhar' nesse intervalo é $\dfrac{3}{14}$, portanto a probabilidade de sobreviver é $1 - \dfrac{3}{14}$, substituindo as informações tem-se portanto que $\hat{S}(1) = 0.786$
+
+Para $\hat{S}(5)$, fazemos a mesma decomposição de probabilidade e chegamos em:
+
+$$
+\hat{S}(5) =  P(T>1)P(T>5|T>1)
+$$
+Como calculado anteriormente $P(T>1) = 1-\dfrac{3}{14}$ e
+ $P(T>5|T>1) = 1 - \dfrac{1}{9}$.
+
+Fica claro então a relação de recursão, pois para o cálculo da estimativa utiliza-se todas as calculadas anteriormente, generalizando temos:
+
+$$
+S(t_j) =(1-q_1)(1-q_2)...(1-q_j)
+$$
+
+Onde $q_j$ é a probabilidade de uma observação ter o evento de interesse no intervalo $[t_{j-1},t_j)$ sabendo-se que não teve em $t_{j-1}$, formalizando tem-se:
+
+$$
+q_j = P(T \in [t_{j-1,t_j)}] | T> t_{j-1})
+$$
+
+Assim o estimador reduz-se a estimar os $q_j$, reescrevendo usando alguns termos já citados temos:
+
+$$
+\hat{q}_j = \dfrac{\# \quad \text{de falhas em} \quad t_j}{\# \quad  \text{Observações sobre risco}}
+$$
