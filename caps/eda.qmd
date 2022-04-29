@@ -16,11 +16,20 @@ $$
 \hat{S}(t) = \dfrac{\# \text{Observações que não falharam até t}}{\# \text{Observações}}
 $$
 
-Exemplo:
+Na prática, $S(t)$ será obtida por algum estimador, e portanto seu gráfico terá um formato de escada, como dado a seguir:
 
 ```{r}
-
+#| echo: FALSE
+#| label: fig-step
+#| fig-cap: "Exemplo de uma função de sobrevivência na prática"
+library(ggplot2)
+data.frame(x = c(0,1,5,7,8,10), y = c(1,0.78,0.69,0.61,0.52,0.42))  |> 
+ggplot(aes(x, y)) +
+    geom_step() +
+    labs(x = 't', y = 's(t)')+
+    theme_minimal()
 ```
+Pelo @fig-step nota-se que a função mantem-se constante em alguns intervalos e tem um decaimento em alguns pontos específicos, a proxima seção formaliza tal idéia.
 
 # Estimador de Kaplan-Meier
 O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia 'ingênua' que utilizamos na seção anterior. Ele fornece uma maneira simples, mas eficiente de estimar 
@@ -40,7 +49,7 @@ a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma s
 * **# de falhas**: É o número de falhas naquele intervalo
 * **$n_j$** : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indíviduos sob risco)
 
-Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que aconteceo evento, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse
+Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que acontece um evento, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse
 
 ## Formalizando
 Sabemos que $S(t) = P(T>t)$, vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: $$S(3) = P(T>3)$$
@@ -80,16 +89,16 @@ $$
 Como calculado anteriormente $P(T>1) = 1-\dfrac{3}{14}$ e
  $P(T>5|T>1) = 1 - \dfrac{1}{9}$.
 
-Fica claro então a relação de recursão, pois para o cálculo da estimativa utiliza-se todas as calculadas anteriormente, generalizando temos:
+Fica claro então a relação de recursão, pois para o cálculo da estimativa utiliza-se todas as probabilidades calculadas anteriormente, generalizando temos:
 
 $$
-S(t_j) =(1-q_1)(1-q_2)...(1-q_j)
+S(t_j) =(1-q_1)(1-q_2)...(1-q_j) =  \prod_{j:t_j<t} \bigg(1 - \dfrac{d_j}{n_j}\bigg) = \prod_{j:t_j<t} \bigg(\dfrac{n_j - d_j}{n_j}\bigg)
 $$
 
 Onde $q_j$ é a probabilidade de uma observação ter o evento de interesse no intervalo $[t_{j-1},t_j)$ sabendo-se que não teve em $t_{j-1}$, formalizando tem-se:
 
 $$
-q_j = P(T \in [t_{j-1,t_j)}] | T> t_{j-1})
+q_j = P(T \in [t_{j-1},t_j)] | T> t_{j-1}) 
 $$
 
 Assim o estimador reduz-se a estimar os $q_j$, reescrevendo usando alguns termos já citados temos:
@@ -97,3 +106,35 @@ Assim o estimador reduz-se a estimar os $q_j$, reescrevendo usando alguns termos
 $$
 \hat{q}_j = \dfrac{\# \quad \text{de falhas em} \quad t_j}{\# \quad  \text{Observações sobre risco}}
 $$
+
+:::{.callout-important}
+Os métodos construídos anteriormente são ditos **não-paramétricos**, pois para a derivação dos estimadores não se faz pressuposto de distribuição para a variável aleatória $T$
+:::
+
+## Propriedades do estimador
+Como temos um estimador pontual, podemos também construir intervalos de confiança para a estimativas.
+
+### Variância do Estimador
+Ora ora, para calcular a variância do estimador precisamos saber a distribuição do estimador, então aqui vamos nos conter com o estimador da variância do estimador, que é dado por:
+$$
+\widehat{\text{Var}}(\hat{S}(t)) = [\hat{S}(t)]^{2}\sum_{j:t_j<t}\dfrac{d_j}{n_j(n_j - d_j)} 
+$$
+
+## Códigos
+<details>
+  <summary markdown="span">Python</summary>
+
+```{python}
+import pandas as pd
+import numpy as np
+from lifelines import KaplanMeierFitter
+#%% 
+tempo = [1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16]
+falha = [1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0]
+
+dados = pd.DataFrame({'tempo':tempo,'censura':falha})
+
+#%%
+KaplanMeierFitter().fit(dados['tempo'],dados['censura']).survival_function_
+```
+</details>
