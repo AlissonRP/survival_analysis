@@ -19,7 +19,7 @@ $$
 Na prática, $S(t)$ será obtida por algum estimador, e portanto seu gráfico terá um formato de escada, como dado a seguir:
 
 ```{r}
-#| echo: FALSE
+#| echo: false
 #| label: fig-step
 #| fig-cap: "Exemplo de uma função de sobrevivência na prática"
 library(ggplot2)
@@ -29,10 +29,10 @@ ggplot(aes(x, y)) +
     labs(x = 't', y = 's(t)')+
     theme_minimal()
 ```
-Pelo @fig-step nota-se que a função mantem-se constante em alguns intervalos e tem um decaimento em alguns pontos específicos, a proxima seção formaliza tal idéia.
+Pelo @fig-step nota-se que a função mantém-se constante em alguns intervalos e tem um decaimento em alguns pontos específicos, a proxima seção formaliza tal ideia.
 
 # Estimador de Kaplan-Meier
-O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da idéia 'ingênua' que utilizamos na seção anterior. Ele fornece uma maneira simples, mas eficiente de estimar 
+O estimador de Kaplan-Meier também denominado limite-produto é uma adaptação da ideia 'ingênua' que utilizamos na seção anterior. Ele fornece uma maneira simples, mas eficiente de estimar 
 a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma série de intervalos  de acordo com os eventos observados ou dados censurados, após isso calculamos uma sequência de produto de probabilidade condicionais
 
 ## Outra maneira de layout para os dados
@@ -47,9 +47,9 @@ a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma s
 
 * **int**: São os intervalos
 * **# de falhas**: É o número de falhas naquele intervalo
-* **$n_j$** : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indíviduos sob risco)
+* **$n_j$** : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indivíduos sob risco)
 
-Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que acontece um evento, e como temos 0 falhas temos portanto todos os indíviduos sem o evento de interesse
+Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que acontece um evento, e como temos 0 falhas temos portanto todos os indivíduos sem o evento de interesse
 
 ## Formalizando
 Sabemos que $S(t) = P(T>t)$, vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: $$S(3) = P(T>3)$$
@@ -64,7 +64,7 @@ Lembre que $f(X|Y) = \dfrac{f(X,Y)}{f(Y)}$
 
 E que se A é subconjunto de B, então A $\cap$ B $=$ A (relacione aos intervalos $(1,\infty)$ e $(3,\infty)$
 :::
-Vamos utilizar o seguinte exemplo para ilustrar a idéia anterior:
+Vamos utilizar o seguinte exemplo para ilustrar a ideia anterior:
 
 | t ordenados | int   | # de falhas ($d_j$) | $n_j$ | $\hat{S}(.)$ |
 |----|-----|-------|-----|-----|-----|
@@ -138,3 +138,4 @@ dados = pd.DataFrame({'tempo':tempo,'censura':falha})
 KaplanMeierFitter().fit(dados['tempo'],dados['censura']).survival_function_
 ```
 </details>
+

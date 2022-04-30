@@ -15,8 +15,8 @@ $$
 ```{r}
 #| echo: FALSE
 #| label: fig-plot
-#| fig-cap: "Exemplo de uma função de sobrevivência"
-
+#| fig-cap: "Exemplo de uma função de densidade"
+set.seed(41)
 x = rexp(3000)
 library(ggplot2)
 
@@ -24,7 +24,7 @@ x |>
   tibble::tibble() |> 
   ggplot(aes(x)) +
   geom_density() +
-  labs(x='t', y= 'f(t)') +
+  labs(x = 't', y = 'f(t)') +
   theme_minimal()
   
 ```
@@ -36,7 +36,7 @@ Por consequência a probabilidade de não sobreviver até um certo tempo $t$ é:
 $$
 1- S(t)
 $$
-Assim a probailidade de não sobreviver em um intervalo $(t_1,t_2)$ é dado por:
+Assim a probabilidade de não sobreviver em um intervalo $(t_1,t_2)$ é dado por:
 
 $$
 1-S(t_2) - (1-S(t_1)) = S(t_1) - S(t_2)

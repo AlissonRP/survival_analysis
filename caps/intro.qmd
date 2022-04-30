@@ -13,12 +13,12 @@ Note portanto, que o evento pode encapsular mais de um fato como  **falhar duas 
 
 ## Breve História
 
-Originalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico [John Graunt](https://en.wikipedia.org/wiki/John_Graunt), por um longo a análise de sobrevivência foi considerada um instrumento analitico para estudos de biomedicina  e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas decadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviaveis
+Originalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico [John Graunt](https://en.wikipedia.org/wiki/John_Graunt), por um longo a análise de sobrevivência foi considerada um instrumento analítico para estudos de biomedicina  e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas décadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviáveis
 
 ## Porque estudar análise de sobrevivência?
 Ok, porque não usar usar modelos de regressão em geral para modelar o Tempo (*T*)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura
 
 ## Censura
-Quando estamos fazendo uma análise de sobrevivência podemos ter indíviduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de **censurados**
+Quando estamos fazendo uma análise de sobrevivência podemos ter indivíduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de **censurados**
 
 ### Tipos de censura
