@@ -31,7 +31,7 @@ Temos informações sobre o tempo de sobrevivência mas não sabemos exatamente 
 ### Tipos de censura
 Aqui vamos definir alguns tipos de censuras
 
-$\textcolor{#2B5D92}{\text{Censura Tipo I}}$: O estudo será finalizado após um período pré estabelecido de tempo.
-$\textcolor{#2B5D92}{\text{Censura Tipo II}}:$ O estudo será finalizado após ter ocorrido o evento de interesse em um número pré-estabelecido de indivíduos.  
-$\textcolor{#2B5D92}{\text{Censura aleatória}}$: Acontece quando o indivíduo é removido do estudo sem ter ocorrido a falha.
+<span style="color:blue">Censura Tipo I </span>: O estudo será finalizado após um período pré estabelecido de tempo.
+<span style="color:blue">Censura Tipo II </span> O estudo será finalizado após ter ocorrido o evento de interesse em um número pré-estabelecido de indivíduos.  
+<span style="color:blue">Censura Aleatória </span>: Acontece quando o indivíduo é removido do estudo sem ter ocorrido a falha.
 

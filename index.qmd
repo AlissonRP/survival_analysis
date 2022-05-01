@@ -18,4 +18,5 @@ Encontrou algum erro? Pode encaminhar uma [issue](https://github.com/AlissonRP/s
 Blocos dessa maneira indicam definições importantes
 :::
 
-$\textcolor{#2B5D92}{\text{Textos dessa cor assinalam concepções relevantes}}$
+
+<span style="color:blue">Textos dessa cor assinalam concepções relevantes</span>
