@@ -16,7 +16,7 @@ book:
     - caps/eda.qmd
     - caps/summary.qmd
     - references.qmd
-  favicon: "clock.png"
+  favicon: "favicon"
   navbar:
     search: true
     location: navbar

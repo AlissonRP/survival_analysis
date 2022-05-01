@@ -85,7 +85,7 @@
   <script src="../site_libs/quarto-search/quarto-search.js"></script>
   <link href="../caps/summary.html" rel="next">
   <link href="../caps/prog.html" rel="prev">
-  <link href="../clock.png" rel="icon" type="image/png">
+  <link href="../favicon" rel="icon">
   <script src="../site_libs/quarto-html/quarto.js"></script>
   <script src="../site_libs/quarto-html/popper.min.js"></script>
   <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -262,7 +262,7 @@ Nota
 </div>
 </div>
 </div>
-<p>Pelo <a href="#fig-step">Figura&nbsp;<span>4.1</span></a> nota-se que a função mantém-se constante em alguns intervalos e tem um decaimento em alguns pontos específicos, a proxima seção formaliza tal ideia.</p>
+<p>Pelo <a href="#fig-step">Figura&nbsp;<span class="quarto-unresolved-ref">fig-step</span></a> nota-se que a função mantém-se constante em alguns intervalos e tem um decaimento em alguns pontos específicos, a proxima seção formaliza tal ideia.</p>
 </section>
 </section>
 <section id="estimador-de-kaplan-meier" class="level1" data-number="5">
@@ -295,15 +295,15 @@ Nota
 <td><span class="math inline">\([0,t_1)\)</span></td>
 <td><span class="math inline">\(0\)</span></td>
 <td><span class="math inline">\(k\)</span></td>
-<td><span class="math inline">\(x_{1p}\)</span></td>
+<td><span class="math inline">\(m_{1}\)</span></td>
 <td></td>
 </tr>
 <tr class="even">
 <td><span class="math inline">\(t_1\)</span></td>
 <td><span class="math inline">\([t_1,t_2)\)</span></td>
 <td><span class="math inline">\(d_2\)</span></td>
-<td><span class="math inline">\(k-d_1\)</span></td>
-<td><span class="math inline">\(x_{2p}\)</span></td>
+<td><span class="math inline">\(k-(d_1+ m_1)\)</span></td>
+<td><span class="math inline">\(m_{2}\)</span></td>
 <td></td>
 </tr>
 <tr class="odd">
@@ -334,8 +334,8 @@ Nota
 <td>k</td>
 <td><span class="math inline">\([t_{k},t_{k+\epsilon})\)</span></td>
 <td><span class="math inline">\(d_k\)</span></td>
-<td><span class="math inline">\(k - \sum_i d_i\)</span></td>
-<td><span class="math inline">\(x_{np}\)</span></td>
+<td><span class="math inline">\(k - \sum_i (d_i + m_i)\)</span></td>
+<td><span class="math inline">\(m_{n}\)</span></td>
 <td></td>
 </tr>
 </tbody>
@@ -343,9 +343,10 @@ Nota
 <ul>
 <li><strong>int</strong>: São os intervalos</li>
 <li><strong># de falhas</strong>: É o número de falhas naquele intervalo</li>
-<li><strong><span class="math inline">\(n_j\)</span></strong> : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indivíduos sob risco)</li>
+<li><strong><span class="math inline">\(n_j\)</span></strong> : É a quantidade de observações que ainda não falharam ou foram censuradas naquele intervalo (as vezes chamado de indivíduos sob risco)</li>
+<li><strong><span class="math inline">\(c_j\)</span></strong>: Quantidade de censuras naquele intervalo.</li>
 </ul>
-<p>Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir a construção dos intervalos começa a partir do primeiro tempo que acontece um evento, e como temos 0 falhas temos portanto todos os indivíduos sem o evento de interesse</p>
+<p>Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir a construção dos intervalos começa a partir do primeiro tempo que acontece um evento, e como temos 0 falhas temos portanto todos (k) os indivíduos sem o evento de interesse</p>
 </section>
 <section id="formalizando" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="formalizando"><span class="header-section-number">5.2</span> Formalizando</h2>

@@ -7,3 +7,15 @@ Notas de Aula do curso de análise de sobrevivência, as duas referências princ
 Em termos práticos, os códigos vão ser desenvolvidos usando as linguagens  [Python](https://www.python.orghttps://www.python.org) e [R](https://www.r-project.org), portanto assume-se conhecimentos básicos de ao menos umas dessas linguagens para um bom aproveitamento.
 
 Encontrou algum erro? Pode encaminhar uma [issue](https://github.com/AlissonRP/survival_analysis/issues) no repósitório ou se preferir pode fazer um [pull request](https://github.com/AlissonRP/survival_analysis/pulls), **qualquer** contribuição construtiva é bem vinda.
+
+
+## Convenções
+
+::: {.callout-tip appearance="simple" icon=false}
+
+## Atenção
+
+Blocos dessa maneira indicam definições importantes
+:::
+
+$\textcolor{#2B5D92}{\text{Textos dessa cor assinalam concepções relevantes}}$

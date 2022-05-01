@@ -16,9 +16,22 @@ Note portanto, que o evento pode encapsular mais de um fato como  **falhar duas 
 Originalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico [John Graunt](https://en.wikipedia.org/wiki/John_Graunt), por um longo a análise de sobrevivência foi considerada um instrumento analítico para estudos de biomedicina  e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas décadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviáveis
 
 ## Porque estudar análise de sobrevivência?
-Ok, porque não usar usar modelos de regressão em geral para modelar o Tempo (*T*)?. Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura
+Ok, porque não usar usar modelos de regressão em geral para modelar o Tempo (*T*)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura
 
 ## Censura
-Quando estamos fazendo uma análise de sobrevivência podemos ter indivíduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de **censurados**
+Quando estamos fazendo uma análise de sobrevivência podemos ter indivíduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de **censurados**  
+
+::: {.callout-tip appearance="simple" icon=false}
+
+## Censura
+
+Temos informações sobre o tempo de sobrevivência mas não sabemos exatamente **quando** acontece o evento de interesse.
+:::
 
 ### Tipos de censura
+Aqui vamos definir alguns tipos de censuras
+
+$\textcolor{#2B5D92}{\text{Censura Tipo I}}$: O estudo será finalizado após um período pré estabelecido de tempo.
+$\textcolor{#2B5D92}{\text{Censura Tipo II}}:$ O estudo será finalizado após ter ocorrido o evento de interesse em um número pré-estabelecido de indivíduos.  
+$\textcolor{#2B5D92}{\text{Censura aleatória}}$: Acontece quando o indivíduo é removido do estudo sem ter ocorrido a falha.
+

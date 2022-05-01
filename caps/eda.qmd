@@ -38,18 +38,19 @@ a função de sobrevivência. De forma intuitiva, dividimos o tempo $t$ em uma s
 ## Outra maneira de layout para os dados
 | t ordenados | int   | # de falhas | $n_j$ | $m_j$ |
 |----|-----|-------|-----|-----|-----|
-| 0  | $[0,t_1)$ | $0$   | $k$  |$x_{1p}$ |
-| $t_1$| $[t_1,t_2)$ | $d_2$   | $k-d_1$|  $x_{2p}$ |
+| 0  | $[0,t_1)$ | $0$   | $k$  |$m_{1}$ |
+| $t_1$| $[t_1,t_2)$ | $d_2$   | $k-(d_1+ m_1)$|  $m_{2}$ |
 | $t_2$  |$[t_2,t_3)$.   | .     | . |  . |
 | .  | .   | .     | .   | .   | 
 | .  | .   | .     | .    |.   |
-| k  | $[t_{k},t_{k+\epsilon})$ | $d_k$   | $k - \sum_i d_i$  | $x_{np}$ |
+| k  | $[t_{k},t_{k+\epsilon})$ | $d_k$   | $k - \sum_i (d_i + m_i)$  | $m_{n}$ |
 
 * **int**: São os intervalos
 * **# de falhas**: É o número de falhas naquele intervalo
-* **$n_j$** : É a quantidade de observações que ainda não falharam naquele intervalo (as vezes chamado de indivíduos sob risco)
+* **$n_j$** : É a quantidade de observações que ainda não falharam ou foram censuradas naquele intervalo (as vezes chamado de indivíduos sob risco)
+* **$c_j$**: Quantidade de censuras naquele intervalo.
 
-Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que acontece um evento, e como temos 0 falhas temos portanto todos os indivíduos sem o evento de interesse
+Assim fica fácil ver que no tempo 0 temos 0 falhas, porque como vamos ver a seguir  a construção dos intervalos começa a partir do primeiro tempo que acontece um evento, e como temos 0 falhas temos portanto todos (k) os indivíduos sem o evento de interesse
 
 ## Formalizando
 Sabemos que $S(t) = P(T>t)$, vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: $$S(3) = P(T>3)$$
