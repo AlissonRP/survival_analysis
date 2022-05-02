@@ -1,0 +1,22 @@
+# Prefácio {.unnumbered}
+
+Notas de Aula do curso de análise de sobrevivência, as duas referências principais vão ser
+
+* [@colosimo2006analise](https://www.amazon.com.br/Análise-Sobrevivência-Aplicada-Antônio-Colosimo/dp/8521203845/ref=sr_1_1?__mk_pt_BR=ÅMÅŽÕÑ&crid=260N5UFSK3T68&keywords=analise+de+sobrevivencia+aplicada&qid=1650511608&sprefix=analise+de+sobrevivencia+aplica%2Caps%2C216&sr=8-1&ufe=app_do%3Aamzn1.fos.6121c6c4-c969-43ae-92f7-cc248fc6181d)
+
+Em termos práticos, os códigos vão ser desenvolvidos usando as linguagens  [Python](https://www.python.orghttps://www.python.org) e [R](https://www.r-project.org), portanto assume-se conhecimentos básicos de ao menos umas dessas linguagens para um bom aproveitamento.
+
+Encontrou algum erro? Pode encaminhar uma [issue](https://github.com/AlissonRP/survival_analysis/issues) no repósitório ou se preferir pode fazer um [pull request](https://github.com/AlissonRP/survival_analysis/pulls), **qualquer** contribuição construtiva é bem vinda.
+
+
+## Convenções
+
+::: {.callout-tip appearance="simple" icon=false}
+
+## Atenção
+
+Blocos dessa maneira indicam definições importantes
+:::
+
+
+<span style="color:blue">Textos dessa cor assinalam concepções relevantes</span>

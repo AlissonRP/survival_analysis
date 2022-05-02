@@ -1,0 +1,62 @@
+# Definições básicas
+Seja $f(t)$ a função densidade de probabilidade da variável aleatória $T$ (tempo até o evento ocorrer). Definimos a função de distribuição acumulada da variável aleatória $T$ como sendo:
+
+$$
+F(t) = P(T < t) = \int_{0}^{t}f(u)du
+$$
+
+## Função de Sobrevivência
+A função de sobrevivência é o complemento da função de distribuição acumulada, isso é:  
+A probabilidade de uma observação não falhar até um tempo $t$:
+$$
+S(t) = P(T>t) = 1 - F(t) 
+$$
+
+```{r}
+#| echo: FALSE
+#| label: fig-plot
+#| fig-cap: "Exemplo de uma função de densidade"
+set.seed(41)
+x = rexp(3000)
+library(ggplot2)
+
+x |> 
+  tibble::tibble() |> 
+  ggplot(aes(x)) +
+  geom_density() +
+  labs(x = 't', y = 'f(t)') +
+  theme_minimal()
+  
+```
+Pela @fig-plot podemos ter um vislumbre que $S(0) = 1$ e $S(\infty) = 0$.   
+A demonstração de tais fatos fica a cargo do leitor, basta notar que $S(t) = 1 - F(t)$ e usar as propriedades da $F$.
+
+
+Por consequência a probabilidade de não sobreviver até um certo tempo $t$ é:
+$$
+1- S(t)
+$$
+Assim a probabilidade de não sobreviver em um intervalo $(t_1,t_2)$ é dado por:
+
+$$
+1-S(t_2) - (1-S(t_1)) = S(t_1) - S(t_2)
+$$
+
+## Função taxa de falha
+Fornece o potencial instântaneo do evento **ocorrer**, dado que o indivíduo sobreviveu até  o tempo $t$:
+
+$$
+\lambda(t)= \dfrac{P(t \leq T < t + \Delta t| T \geq t )}{\Delta t}
+$$
+
+Note que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o **oposto** da função de sobrevivência.
+
+### Consequências
+
+* $\lambda(t) \geq 0$ 
+<details>
+  <summary markdown="span">Demonstração</summary> 
+É trivial  pois por definição medidas de probabilidade $\in [0,1]$ e $\Delta_t \geq 0$ portanto um produto de números positivos
+</details>
+
+* $\lambda(t) =\dfrac{f(t)}{S(t)} = -\dfrac{d}{dt}\bigg(log(S(t))\bigg)$

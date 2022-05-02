@@ -1,0 +1,38 @@
+project:
+  type: book
+  output-dir: docs
+lang: pt
+
+
+book:
+  title: "Notas de Aula \n Análise de Sobrevivência"
+  author: "Alisson Rosa"
+  date: ""
+  chapters:
+    - index.qmd
+    - caps/intro.qmd
+    - caps/def.qmd
+    - caps/prog.qmd
+    - caps/eda.qmd
+    - caps/summary.qmd
+    - references.qmd
+  favicon: "favicon"
+  navbar:
+    search: true
+    location: navbar
+    type: overlay
+    right:
+      - icon: github
+        href: https://github.com/AlissonRP/survival_analysis
+        
+
+bibliography: references.bib  
+
+format:
+  html:
+    theme: litera
+  pdf:
+    documentclass: scrreprt
+
+
+
