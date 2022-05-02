@@ -116,7 +116,7 @@
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../caps/prog.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programando</span></a>
+  <a href="../caps/prog.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Layout dos dados</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -159,6 +159,10 @@
 <p>Seja <span class="math inline">\(f(t)\)</span> a função densidade de probabilidade da variável aleatória <span class="math inline">\(T\)</span> (tempo até o evento ocorrer). Definimos a função de distribuição acumulada da variável aleatória <span class="math inline">\(T\)</span> como sendo:</p>
 <p><span class="math display">\[
 F(t) = P(T &lt; t) = \int_{0}^{t}f(u)du
+\]</span> E por consequência <span class="math inline">\(f(t)\)</span> fica definida como:</p>
+<p><span class="math display">\[
+f(t) = \lim_{\Delta t \rightarrow 0^{+}} \dfrac{P(t&lt;T \leq t + \Delta t)}{\Delta t} =
+\dfrac{dF(t)}{dt}
 \]</span></p>
 <section id="função-de-sobrevivência" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="função-de-sobrevivência"><span class="header-section-number">2.1</span> Função de Sobrevivência</h2>
@@ -187,9 +191,9 @@ A demonstração de tais fatos fica a cargo do leitor, basta notar que <span cla
 </section>
 <section id="função-taxa-de-falha" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="função-taxa-de-falha"><span class="header-section-number">2.2</span> Função taxa de falha</h2>
-<p>Fornece o potencial instântaneo do evento <strong>ocorrer</strong>, dado que o indivíduo sobreviveu até o tempo <span class="math inline">\(t\)</span>:</p>
+<p>Fornece o potencial (taxa de falha) instantâneo do evento <strong>ocorrer</strong>, dado que o indivíduo sobreviveu até o tempo <span class="math inline">\(t\)</span>:</p>
 <p><span class="math display">\[
-\lambda(t)= \dfrac{P(t \leq T &lt; t + \Delta t| T \geq t )}{\Delta t}
+\lambda(t)= \lim_{\Delta t \rightarrow 0^{+}} \dfrac{P(t \leq T &lt; t + \Delta t| T \geq t )}{\Delta t}
 \]</span></p>
 <p>Note que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o <strong>oposto</strong> da função de sobrevivência.</p>
 <section id="consequências" class="level3" data-number="2.2.1">
@@ -294,7 +298,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="../caps/prog.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Programando</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Layout dos dados</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

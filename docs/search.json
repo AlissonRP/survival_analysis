@@ -39,7 +39,7 @@
     "href": "caps/def.html",
     "title": "2  Definições básicas",
     "section": "",
-    "text": "Seja \\(f(t)\\) a função densidade de probabilidade da variável aleatória \\(T\\) (tempo até o evento ocorrer). Definimos a função de distribuição acumulada da variável aleatória \\(T\\) como sendo:\n\\[\nF(t) = P(T < t) = \\int_{0}^{t}f(u)du\n\\]"
+    "text": "Seja \\(f(t)\\) a função densidade de probabilidade da variável aleatória \\(T\\) (tempo até o evento ocorrer). Definimos a função de distribuição acumulada da variável aleatória \\(T\\) como sendo:\n\\[\nF(t) = P(T < t) = \\int_{0}^{t}f(u)du\n\\] E por consequência \\(f(t)\\) fica definida como:\n\\[\nf(t) = \\lim_{\\Delta t \\rightarrow 0^{+}} \\dfrac{P(t<T \\leq t + \\Delta t)}{\\Delta t} =\n\\dfrac{dF(t)}{dt}\n\\]"
   },
   {
     "objectID": "caps/def.html#função-de-sobrevivência",
@@ -53,19 +53,19 @@
     "href": "caps/def.html#função-taxa-de-falha",
     "title": "2  Definições básicas",
     "section": "2.2 Função taxa de falha",
-    "text": "2.2 Função taxa de falha\nFornece o potencial instântaneo do evento ocorrer, dado que o indivíduo sobreviveu até o tempo \\(t\\):\n\\[\n\\lambda(t)= \\dfrac{P(t \\leq T < t + \\Delta t| T \\geq t )}{\\Delta t}\n\\]\nNote que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o oposto da função de sobrevivência.\n\n2.2.1 Consequências\n\n\\(\\lambda(t) \\geq 0\\)\n\n\nDemonstração\n\nÉ trivial pois por definição medidas de probabilidade \\(\\in [0,1]\\) e \\(\\Delta_t \\geq 0\\) portanto um produto de números positivos\n\n\\(\\lambda(t) =\\dfrac{f(t)}{S(t)} = -\\dfrac{d}{dt}\\bigg(log(S(t))\\bigg)\\)"
+    "text": "2.2 Função taxa de falha\nFornece o potencial (taxa de falha) instantâneo do evento ocorrer, dado que o indivíduo sobreviveu até o tempo \\(t\\):\n\\[\n\\lambda(t)= \\lim_{\\Delta t \\rightarrow 0^{+}} \\dfrac{P(t \\leq T < t + \\Delta t| T \\geq t )}{\\Delta t}\n\\]\nNote que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o oposto da função de sobrevivência.\n\n2.2.1 Consequências\n\n\\(\\lambda(t) \\geq 0\\)\n\n\nDemonstração\n\nÉ trivial pois por definição medidas de probabilidade \\(\\in [0,1]\\) e \\(\\Delta_t \\geq 0\\) portanto um produto de números positivos\n\n\\(\\lambda(t) =\\dfrac{f(t)}{S(t)} = -\\dfrac{d}{dt}\\bigg(log(S(t))\\bigg)\\)"
   },
   {
     "objectID": "caps/prog.html",
     "href": "caps/prog.html",
-    "title": "3  Programando",
+    "title": "3  Layout dos dados",
     "section": "",
-    "text": "Nessa seção vamos aplicar o conceitos em três linguagens de programação, a saber: Python e R"
+    "text": "Nessa seção vamos inserir os alguns dados em duas linguagens de programação, a saber: Python e R"
   },
   {
     "objectID": "caps/prog.html#layout-básico",
     "href": "caps/prog.html#layout-básico",
-    "title": "3  Programando",
+    "title": "3  Layout dos dados",
     "section": "3.1 Layout Básico",
     "text": "3.1 Layout Básico\nOs dados de sobrevivência possuem um layout estabelecido, que é dado a seguir:\n\n\n\nId\n\\(T\\)\n\\(s_i\\)\n\\(X_i\\)\n…\n\\(X_p\\)\n\n\n\n\n1\n\\(t_1\\)\n\\(s_1\\)\n\\(x_{1i}\\)\n…\n\\(x_{1p}\\)\n\n\n2\n\\(t_2\\)\n\\(s_2\\)\n\\(x_{2i}\\)\n…\n\\(x_{2p}\\)\n\n\n.\n.\n.\n.\n.\n.\n\n\n.\n.\n.\n.\n.\n.\n\n\nn\n\\(t_n\\)\n\\(s_n\\)\n\\(x_{ni}\\)\n…\n\\(x_{np}\\)\n\n\n\n\n\nR\n\n\ntempo <- c(1, 2, 3, 3, 3, 5, 5, 16, 16, 16, 16, 16, 16, 6, 16, 1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16)\ncensura <- c(0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0)\ngrupo <- c(rep(1, 15), rep(0, 14))\ndados <- tempo  |> \n            cbind(censura)  |> \n            cbind(grupo)\ndados  |> \n        head()\n\n     tempo censura grupo\n[1,]     1       0     1\n[2,]     2       0     1\n[3,]     3       1     1\n[4,]     3       1     1\n[5,]     3       0     1\n[6,]     5       0     1\n\n\n\n\n\nPython\n\n\nimport pandas as pd\nimport numpy as np\n\ntempo = [1, 2, 3, 3, 3, 5, 5, 16, 16, 16, 16, 16, 16, 16, 16, 1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16]\ncensura = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0]\ngrupo = np.concatenate((np.repeat(1, 15), np.repeat(0, 14)))\n\ndados = pd.DataFrame({'tempo':tempo,'censura':censura,'grupo':grupo})\ndados.head()\n\n   tempo  censura  grupo\n0      1        0      1\n1      2        0      1\n2      3        1      1\n3      3        1      1\n4      3        0      1"
   },

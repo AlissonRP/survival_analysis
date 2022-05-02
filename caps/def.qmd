@@ -4,6 +4,12 @@ Seja $f(t)$ a função densidade de probabilidade da variável aleatória $T$ (t
 $$
 F(t) = P(T < t) = \int_{0}^{t}f(u)du
 $$
+E por consequência $f(t)$ fica definida como:
+
+$$
+f(t) = \lim_{\Delta t \rightarrow 0^{+}} \dfrac{P(t<T \leq t + \Delta t)}{\Delta t} =
+\dfrac{dF(t)}{dt}
+$$
 
 ## Função de Sobrevivência
 A função de sobrevivência é o complemento da função de distribuição acumulada, isso é:  
@@ -43,10 +49,10 @@ $$
 $$
 
 ## Função taxa de falha
-Fornece o potencial instântaneo do evento **ocorrer**, dado que o indivíduo sobreviveu até  o tempo $t$:
+Fornece o potencial (taxa de falha) instantâneo do evento **ocorrer**, dado que o indivíduo sobreviveu até  o tempo $t$:
 
 $$
-\lambda(t)= \dfrac{P(t \leq T < t + \Delta t| T \geq t )}{\Delta t}
+\lambda(t)= \lim_{\Delta t \rightarrow 0^{+}} \dfrac{P(t \leq T < t + \Delta t| T \geq t )}{\Delta t}
 $$
 
 Note que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o **oposto** da função de sobrevivência.
