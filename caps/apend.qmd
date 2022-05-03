@@ -1,0 +1,5 @@
+# Apêndice
+* Integração por partes  
+$$
+\int_{a}^{b}fg'dx = fg]^{b}_{a} - \int_{a}^{b}f'gdx
+$$

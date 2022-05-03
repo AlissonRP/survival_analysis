@@ -15,6 +15,7 @@ book:
     - caps/prog.qmd
     - caps/eda.qmd
     - caps/summary.qmd
+    - caps/apend.qmd
     - references.qmd
   favicon: "favicon"
   navbar:

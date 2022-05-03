@@ -53,7 +53,7 @@
     "href": "caps/def.html#função-taxa-de-falha",
     "title": "2  Definições básicas",
     "section": "2.2 Função taxa de falha",
-    "text": "2.2 Função taxa de falha\nFornece o potencial (taxa de falha) instantâneo do evento ocorrer, dado que o indivíduo sobreviveu até o tempo \\(t\\):\n\\[\n\\lambda(t)= \\lim_{\\Delta t \\rightarrow 0^{+}} \\dfrac{P(t \\leq T < t + \\Delta t| T \\geq t )}{\\Delta t}\n\\]\nNote que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o oposto da função de sobrevivência.\n\n2.2.1 Consequências\n\n\\(\\lambda(t) \\geq 0\\)\n\n\nDemonstração\n\nÉ trivial pois por definição medidas de probabilidade \\(\\in [0,1]\\) e \\(\\Delta_t \\geq 0\\) portanto um produto de números positivos\n\n\\(\\lambda(t) =\\dfrac{f(t)}{S(t)} = -\\dfrac{d}{dt}\\bigg(log(S(t))\\bigg)\\)"
+    "text": "2.2 Função taxa de falha\nFornece o potencial (taxa de falha) instantâneo do evento ocorrer, dado que o indivíduo sobreviveu até o tempo \\(t\\):\n\\[\n\\lambda(t)= \\lim_{\\Delta t \\rightarrow 0^{+}} \\dfrac{P(t \\leq T < t + \\Delta t| T \\geq t )}{\\Delta t}\n\\] Assim estamos interessados em saber qual a probabilidade dele não sobreviver o tempo adicional \\(\\Delta_t\\).\nOu seja, temos interesse que o evento ocorra, em termos de interpretação é o oposto da função de sobrevivência.\n\n\n\n\n\n\nNota\n\n\n\nA taxa de falha não é uma probabilidade! Pois quando dividimos por \\(\\Delta_t\\) obtemos uma probabilidade por unidade de tempo, ou seja a imagem de \\(\\lambda\\) é positiva mas não limitada.\n\n\nPelas relações a seguir vemos que a função taxa de falha determina completamente a distribuição de \\(t\\).\n\n2.2.1 Relações\n\n\\(\\lambda(t) \\geq 0\\)\n\n\nDemonstração\n\nÉ trivial pois por definição medidas de probabilidade \\(\\in [0,1]\\) e \\(\\Delta_t \\geq 0\\) portanto um produto de números positivos\n\n\\(\\lambda(t) =\\dfrac{f(t)}{S(t)} = -\\dfrac{d}{dt}\\bigg(\\text{log}(S(t))\\bigg)\\)\n\n\nDemonstração\n\nSabemos que \\(S(t) = P(T>t)\\), substituindo, obtemos: \\[\n\\lambda(t) = \\dfrac{f(t)}{1 - F(t)} = \\dfrac{\\dfrac{dF(t)}{dt}}{1 - F(t)} = -\\dfrac{-\\dfrac{dF(t)}{dt}}{1 - F(t)} = -\\dfrac{d}{d_t}\\text{log}(S(t))\n\\] Multiplica-se e divide-se a expressão por \\(-1\\), e utiliza-se que a derivada é um operador linear.\n\nvmr(t) = \\(\\dfrac{\\int_{t}^{\\infty}(u-t)f(u)du}{S(t)} = \\dfrac{\\int_{t}^{\\infty}S(u)du}{S(t)}\\)\n\n\nDemonstração\n\nVamos utilizar integral por partes, usando a fórmula definida no Apêndice. Tomando \\(f = u - t\\) e \\(g' = f(u)\\), obtemos: \\[\n=  \\lim_{b \\rightarrow \\infty} (u-t)S(u)]_{t}^{b} - \\int_{t}^{\\infty}- S(u)du = \\int_{t}^{\\infty}S(u)du\n\\] Onde o resultado final é encontrado usando \\(f(u)du = - \\dfrac{d}{du}S(u)\\) e sabendo que \\(S(t) \\rightarrow\\) 0, quando \\(t\\) \\(\\rightarrow \\infty\\)"
   },
   {
     "objectID": "caps/prog.html",
@@ -117,6 +117,13 @@
     "title": "5  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "caps/apend.html",
+    "href": "caps/apend.html",
+    "title": "6  Apêndice",
+    "section": "",
+    "text": "Integração por partes\n\\[\n\\int_{a}^{b}fg'dx = fg]^{b}_{a} - \\int_{a}^{b}f'gdx\n\\]"
   },
   {
     "objectID": "references.html",
