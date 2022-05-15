@@ -11,6 +11,25 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+    }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
   </style>
 
   <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -239,14 +258,31 @@ Sabemos que <span class="math inline">\(S(t) = P(T&gt;t)\)</span>, substituindo,
 <summary>
 Demonstração
 </summary>
-Vamos utilizar integral por partes, usando a fórmula definida no <a href="#apend.qmd">Apêndice</a>. Tomando <span class="math inline">\(f = u - t\)</span> e <span class="math inline">\(g' = f(u)\)</span>, obtemos: <span class="math display">\[
-=  \lim_{b \rightarrow \infty} (u-t)S(u)]_{t}^{b} - \int_{t}^{\infty}- S(u)du = \int_{t}^{\infty}S(u)du
+Vamos utilizar integral por partes, usando a fórmula definida no <a href="../caps/apend.html">Apêndice</a>. Tomando <span class="math inline">\(f = u - t\)</span> e <span class="math inline">\(g' = f(u)\)</span>, obtemos: <span class="math display">\[
+=  \lim_{b \rightarrow \infty} (u-t)S(u)\bigg|_{t}^{b} - \int_{t}^{\infty}- S(u)du = \int_{t}^{\infty}S(u)du
 \]</span> Onde o resultado final é encontrado usando <span class="math inline">\(f(u)du = - \dfrac{d}{du}S(u)\)</span> e sabendo que <span class="math inline">\(S(t) \rightarrow\)</span> 0, quando <span class="math inline">\(t\)</span> <span class="math inline">\(\rightarrow \infty\)</span>
 </details></li>
 </ul>
 
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
+<div id="ref-colosimo2006analise" class="csl-entry" role="doc-biblioentry">
+Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. <em>An<span>á</span>lise de sobreviv<span>ê</span>ncia aplicada</em>. Editora Blucher.
+</div>
+<div id="ref-fisher1922mathematical" class="csl-entry" role="doc-biblioentry">
+Fisher, Ronald A. 1922. <span>«On the mathematical foundations of theoretical statistics»</span>. <em>Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character</em> 222 (594-604): 309–68.
+</div>
+<div id="ref-kaplan1958nonparametric" class="csl-entry" role="doc-biblioentry">
+Kaplan, Edward L, e Paul Meier. 1958. <span>«Nonparametric estimation from incomplete observations»</span>. <em>Journal of the American statistical association</em> 53 (282): 457–81.
+</div>
+<div id="ref-kleinbaum2012survival" class="csl-entry" role="doc-biblioentry">
+Kleinbaum, David G, Mitchel Klein, et al. 2012. <em>Survival analysis: a self-learning text</em>. Vol. 3. Springer.
+</div>
+<div id="ref-liu2012survival" class="csl-entry" role="doc-biblioentry">
+Liu, Xian. 2012. <em>Survival analysis: models and applications</em>. John Wiley &amp; Sons.
+</div>
+</div>
 </section>
 </section>
 </main> <!-- /main -->
