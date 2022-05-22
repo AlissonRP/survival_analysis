@@ -1,0 +1,55 @@
+---
+title: "title"
+author: "author"
+abstract: "abstract"
+geometry: left=1.7cm, right=1.7cm, top=3cm, bottom=3cm
+output:
+  bookdown::pdf_document2:
+editor_options:
+  chunk_output_type: console
+indent: true
+---
+
+
+
+```{r setup,include=F}
+
+options(digits=3)  #Arrendodamento
+options(scipen=999)
+ggplot2::theme_set(ggplot2::theme_minimal()) #Tema dos gráficos produzidos no ggplot2
+knitr::opts_chunk$set(echo=F,message=F,warning=F,fig.pos = 'H',fig.align = 'center',fig.width=6, fig.height=4.0)
+scale_fill_discrete = \(...) ggplot2::scale_fill_brewer(... , palette="Set2") #Fixa a scale do fill dos gráficos do ggplot2
+
+```
+
+
+# Questão 1
+Sabemos que se X é uma variável aleatória contínua e G uma transformação, então $$E(G(X))= \int_{A} g(x)f(x)dx$$.  
+Sabendo que ${T}^{n}_{i=1}$ é uma amostra aleatória, definimos $Z = \frac{\sum Y_i}{n}$ onde $Y_i = 1$ se $T_i>t$ e 0 caso contrário.
+
+
+$Y_i$ é uma transformação de $T_i$, assim $E(Y_i) = \int_{A} yf(t)dt$
+
+$$
+E(Y_i) = \int_{-\infty}^{t} yf(t)dt + \int_{t}^{\infty} yf(t)dt
+$$
+Como $Y_i = 1$ se $T>t$
+$$
+E(Y_i) = 1 - F(t) = S(t)
+$$
+logo $E(Z) = S(t)$
+
+
+# Questão 2
+
+
+
+# Questão 3
+
+
+
+
+# Questão 4
+
+
+
