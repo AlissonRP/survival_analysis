@@ -22,6 +22,11 @@ scale_fill_discrete = \(...) ggplot2::scale_fill_brewer(... , palette="Set2") #F
 
 ```
 
+```{r}
+prob = function(df, t){
+    kaplan |> filter(time==t) |> select(time)
+}
+```
 
 # Questão 1
 Sabemos que se X é uma variável aleatória contínua e G uma transformação, então $$E(G(X))= \int_{A} g(x)f(x)dx$$.  
@@ -46,8 +51,41 @@ logo $E(Z) = S(t)$
 
 # Questão 3
 
+```{r}
+data = read.csv('https://raw.githubusercontent.com/AlissonRP/survival_analysis/list2/list2/questao3.csv')
+library(survival)
+library(ggplot2)
+library(dplyr)
+```
+## A
+```{r}
+kaplan = survfit(Surv(data$tempos,data$censura)~1) |> 
+    broom::tidy()
+
+    
 
 
+nelson = survfit(Surv(data$tempos,data$censura)~1, type="fh") |> 
+    broom::tidy()
+
+kaplan |> 
+    dplyr::select(EstimateK = estimate) |> 
+    bind_cols(nelson |> select(time, estimate)) |> 
+    ggplot()+
+    geom_line(aes(time, EstimateK), color = 'red')+
+    geom_line(aes(time, estimate), color = 'blue')
+    
+
+
+```
+
+
+## B
+
+## C
+a) Probabilidade de um paciente sobreviver:
+
+* 42 dias : `r kaplan |> filter(time==42) |> select(time)`
 
 # Questão 4
 

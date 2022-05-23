@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.436">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Eu">
+
+<title>Lista análise de sobrevivência</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+</style>
+
+<script src="lista2_files/libs/clipboard/clipboard.min.js"></script>
+<script src="lista2_files/libs/quarto-html/quarto.js"></script>
+<script src="lista2_files/libs/quarto-html/popper.min.js"></script>
+<script src="lista2_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="lista2_files/libs/quarto-html/anchor.min.js"></script>
+<link href="lista2_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link id="quarto-text-highlighting-styles" href="lista2_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
+<script src="lista2_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="lista2_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="lista2_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<script src="lista2_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="lista2_files/libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="lista2_files/libs/typedarray-0.1/typedarray.min.js"></script>
+<script src="lista2_files/libs/jquery-3.5.1/jquery.min.js"></script>
+<link href="lista2_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="lista2_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="lista2_files/libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="lista2_files/libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lista análise de sobrevivência</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eu </p>
+          </div>
+  </div>
+    
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-layout-align="center">
+
+</div>
+<section id="questão-1" class="level1">
+<h1>Questão 1</h1>
+<p>Sabemos que se X é uma variável aleatória contínua e G uma transformação, então <span class="math display">\[E(G(X))= \int_{A} g(x)f(x)dx\]</span>.<br>
+Sabendo que <span class="math inline">\({T}^{n}_{i=1}\)</span> é uma amostra aleatória, definimos <span class="math inline">\(Z = \frac{\sum Y_i}{n}\)</span> onde <span class="math inline">\(Y_i = 1\)</span> se <span class="math inline">\(T_i&gt;t\)</span> e 0 caso contrário.</p>
+<p><span class="math inline">\(Y_i\)</span> é uma transformação de <span class="math inline">\(T_i\)</span>, assim <span class="math inline">\(E(Y_i) = \int_{A} yf(t)dt\)</span></p>
+<p><span class="math display">\[
+E(Y_i) = \int_{-\infty}^{t} yf(t)dt + \int_{t}^{\infty} yf(t)dt
+\]</span></p>
+<p>Como <span class="math inline">\(Y_i = 1\)</span> se <span class="math inline">\(T&gt;t\)</span></p>
+<p><span class="math display">\[
+E(Y_i) = 1 - F(t) = S(t)
+\]</span></p>
+<p>logo <span class="math inline">\(E(Z) = S(t)\)</span></p>
+</section>
+<section id="questão-2" class="level1">
+<h1>Questão 2</h1>
+<section id="a" class="level2">
+<h2 class="anchored" data-anchor-id="a">A</h2>
+<p>Sabemos que o estimador de Kaplan-Meier <span class="math inline">\((\hat{S}(t))\)</span> é um estimador de máxima verossimilahnça, portanto tem distribuição assintótica normal. Seja <span class="math inline">\(\hat{U}(t) = \text{log}(\text{log}(\widehat{S}(t))) = g(\hat{S}(t))\)</span>. Portanto tem-se que <span class="math inline">\(g(\hat{S}(t))\)</span> tem distribuição assintóticamente normal com média <span class="math inline">\(g(\theta)\)</span> e variância <span class="math inline">\(\sigma²\bigg(\dfrac{dg(\theta)}{d \theta}\bigg)^2\)</span> onde <span class="math inline">\(\theta = S(t)\)</span></p>
+<p>Fazendo <span class="math inline">\(g(\theta) = \text{log}(\text{log}(\theta))\)</span></p>
+<p>Encontramos que <span class="math inline">\(\frac{dg(\theta)}{d \theta}= \frac{1}{\theta \text{log}(\theta)}\)</span></p>
+<p>Assim assintóticamente a distribuição de <span class="math inline">\(g(\theta)\)</span> é <span class="math inline">\(N\bigg(g(\theta), \dfrac{\sigma^2}{(\theta \text{log}\theta)^2}\bigg)\)</span></p>
+</section>
+<section id="c" class="level2">
+<h2 class="anchored" data-anchor-id="c">C</h2>
+<p>Sem perda de generalidade assuma construído o intervalo de confiança para <span class="math inline">\(U(t)\)</span>, que fica definido na forma <span class="math inline">\([\widehat{U}(t) -\lambda_1Var(\widehat{U}(t)), \widehat{U}(t) +\lambda_2Var(\widehat{U}(t))]\)</span>.</p>
+<p>Assumindo <span class="math inline">\(\lambda_iVar(\widehat{U}(t) = Q_i\)</span> o intervalo se reduz <span class="math inline">\([\widehat{U}(t)- Q_1, \widehat{U}(t) + Q_2)]\)</span>. Sabemos que <span class="math inline">\(y = -x\)</span> e <span class="math inline">\(w = exp(x)\)</span> são funções monótonas.</p>
+<p>Se <span class="math inline">\(\hat{U}(t) = \text{log}(\text{-log}(\widehat{S}(t)))\)</span>. Podemos aplicar exponenciais duas vezes para retornar para <span class="math inline">\(\widehat{S}(t)\)</span>. Aplicando no intervalo de confiança e resumindo para um dos casos,, obtemos:</p>
+<p><span class="math display">\[
+\text{exp}(\text{-exp}(\widehat{U}(t)+Q)) = \text{exp}(\text{-exp}(\text{log}(\text{-log}(\widehat{S}(t)))+Q))
+\]</span></p>
+<p><span class="math display">\[
+\text{exp}((\text{log}(\widehat{S}(t))\text{exp}(Q))
+\]</span></p>
+<p><span class="math display">\[
+\hat{S}(t)^{\text{exp}(Q))}
+\]</span></p>
+</section>
+</section>
+<section id="questão-3" class="level1">
+<h1>Questão 3</h1>
+<div class="cell" data-layout-align="center">
+
+</div>
+<section id="a-1" class="level2">
+<h2 class="anchored" data-anchor-id="a-1">A</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="htmlwidget-5d1e722462a34ead0b41" style="width:100%;height:433px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-5d1e722462a34ead0b41">{"x":{"data":[{"x":[7,34,42,63,64,74,83,84,91,108,112,129,133,139,140,146,149,154,157,160,165,173,176,185,218,225,241,248,273,277,279,297,319,405,417,420,440,523,583,594,1101,1116,1146,1226,1349,1412,1417],"y":[0.980392156862745,0.96078431372549,0.941176470588235,0.92156862745098,0.901960784313725,0.88235294117647,0.862745098039216,0.843137254901961,0.823529411764706,0.803921568627451,0.784313725490196,0.764705882352941,0.725490196078431,0.705882352941176,0.666666666666667,0.647058823529412,0.627450980392157,0.607843137254902,0.588235294117647,0.549019607843137,0.529411764705882,0.509803921568627,0.490196078431372,0.490196078431372,0.469771241830065,0.449346405228758,0.428921568627451,0.408496732026144,0.388071895424836,0.367647058823529,0.367647058823529,0.346020761245675,0.346020761245675,0.322952710495963,0.299884659746251,0.27681660899654,0.253748558246828,0.230680507497116,0.205049339997437,0.179418172497757,0.153787004998078,0.153787004998078,0.123029603998462,0.123029603998462,0.123029603998462,0.123029603998462,0],"text":["time:    7<br />EstimateK: 0.980","time:   34<br />EstimateK: 0.961","time:   42<br />EstimateK: 0.941","time:   63<br />EstimateK: 0.922","time:   64<br />EstimateK: 0.902","time:   74<br />EstimateK: 0.882","time:   83<br />EstimateK: 0.863","time:   84<br />EstimateK: 0.843","time:   91<br />EstimateK: 0.824","time:  108<br />EstimateK: 0.804","time:  112<br />EstimateK: 0.784","time:  129<br />EstimateK: 0.765","time:  133<br />EstimateK: 0.725","time:  139<br />EstimateK: 0.706","time:  140<br />EstimateK: 0.667","time:  146<br />EstimateK: 0.647","time:  149<br />EstimateK: 0.627","time:  154<br />EstimateK: 0.608","time:  157<br />EstimateK: 0.588","time:  160<br />EstimateK: 0.549","time:  165<br />EstimateK: 0.529","time:  173<br />EstimateK: 0.510","time:  176<br />EstimateK: 0.490","time:  185<br />EstimateK: 0.490","time:  218<br />EstimateK: 0.470","time:  225<br />EstimateK: 0.449","time:  241<br />EstimateK: 0.429","time:  248<br />EstimateK: 0.408","time:  273<br />EstimateK: 0.388","time:  277<br />EstimateK: 0.368","time:  279<br />EstimateK: 0.368","time:  297<br />EstimateK: 0.346","time:  319<br />EstimateK: 0.346","time:  405<br />EstimateK: 0.323","time:  417<br />EstimateK: 0.300","time:  420<br />EstimateK: 0.277","time:  440<br />EstimateK: 0.254","time:  523<br />EstimateK: 0.231","time:  583<br />EstimateK: 0.205","time:  594<br />EstimateK: 0.179","time: 1101<br />EstimateK: 0.154","time: 1116<br />EstimateK: 0.154","time: 1146<br />EstimateK: 0.123","time: 1226<br />EstimateK: 0.123","time: 1349<br />EstimateK: 0.123","time: 1412<br />EstimateK: 0.123","time: 1417<br />EstimateK: 0.000"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[7,34,42,63,64,74,83,84,91,108,112,129,133,139,140,146,149,154,157,160,165,173,176,185,218,225,241,248,273,277,279,297,319,405,417,420,440,523,583,594,1101,1116,1146,1226,1349,1412,1417],"y":[0.980583140324109,0.961166293212663,0.941749459442648,0.922332639856457,0.902915835368923,0.883499046975273,0.864082275760164,0.844665522907948,0.825248789714402,0.805832077600145,0.786415388126038,0.766998723010934,0.728165473649384,0.708748893832153,0.669915836922418,0.650499365959551,0.631082938039363,0.611666557258726,0.59225022825139,0.553417747340558,0.534001608307544,0.514585547087083,0.495169572825401,0.495169572825401,0.47496143373536,0.454753424432508,0.434545563004127,0.414337871060834,0.394130374638048,0.373923105389039,0.373923105389039,0.352562053938141,0.352562053938141,0.329824264116225,0.307087096161886,0.284350698799196,0.261615272226146,0.238881092460073,0.213760193576842,0.188642708727446,0.163530195144834,0.163530195144834,0.133887199821919,0.133887199821919,0.133887199821919,0.133887199821919,0.0492543482504969],"text":["time:    7<br />estimate: 0.9806","time:   34<br />estimate: 0.9612","time:   42<br />estimate: 0.9417","time:   63<br />estimate: 0.9223","time:   64<br />estimate: 0.9029","time:   74<br />estimate: 0.8835","time:   83<br />estimate: 0.8641","time:   84<br />estimate: 0.8447","time:   91<br />estimate: 0.8252","time:  108<br />estimate: 0.8058","time:  112<br />estimate: 0.7864","time:  129<br />estimate: 0.7670","time:  133<br />estimate: 0.7282","time:  139<br />estimate: 0.7087","time:  140<br />estimate: 0.6699","time:  146<br />estimate: 0.6505","time:  149<br />estimate: 0.6311","time:  154<br />estimate: 0.6117","time:  157<br />estimate: 0.5923","time:  160<br />estimate: 0.5534","time:  165<br />estimate: 0.5340","time:  173<br />estimate: 0.5146","time:  176<br />estimate: 0.4952","time:  185<br />estimate: 0.4952","time:  218<br />estimate: 0.4750","time:  225<br />estimate: 0.4548","time:  241<br />estimate: 0.4345","time:  248<br />estimate: 0.4143","time:  273<br />estimate: 0.3941","time:  277<br />estimate: 0.3739","time:  279<br />estimate: 0.3739","time:  297<br />estimate: 0.3526","time:  319<br />estimate: 0.3526","time:  405<br />estimate: 0.3298","time:  417<br />estimate: 0.3071","time:  420<br />estimate: 0.2844","time:  440<br />estimate: 0.2616","time:  523<br />estimate: 0.2389","time:  583<br />estimate: 0.2138","time:  594<br />estimate: 0.1886","time: 1101<br />estimate: 0.1635","time: 1116<br />estimate: 0.1635","time: 1146<br />estimate: 0.1339","time: 1226<br />estimate: 0.1339","time: 1349<br />estimate: 0.1339","time: 1412<br />estimate: 0.1339","time: 1417<br />estimate: 0.0493"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,255,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.958904109589,"r":7.30593607305936,"b":40.9132420091324,"l":48.9497716894977},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-63.5,1487.5],"tickmode":"array","ticktext":["0","500","1000"],"tickvals":[7.105427357601e-15,500,1000],"categoryorder":"array","categoryarray":["0","500","1000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"time","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0490291570162054,1.02961229734031],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"EstimateK","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"334032b35925":{"x":{},"y":{},"type":"scatter"},"33401ef5d5d5":{"x":{},"y":{}}},"cur_data":"334032b35925","visdat":{"334032b35925":["function (y) ","x"],"33401ef5d5d5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="b" class="level2">
+<h2 class="anchored" data-anchor-id="b">B</h2>
+<p>Vamos interpolar para encontrar o tempo mediano:</p>
+<p><span class="math display">\[
+\frac{y - y_0}{y_1 - y_0} = \frac{x - x_0}{x_1 - x_0}
+\]</span></p>
+<p>Aqui queremos portando encontrar o <span class="math inline">\(t\)</span> tal que S(t) = 0.5, assim, vamos tomar</p>
+<p><span class="math inline">\((t_0, S(t_0)) = (173, 0.52)\)</span></p>
+<p><span class="math inline">\((t_1, S(t_1)) = (176, 0.49)\)</span></p>
+<p><span class="math display">\[
+\frac{0.5 - 0.52}{0.49 - 0.52} = \frac{t - 173}{176- 173}
+\]</span></p>
+<p>Assim temos que <span class="math inline">\(t=175\)</span> (observado foi 173)</p>
+<div class="cell" data-layout-align="center">
+
+</div>
+<p>Para a média</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 415</code></pre>
+</div>
+</div>
+</section>
+<section id="c-1" class="level2">
+<h2 class="anchored" data-anchor-id="c-1">C</h2>
+<ol type="a">
+<li>Probabilidade de um paciente sobreviver:</li>
+</ol>
+<ul>
+<li>42 dias : 0.95</li>
+<li>100 dias : 0.813<br>
+</li>
+<li>300 dias : 0.346<br>
+</li>
+<li>1000 dias : 0.159</li>
+</ul>
+<div class="cell" data-layout-align="center">
+
+</div>
+</section>
+</section>
+<section id="questão-4" class="level1">
+<h1>Questão 4</h1>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
