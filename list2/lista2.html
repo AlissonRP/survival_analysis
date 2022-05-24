@@ -16,6 +16,69 @@ span.underline{text-decoration: underline;}
 div.column{display: inline-block; vertical-align: top; width: 50%;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
 <script src="lista2_files/libs/clipboard/clipboard.min.js"></script>
@@ -70,7 +133,12 @@ ul.task-list{list-style: none;}
 </header>
 
 <div class="cell" data-layout-align="center">
-
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>prob <span class="ot">&lt;-</span> <span class="cf">function</span>(df, t) {</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(time <span class="sc">==</span> t) <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(estimate)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="questão-1" class="level1">
 <h1>Questão 1</h1>
@@ -90,16 +158,28 @@ E(Y_i) = 1 - F(t) = S(t)
 <h1>Questão 2</h1>
 <section id="a" class="level2">
 <h2 class="anchored" data-anchor-id="a">A</h2>
-<p>Sabemos que o estimador de Kaplan-Meier <span class="math inline">\((\hat{S}(t))\)</span> é um estimador de máxima verossimilahnça, portanto tem distribuição assintótica normal. Seja <span class="math inline">\(\hat{U}(t) = \text{log}(\text{log}(\widehat{S}(t))) = g(\hat{S}(t))\)</span>. Portanto tem-se que <span class="math inline">\(g(\hat{S}(t))\)</span> tem distribuição assintóticamente normal com média <span class="math inline">\(g(\theta)\)</span> e variância <span class="math inline">\(\sigma²\bigg(\dfrac{dg(\theta)}{d \theta}\bigg)^2\)</span> onde <span class="math inline">\(\theta = S(t)\)</span></p>
-<p>Fazendo <span class="math inline">\(g(\theta) = \text{log}(\text{log}(\theta))\)</span></p>
-<p>Encontramos que <span class="math inline">\(\frac{dg(\theta)}{d \theta}= \frac{1}{\theta \text{log}(\theta)}\)</span></p>
-<p>Assim assintóticamente a distribuição de <span class="math inline">\(g(\theta)\)</span> é <span class="math inline">\(N\bigg(g(\theta), \dfrac{\sigma^2}{(\theta \text{log}\theta)^2}\bigg)\)</span></p>
+<p>Sabemos que o estimador de Kaplan-Meier <span class="math inline">\((\hat{S}(t))\)</span> é um estimador de máxima verossimilahnça, portanto tem distribuição assintótica normal. Seja <span class="math inline">\(\hat{U}(t) = \text{log}(\text{-log}(\widehat{S}(t))) = g(\hat{S}(t))\)</span>. Portanto tem-se que <span class="math inline">\(g(\hat{S}(t))\)</span> tem distribuição assintóticamente normal com média <span class="math inline">\(g(\theta)\)</span> e variância <span class="math inline">\(\sigma²\bigg(\dfrac{dg(\theta)}{d \theta}\bigg)^2\)</span> onde <span class="math inline">\(\theta = S(t)\)</span></p>
+<p>Fazendo <span class="math inline">\(g(\theta) = \text{log}(-\text{log}(\theta))\)</span></p>
+<p>Encontramos que <span class="math inline">\(\frac{dg(\theta)}{d \theta}= \frac{-1}{\theta \text{log}(\theta)}\)</span></p>
+<p>Assim, assintóticamente, a distribuição de <span class="math inline">\(g(\theta)\)</span> é <span class="math inline">\(N\bigg(g(\theta), \dfrac{\sigma^2}{(\theta \text{log}\theta)^2}\bigg)\)</span></p>
+</section>
+<section id="b" class="level2">
+<h2 class="anchored" data-anchor-id="b">B</h2>
+<p>Sabemos que a distribuição de <span class="math inline">\(U(t)\)</span> é assintóticamente normal com a média e variância definida acima, assim fica fácil construir um intervalo de confiança assintótico</p>
+<p><span class="math display">\[
+\frac{(g(\widehat{\theta}) - g(\theta))}{\sqrt\frac{\sigma^2}{(\theta \text{log}\theta)^2}}
+\]</span></p>
+<p>Porém, a variância ainda depende de <span class="math inline">\(\theta\)</span> e <span class="math inline">\(\sigma^2\)</span>, com isso é necessário colocar um estimador, ficando</p>
+<p><span class="math display">\[
+\frac{(g(\widehat{\theta}) - g(\theta))}{\sqrt\frac{\hat{\sigma}^2}{(\hat{\theta} \text{log}\hat{\theta)}^2}}
+\]</span></p>
+<p>Onde <span class="math inline">\(\hat{\sigma^2}= \widehat{Var}(\hat{S}(t)) = [\hat{S}(t)]^2 \sum(\dfrac{d_j}{n_j(n_j - d_j)})\)</span></p>
 </section>
 <section id="c" class="level2">
 <h2 class="anchored" data-anchor-id="c">C</h2>
 <p>Sem perda de generalidade assuma construído o intervalo de confiança para <span class="math inline">\(U(t)\)</span>, que fica definido na forma <span class="math inline">\([\widehat{U}(t) -\lambda_1Var(\widehat{U}(t)), \widehat{U}(t) +\lambda_2Var(\widehat{U}(t))]\)</span>.</p>
 <p>Assumindo <span class="math inline">\(\lambda_iVar(\widehat{U}(t) = Q_i\)</span> o intervalo se reduz <span class="math inline">\([\widehat{U}(t)- Q_1, \widehat{U}(t) + Q_2)]\)</span>. Sabemos que <span class="math inline">\(y = -x\)</span> e <span class="math inline">\(w = exp(x)\)</span> são funções monótonas.</p>
-<p>Se <span class="math inline">\(\hat{U}(t) = \text{log}(\text{-log}(\widehat{S}(t)))\)</span>. Podemos aplicar exponenciais duas vezes para retornar para <span class="math inline">\(\widehat{S}(t)\)</span>. Aplicando no intervalo de confiança e resumindo para um dos casos,, obtemos:</p>
+<p>Se <span class="math inline">\(\hat{U}(t) = \text{log}(\text{-log}(\widehat{S}(t)))\)</span>. Podemos aplicar exponenciais duas vezes para retornar para <span class="math inline">\(\widehat{S}(t)\)</span>. Aplicando no intervalo de confiança e resumindo para um dos casos, obtemos:</p>
 <p><span class="math display">\[
 \text{exp}(\text{-exp}(\widehat{U}(t)+Q)) = \text{exp}(\text{-exp}(\text{log}(\text{-log}(\widehat{S}(t)))+Q))
 \]</span></p>
@@ -114,24 +194,47 @@ E(Y_i) = 1 - F(t) = S(t)
 <section id="questão-3" class="level1">
 <h1>Questão 3</h1>
 <div class="cell" data-layout-align="center">
-
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/AlissonRP/survival_analysis/list2/list2/questao3.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="a-1" class="level2">
 <h2 class="anchored" data-anchor-id="a-1">A</h2>
 <div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>kaplan <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(data<span class="sc">$</span>tempos, data<span class="sc">$</span>censura) <span class="sc">~</span> <span class="dv">1</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>nelson <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(data<span class="sc">$</span>tempos, data<span class="sc">$</span>censura) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">type =</span> <span class="st">"fh"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>nelson_lais <span class="ot">=</span><span class="fu">survfit</span>(<span class="fu">coxph</span>(<span class="fu">Surv</span>(data<span class="sc">$</span>tempos, data<span class="sc">$</span>censura)<span class="sc">~</span><span class="dv">1</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method =</span> <span class="st">"breslow"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> kaplan <span class="sc">|&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="at">EstimateK =</span> estimate) <span class="sc">|&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_cols</span>(nelson_lais <span class="sc">|&gt;</span> <span class="fu">select</span>(time, estimate)) <span class="sc">|&gt;</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(time, EstimateK), <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(time, estimate), <span class="at">color =</span> <span class="st">"blue"</span>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>g <span class="sc">|&gt;</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  plotly<span class="sc">::</span><span class="fu">ggplotly</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="htmlwidget-5d1e722462a34ead0b41" style="width:100%;height:433px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="htmlwidget-5d1e722462a34ead0b41">{"x":{"data":[{"x":[7,34,42,63,64,74,83,84,91,108,112,129,133,139,140,146,149,154,157,160,165,173,176,185,218,225,241,248,273,277,279,297,319,405,417,420,440,523,583,594,1101,1116,1146,1226,1349,1412,1417],"y":[0.980392156862745,0.96078431372549,0.941176470588235,0.92156862745098,0.901960784313725,0.88235294117647,0.862745098039216,0.843137254901961,0.823529411764706,0.803921568627451,0.784313725490196,0.764705882352941,0.725490196078431,0.705882352941176,0.666666666666667,0.647058823529412,0.627450980392157,0.607843137254902,0.588235294117647,0.549019607843137,0.529411764705882,0.509803921568627,0.490196078431372,0.490196078431372,0.469771241830065,0.449346405228758,0.428921568627451,0.408496732026144,0.388071895424836,0.367647058823529,0.367647058823529,0.346020761245675,0.346020761245675,0.322952710495963,0.299884659746251,0.27681660899654,0.253748558246828,0.230680507497116,0.205049339997437,0.179418172497757,0.153787004998078,0.153787004998078,0.123029603998462,0.123029603998462,0.123029603998462,0.123029603998462,0],"text":["time:    7<br />EstimateK: 0.980","time:   34<br />EstimateK: 0.961","time:   42<br />EstimateK: 0.941","time:   63<br />EstimateK: 0.922","time:   64<br />EstimateK: 0.902","time:   74<br />EstimateK: 0.882","time:   83<br />EstimateK: 0.863","time:   84<br />EstimateK: 0.843","time:   91<br />EstimateK: 0.824","time:  108<br />EstimateK: 0.804","time:  112<br />EstimateK: 0.784","time:  129<br />EstimateK: 0.765","time:  133<br />EstimateK: 0.725","time:  139<br />EstimateK: 0.706","time:  140<br />EstimateK: 0.667","time:  146<br />EstimateK: 0.647","time:  149<br />EstimateK: 0.627","time:  154<br />EstimateK: 0.608","time:  157<br />EstimateK: 0.588","time:  160<br />EstimateK: 0.549","time:  165<br />EstimateK: 0.529","time:  173<br />EstimateK: 0.510","time:  176<br />EstimateK: 0.490","time:  185<br />EstimateK: 0.490","time:  218<br />EstimateK: 0.470","time:  225<br />EstimateK: 0.449","time:  241<br />EstimateK: 0.429","time:  248<br />EstimateK: 0.408","time:  273<br />EstimateK: 0.388","time:  277<br />EstimateK: 0.368","time:  279<br />EstimateK: 0.368","time:  297<br />EstimateK: 0.346","time:  319<br />EstimateK: 0.346","time:  405<br />EstimateK: 0.323","time:  417<br />EstimateK: 0.300","time:  420<br />EstimateK: 0.277","time:  440<br />EstimateK: 0.254","time:  523<br />EstimateK: 0.231","time:  583<br />EstimateK: 0.205","time:  594<br />EstimateK: 0.179","time: 1101<br />EstimateK: 0.154","time: 1116<br />EstimateK: 0.154","time: 1146<br />EstimateK: 0.123","time: 1226<br />EstimateK: 0.123","time: 1349<br />EstimateK: 0.123","time: 1412<br />EstimateK: 0.123","time: 1417<br />EstimateK: 0.000"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[7,34,42,63,64,74,83,84,91,108,112,129,133,139,140,146,149,154,157,160,165,173,176,185,218,225,241,248,273,277,279,297,319,405,417,420,440,523,583,594,1101,1116,1146,1226,1349,1412,1417],"y":[0.980583140324109,0.961166293212663,0.941749459442648,0.922332639856457,0.902915835368923,0.883499046975273,0.864082275760164,0.844665522907948,0.825248789714402,0.805832077600145,0.786415388126038,0.766998723010934,0.728165473649384,0.708748893832153,0.669915836922418,0.650499365959551,0.631082938039363,0.611666557258726,0.59225022825139,0.553417747340558,0.534001608307544,0.514585547087083,0.495169572825401,0.495169572825401,0.47496143373536,0.454753424432508,0.434545563004127,0.414337871060834,0.394130374638048,0.373923105389039,0.373923105389039,0.352562053938141,0.352562053938141,0.329824264116225,0.307087096161886,0.284350698799196,0.261615272226146,0.238881092460073,0.213760193576842,0.188642708727446,0.163530195144834,0.163530195144834,0.133887199821919,0.133887199821919,0.133887199821919,0.133887199821919,0.0492543482504969],"text":["time:    7<br />estimate: 0.9806","time:   34<br />estimate: 0.9612","time:   42<br />estimate: 0.9417","time:   63<br />estimate: 0.9223","time:   64<br />estimate: 0.9029","time:   74<br />estimate: 0.8835","time:   83<br />estimate: 0.8641","time:   84<br />estimate: 0.8447","time:   91<br />estimate: 0.8252","time:  108<br />estimate: 0.8058","time:  112<br />estimate: 0.7864","time:  129<br />estimate: 0.7670","time:  133<br />estimate: 0.7282","time:  139<br />estimate: 0.7087","time:  140<br />estimate: 0.6699","time:  146<br />estimate: 0.6505","time:  149<br />estimate: 0.6311","time:  154<br />estimate: 0.6117","time:  157<br />estimate: 0.5923","time:  160<br />estimate: 0.5534","time:  165<br />estimate: 0.5340","time:  173<br />estimate: 0.5146","time:  176<br />estimate: 0.4952","time:  185<br />estimate: 0.4952","time:  218<br />estimate: 0.4750","time:  225<br />estimate: 0.4548","time:  241<br />estimate: 0.4345","time:  248<br />estimate: 0.4143","time:  273<br />estimate: 0.3941","time:  277<br />estimate: 0.3739","time:  279<br />estimate: 0.3739","time:  297<br />estimate: 0.3526","time:  319<br />estimate: 0.3526","time:  405<br />estimate: 0.3298","time:  417<br />estimate: 0.3071","time:  420<br />estimate: 0.2844","time:  440<br />estimate: 0.2616","time:  523<br />estimate: 0.2389","time:  583<br />estimate: 0.2138","time:  594<br />estimate: 0.1886","time: 1101<br />estimate: 0.1635","time: 1116<br />estimate: 0.1635","time: 1146<br />estimate: 0.1339","time: 1226<br />estimate: 0.1339","time: 1349<br />estimate: 0.1339","time: 1412<br />estimate: 0.1339","time: 1417<br />estimate: 0.0493"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,255,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.958904109589,"r":7.30593607305936,"b":40.9132420091324,"l":48.9497716894977},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-63.5,1487.5],"tickmode":"array","ticktext":["0","500","1000"],"tickvals":[7.105427357601e-15,500,1000],"categoryorder":"array","categoryarray":["0","500","1000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"time","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0490291570162054,1.02961229734031],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"EstimateK","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"334032b35925":{"x":{},"y":{},"type":"scatter"},"33401ef5d5d5":{"x":{},"y":{}}},"cur_data":"334032b35925","visdat":{"334032b35925":["function (y) ","x"],"33401ef5d5d5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a90559a7420d939d961b" style="width:100%;height:433px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-a90559a7420d939d961b">{"x":{"data":[{"x":[7,34,42,63,64,74,83,84,91,108,112,129,133,139,140,146,149,154,157,160,165,173,176,185,218,225,241,248,273,277,279,297,319,405,417,420,440,523,583,594,1101,1116,1146,1226,1349,1412,1417],"y":[0.980392156862745,0.96078431372549,0.941176470588235,0.92156862745098,0.901960784313725,0.88235294117647,0.862745098039216,0.843137254901961,0.823529411764706,0.803921568627451,0.784313725490196,0.764705882352941,0.725490196078431,0.705882352941176,0.666666666666667,0.647058823529412,0.627450980392157,0.607843137254902,0.588235294117647,0.549019607843137,0.529411764705882,0.509803921568627,0.490196078431372,0.490196078431372,0.469771241830065,0.449346405228758,0.428921568627451,0.408496732026144,0.388071895424836,0.367647058823529,0.367647058823529,0.346020761245675,0.346020761245675,0.322952710495963,0.299884659746251,0.27681660899654,0.253748558246828,0.230680507497116,0.205049339997437,0.179418172497757,0.153787004998078,0.153787004998078,0.123029603998462,0.123029603998462,0.123029603998462,0.123029603998462,0],"text":["time:    7<br />EstimateK: 0.980","time:   34<br />EstimateK: 0.961","time:   42<br />EstimateK: 0.941","time:   63<br />EstimateK: 0.922","time:   64<br />EstimateK: 0.902","time:   74<br />EstimateK: 0.882","time:   83<br />EstimateK: 0.863","time:   84<br />EstimateK: 0.843","time:   91<br />EstimateK: 0.824","time:  108<br />EstimateK: 0.804","time:  112<br />EstimateK: 0.784","time:  129<br />EstimateK: 0.765","time:  133<br />EstimateK: 0.725","time:  139<br />EstimateK: 0.706","time:  140<br />EstimateK: 0.667","time:  146<br />EstimateK: 0.647","time:  149<br />EstimateK: 0.627","time:  154<br />EstimateK: 0.608","time:  157<br />EstimateK: 0.588","time:  160<br />EstimateK: 0.549","time:  165<br />EstimateK: 0.529","time:  173<br />EstimateK: 0.510","time:  176<br />EstimateK: 0.490","time:  185<br />EstimateK: 0.490","time:  218<br />EstimateK: 0.470","time:  225<br />EstimateK: 0.449","time:  241<br />EstimateK: 0.429","time:  248<br />EstimateK: 0.408","time:  273<br />EstimateK: 0.388","time:  277<br />EstimateK: 0.368","time:  279<br />EstimateK: 0.368","time:  297<br />EstimateK: 0.346","time:  319<br />EstimateK: 0.346","time:  405<br />EstimateK: 0.323","time:  417<br />EstimateK: 0.300","time:  420<br />EstimateK: 0.277","time:  440<br />EstimateK: 0.254","time:  523<br />EstimateK: 0.231","time:  583<br />EstimateK: 0.205","time:  594<br />EstimateK: 0.179","time: 1101<br />EstimateK: 0.154","time: 1116<br />EstimateK: 0.154","time: 1146<br />EstimateK: 0.123","time: 1226<br />EstimateK: 0.123","time: 1349<br />EstimateK: 0.123","time: 1412<br />EstimateK: 0.123","time: 1417<br />EstimateK: 0.000"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(255,0,0,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[7,34,42,63,64,74,83,84,91,108,112,129,133,139,140,146,149,154,157,160,165,173,176,185,218,225,241,248,273,277,279,297,319,405,417,420,440,523,583,594,1101,1116,1146,1226,1349,1412,1417],"y":[0.980583140324109,0.961166293212663,0.941749459442648,0.922332639856457,0.902915835368923,0.883499046975273,0.864082275760164,0.844665522907948,0.825248789714402,0.805832077600145,0.786415388126038,0.766998723010934,0.728656979181623,0.709227293337338,0.670900273739572,0.651455270403201,0.63201031017276,0.612565397151142,0.593120535978904,0.554868404373962,0.535401370408892,0.515934414460342,0.496467545698513,0.496467545698513,0.476206435630863,0.455945455690608,0.435684624012444,0.415423962263634,0.395163496547843,0.374903258601312,0.374903258601312,0.353486214078856,0.353486214078856,0.330688822383152,0.307892054185107,0.28509605859864,0.262301036346513,0.239507264169581,0.214320516641587,0.18913719209653,0.163958851849287,0.163958851849287,0.134238154248368,0.134238154248368,0.134238154248368,0.134238154248368,0.0493834571687755],"text":["time:    7<br />estimate: 0.9806","time:   34<br />estimate: 0.9612","time:   42<br />estimate: 0.9417","time:   63<br />estimate: 0.9223","time:   64<br />estimate: 0.9029","time:   74<br />estimate: 0.8835","time:   83<br />estimate: 0.8641","time:   84<br />estimate: 0.8447","time:   91<br />estimate: 0.8252","time:  108<br />estimate: 0.8058","time:  112<br />estimate: 0.7864","time:  129<br />estimate: 0.7670","time:  133<br />estimate: 0.7287","time:  139<br />estimate: 0.7092","time:  140<br />estimate: 0.6709","time:  146<br />estimate: 0.6515","time:  149<br />estimate: 0.6320","time:  154<br />estimate: 0.6126","time:  157<br />estimate: 0.5931","time:  160<br />estimate: 0.5549","time:  165<br />estimate: 0.5354","time:  173<br />estimate: 0.5159","time:  176<br />estimate: 0.4965","time:  185<br />estimate: 0.4965","time:  218<br />estimate: 0.4762","time:  225<br />estimate: 0.4559","time:  241<br />estimate: 0.4357","time:  248<br />estimate: 0.4154","time:  273<br />estimate: 0.3952","time:  277<br />estimate: 0.3749","time:  279<br />estimate: 0.3749","time:  297<br />estimate: 0.3535","time:  319<br />estimate: 0.3535","time:  405<br />estimate: 0.3307","time:  417<br />estimate: 0.3079","time:  420<br />estimate: 0.2851","time:  440<br />estimate: 0.2623","time:  523<br />estimate: 0.2395","time:  583<br />estimate: 0.2143","time:  594<br />estimate: 0.1891","time: 1101<br />estimate: 0.1640","time: 1116<br />estimate: 0.1640","time: 1146<br />estimate: 0.1342","time: 1226<br />estimate: 0.1342","time: 1349<br />estimate: 0.1342","time: 1412<br />estimate: 0.1342","time: 1417<br />estimate: 0.0494"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,0,255,1)","dash":"solid"},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.958904109589,"r":7.30593607305936,"b":40.9132420091324,"l":48.9497716894977},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-63.5,1487.5],"tickmode":"array","ticktext":["0","500","1000"],"tickvals":[7.105427357601e-15,500,1000],"categoryorder":"array","categoryarray":["0","500","1000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"time","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0490291570162054,1.02961229734031],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75","1.00"],"tickvals":[0,0.25,0.5,0.75,1],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75","1.00"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"EstimateK","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"14d8602b6cbb":{"x":{},"y":{},"type":"scatter"},"14d832a14842":{"x":{},"y":{}}},"cur_data":"14d8602b6cbb","visdat":{"14d8602b6cbb":["function (y) ","x"],"14d832a14842":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
-<section id="b" class="level2">
-<h2 class="anchored" data-anchor-id="b">B</h2>
+<section id="b-1" class="level2">
+<h2 class="anchored" data-anchor-id="b-1">B</h2>
 <p>Vamos interpolar para encontrar o tempo mediano:</p>
 <p><span class="math display">\[
 \frac{y - y_0}{y_1 - y_0} = \frac{x - x_0}{x_1 - x_0}
 \]</span></p>
-<p>Aqui queremos portando encontrar o <span class="math inline">\(t\)</span> tal que S(t) = 0.5, assim, vamos tomar</p>
+<p>Aqui queremos portanto encontrar o <span class="math inline">\(t\)</span> tal que S(t) = 0.5, assim, vamos tomar</p>
 <p><span class="math inline">\((t_0, S(t_0)) = (173, 0.52)\)</span></p>
 <p><span class="math inline">\((t_1, S(t_1)) = (176, 0.49)\)</span></p>
 <p><span class="math display">\[
@@ -139,10 +242,26 @@ E(Y_i) = 1 - F(t) = S(t)
 \]</span></p>
 <p>Assim temos que <span class="math inline">\(t=175\)</span> (observado foi 173)</p>
 <div class="cell" data-layout-align="center">
-
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>interpol <span class="ot">&lt;-</span> <span class="cf">function</span>(df, x0, x1, x) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  df <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(time <span class="sc">%in%</span> <span class="fu">c</span>(x0, x1)) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(time, estimate) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    (\(d) <span class="fu">approx</span>(<span class="at">x =</span> d<span class="sc">$</span>time, <span class="at">y =</span> d<span class="sc">$</span>estimate, <span class="at">xout =</span> x))() <span class="sc">|&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    (\(d) d<span class="sc">$</span>y)()</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Para a média</p>
 <div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mean_time <span class="ot">&lt;-</span> <span class="cf">function</span>(time, estimate) {</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  s <span class="ot">&lt;-</span> time[<span class="dv">1</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>(<span class="fu">length</span>(estimate) <span class="sc">-</span> <span class="dv">1</span>)) {</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    s <span class="ot">&lt;-</span> s <span class="sc">+</span> (estimate[i] <span class="sc">*</span> (time[i <span class="sc">+</span> <span class="dv">1</span>] <span class="sc">-</span> time[i]))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  s</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">mean_time</span>(kaplan<span class="sc">$</span>time, kaplan<span class="sc">$</span>estimate)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 415</code></pre>
 </div>
@@ -161,13 +280,137 @@ E(Y_i) = 1 - F(t) = S(t)
 </li>
 <li>1000 dias : 0.159</li>
 </ul>
+</section>
+<section id="d" class="level2">
+<h2 class="anchored" data-anchor-id="d">D</h2>
 <div class="cell" data-layout-align="center">
-
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>kaplan <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(time <span class="sc">&gt;</span> <span class="dv">594</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  (\(d) <span class="fu">mean_time</span>(d<span class="sc">$</span>time, d<span class="sc">$</span>estimate))() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1141</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    kaplan <span class="sc">|&gt;</span> <span class="fu">interpol</span>(<span class="dv">594</span>, <span class="dv">1101</span>, <span class="dv">1000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.159</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 137</code></pre>
+</div>
+</div>
+</section>
+<section id="e" class="level2">
+<h2 class="anchored" data-anchor-id="e">E</h2>
+</section>
+<section id="f" class="level2">
+<h2 class="anchored" data-anchor-id="f">F</h2>
+<ul>
+<li>Tem-se <span class="math inline">\(\hat{S}(t) = 0.8\)</span> para <span class="math inline">\(t = 108\)</span><br>
+</li>
+<li><span class="math inline">\(\hat{S}(t) = 0.3\)</span> para <span class="math inline">\(t = 417\)</span></li>
+<li>n sei</li>
+</ul>
 </section>
 </section>
 <section id="questão-4" class="level1">
 <h1>Questão 4</h1>
+</section>
+<section id="a-2" class="level1">
+<h1>A</h1>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> survival<span class="sc">::</span>leukemia</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>kaplanNM <span class="ot">&lt;-</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  kaplan <span class="sc">|&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, estimate)) <span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>maintained <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x <span class="sc">==</span> <span class="st">"Maintained"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>not_maintained <span class="ot">&lt;-</span> df <span class="sc">|&gt;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x <span class="sc">!=</span> <span class="st">"Maintained"</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="co">#default is log</span></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>kaplanM <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(maintained<span class="sc">$</span>time, maintained<span class="sc">$</span>status) <span class="sc">~</span> <span class="dv">1</span>, <span class="at">conf.type=</span><span class="st">"log"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>kaplanN <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(not_maintained<span class="sc">$</span>time, not_maintained<span class="sc">$</span>status) <span class="sc">~</span> <span class="dv">1</span> ,<span class="at">conf.type=</span><span class="st">"log"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">tidy</span>()</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>plot <span class="ot">&lt;-</span> kaplanM <span class="sc">|&gt;</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(time, estimate) <span class="sc">|&gt;</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(kaplanN <span class="sc">|&gt;</span> <span class="fu">select</span>(time, estimate)) <span class="sc">|&gt;</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">group =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"M"</span>, <span class="fu">nrow</span>(kaplanM)), <span class="fu">rep</span>(<span class="st">"N"</span>, <span class="fu">nrow</span>(kaplanN)))) <span class="sc">|&gt;</span></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(time, estimate, <span class="at">group =</span> group, <span class="at">color =</span> group)) <span class="sc">+</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>plotly<span class="sc">::</span><span class="fu">ggplotly</span>(plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="htmlwidget-8c46cfff774b46e33728" style="width:100%;height:433px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8c46cfff774b46e33728">{"x":{"data":[{"x":[9,13,18,23,28,31,34,45,48,161],"y":[0.909090909090909,0.818181818181818,0.715909090909091,0.613636363636364,0.613636363636364,0.490909090909091,0.368181818181818,0.368181818181818,0.184090909090909,0.184090909090909],"text":["time:   9<br />estimate: 0.9091","time:  13<br />estimate: 0.8182","time:  18<br />estimate: 0.7159","time:  23<br />estimate: 0.6136","time:  28<br />estimate: 0.6136","time:  31<br />estimate: 0.4909","time:  34<br />estimate: 0.3682","time:  45<br />estimate: 0.3682","time:  48<br />estimate: 0.1841","time: 161<br />estimate: 0.1841"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(248,118,109,1)","dash":"solid"},"hoveron":"points","name":"M","legendgroup":"M","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[5,8,12,16,23,27,30,33,43,45],"y":[0.833333333333333,0.666666666666667,0.583333333333333,0.583333333333333,0.486111111111111,0.388888888888889,0.291666666666667,0.194444444444444,0.0972222222222222,0],"text":["time:   5<br />estimate: 0.8333","time:   8<br />estimate: 0.6667","time:  12<br />estimate: 0.5833","time:  16<br />estimate: 0.5833","time:  23<br />estimate: 0.4861","time:  27<br />estimate: 0.3889","time:  30<br />estimate: 0.2917","time:  33<br />estimate: 0.1944","time:  43<br />estimate: 0.0972","time:  45<br />estimate: 0.0000"],"type":"scatter","mode":"lines","line":{"width":1.88976377952756,"color":"rgba(0,191,196,1)","dash":"solid"},"hoveron":"points","name":"N","legendgroup":"N","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":26.958904109589,"r":7.30593607305936,"b":40.9132420091324,"l":48.9497716894977},"font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-2.8,168.8],"tickmode":"array","ticktext":["0","50","100","150"],"tickvals":[0,50,100,150],"categoryorder":"array","categoryarray":["0","50","100","150"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":{"text":"time","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0454545454545455,0.954545454545454],"tickmode":"array","ticktext":["0.00","0.25","0.50","0.75"],"tickvals":[0,0.25,0.5,0.75],"categoryorder":"array","categoryarray":["0.00","0.25","0.50","0.75"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.65296803652968,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":{"text":"estimate","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895},"title":{"text":"group","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"14d83b58bf1c":{"x":{},"y":{},"colour":{},"type":"scatter"}},"cur_data":"14d83b58bf1c","visdat":{"14d83b58bf1c":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<section id="b-2" class="level2">
+<h2 class="anchored" data-anchor-id="b-2">B</h2>
+<ul>
+<li>Para 30 semana no grupo “M” tem-se : 0.532;<br>
+</li>
+<li>Para 30 semana no grupo “N” tem-se : 0.292</li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>kaplanM <span class="sc">|&gt;</span> <span class="fu">interpol</span>(<span class="dv">28</span>, <span class="dv">34</span>, <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.532</code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>kaplanN <span class="sc">|&gt;</span> <span class="fu">interpol</span>(<span class="dv">27</span>, <span class="dv">33</span>, <span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.292</code></pre>
+</div>
+</div>
+<p>Intervalo de confiança</p>
+</section>
+<section id="c-2" class="level2">
+<h2 class="anchored" data-anchor-id="c-2">C</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>teste <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">survdiff</span>(<span class="fu">Surv</span>(df<span class="sc">$</span>time, df<span class="sc">$</span>status) <span class="sc">~</span> df<span class="sc">$</span>x, <span class="at">rho =</span> <span class="dv">0</span>) <span class="sc">|&gt;</span> (\(d) d<span class="sc">$</span>p)()</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> survival<span class="sc">::</span>leukemia</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>test <span class="ot">&lt;-</span> survival<span class="sc">::</span><span class="fu">survdiff</span>(survival<span class="sc">::</span><span class="fu">Surv</span>(df<span class="sc">$</span>time, df<span class="sc">$</span>status) <span class="sc">~</span> df<span class="sc">$</span>x)</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+survival::survdiff(formula = survival::Surv(df$time, df$status) ~ 
+    df$x)
+
+                    N Observed Expected (O-E)^2/E (O-E)^2/V
+df$x=Maintained    11        7    10.69      1.27       3.4
+df$x=Nonmaintained 12       11     7.31      1.86       3.4
+
+ Chisq= 3.4  on 1 degrees of freedom, p= 0.07 </code></pre>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 137</code></pre>
+</div>
+</div>
+<p>Oww! p-value is greater than 0.05!, então não existem evidências de diferença nas funções de sobrevivência</p>
+</section>
 </section>
 
 </main>

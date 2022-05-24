@@ -1,10 +1,8 @@
 ---
-title: "title"
-author: "author"
-abstract: "abstract"
+title: "Lista análise de sobrevivência"
+author: "Eu"
 geometry: left=1.7cm, right=1.7cm, top=3cm, bottom=3cm
-output:
-  bookdown::pdf_document2:
+output: html
 editor_options:
   chunk_output_type: console
 indent: true
@@ -14,17 +12,19 @@ indent: true
 
 ```{r setup,include=F}
 
-options(digits=3)  #Arrendodamento
-options(scipen=999)
-ggplot2::theme_set(ggplot2::theme_minimal()) #Tema dos gráficos produzidos no ggplot2
-knitr::opts_chunk$set(echo=F,message=F,warning=F,fig.pos = 'H',fig.align = 'center',fig.width=6, fig.height=4.0)
-scale_fill_discrete = \(...) ggplot2::scale_fill_brewer(... , palette="Set2") #Fixa a scale do fill dos gráficos do ggplot2
-
+options(digits = 3) # Arrendodamento
+options(scipen = 999)
+ggplot2::theme_set(ggplot2::theme_minimal()) # Tema dos gráficos produzidos no ggplot2
+knitr::opts_chunk$set(echo = T, message = F, warning = F, fig.pos = "H", fig.align = "center", fig.width = 6, fig.height = 4.0)
+scale_fill_discrete <- \(...) ggplot2::scale_fill_brewer(..., palette = "Set2") # Fixa a scale do fill dos gráficos do ggplot2
 ```
 
 ```{r}
-prob = function(df, t){
-    kaplan |> filter(time==t) |> select(time)
+library(tidyverse)
+prob <- function(df, t) {
+  df |>
+    filter(time == t) |>
+    select(estimate)
 }
 ```
 
@@ -46,48 +46,282 @@ logo $E(Z) = S(t)$
 
 
 # Questão 2
+## A
+Sabemos que o estimador de Kaplan-Meier $(\hat{S}(t))$  é um estimador de máxima verossimilahnça, portanto tem distribuição assintótica normal. 
+Seja $\hat{U}(t) = \text{log}(\text{-log}(\widehat{S}(t))) = g(\hat{S}(t))$. Portanto tem-se que $g(\hat{S}(t))$ tem distribuição assintóticamente normal com média $g(\theta)$ e variância $\sigma²\bigg(\dfrac{dg(\theta)}{d \theta}\bigg)^2$ onde $\theta = S(t)$
+
+Fazendo $g(\theta) = \text{log}(-\text{log}(\theta))$
+
+Encontramos que $\frac{dg(\theta)}{d \theta}= \frac{-1}{\theta \text{log}(\theta)}$
 
 
+Assim, assintóticamente,  a distribuição de $g(\theta)$ é $N\bigg(g(\theta), \dfrac{\sigma^2}{(\theta \text{log}\theta)^2}\bigg)$
 
+## B
+
+
+Sabemos que a distribuição de $U(t)$ é assintóticamente normal com a média e variância definida acima, assim fica fácil construir um intervalo de confiança assintótico
+$$
+\frac{(g(\widehat{\theta}) - g(\theta))}{\sqrt\frac{\sigma^2}{(\theta \text{log}\theta)^2}}
+$$
+Porém, a variância  ainda depende de $\theta$ e $\sigma^2$, com isso é necessário colocar um estimador, ficando
+$$
+\frac{(g(\widehat{\theta}) - g(\theta))}{\sqrt\frac{\hat{\sigma}^2}{(\hat{\theta} \text{log}\hat{\theta)}^2}}
+$$
+Onde $\hat{\sigma^2}= \widehat{Var}(\hat{S}(t)) = [\hat{S}(t)]^2 \sum(\dfrac{d_j}{n_j(n_j - d_j)})$
+
+## C
+
+Sem perda de generalidade assuma  construído o intervalo de confiança para $U(t)$, que fica definido na forma $[\widehat{U}(t) -\lambda_1Var(\widehat{U}(t)), \widehat{U}(t) +\lambda_2Var(\widehat{U}(t))]$.  
+
+Assumindo $\lambda_iVar(\widehat{U}(t) = Q_i$ o intervalo se reduz $[\widehat{U}(t)- Q_1, \widehat{U}(t) + Q_2)]$. Sabemos que $y = -x$ e $w = exp(x)$ são funções monótonas.  
+
+Se $\hat{U}(t) = \text{log}(\text{-log}(\widehat{S}(t)))$. Podemos aplicar exponenciais duas vezes para retornar para $\widehat{S}(t)$. Aplicando no intervalo de confiança e resumindo para um dos casos, obtemos:
+
+$$
+\text{exp}(\text{-exp}(\widehat{U}(t)+Q)) = \text{exp}(\text{-exp}(\text{log}(\text{-log}(\widehat{S}(t)))+Q))
+$$
+$$
+\text{exp}((\text{log}(\widehat{S}(t))\text{exp}(Q))
+$$
+$$
+\hat{S}(t)^{\text{exp}(Q))}
+$$
 # Questão 3
 
 ```{r}
-data = read.csv('https://raw.githubusercontent.com/AlissonRP/survival_analysis/list2/list2/questao3.csv')
+data <- read.csv("https://raw.githubusercontent.com/AlissonRP/survival_analysis/list2/list2/questao3.csv")
 library(survival)
-library(ggplot2)
-library(dplyr)
 ```
 ## A
 ```{r}
-kaplan = survfit(Surv(data$tempos,data$censura)~1) |> 
+kaplan <- survfit(Surv(data$tempos, data$censura) ~ 1) |>
+  broom::tidy()
+
+
+
+
+nelson <- survfit(Surv(data$tempos, data$censura) ~ 1, type = "fh") |>
+  broom::tidy()
+
+nelson_lais =survfit(coxph(Surv(data$tempos, data$censura)~1,
+                  method = "breslow")) |> 
     broom::tidy()
 
-    
+g <- kaplan |>
+  dplyr::select(EstimateK = estimate) |>
+  bind_cols(nelson_lais |> select(time, estimate)) |>
+  ggplot() +
+  geom_line(aes(time, EstimateK), color = "red") +
+  geom_line(aes(time, estimate), color = "blue")
 
-
-nelson = survfit(Surv(data$tempos,data$censura)~1, type="fh") |> 
-    broom::tidy()
-
-kaplan |> 
-    dplyr::select(EstimateK = estimate) |> 
-    bind_cols(nelson |> select(time, estimate)) |> 
-    ggplot()+
-    geom_line(aes(time, EstimateK), color = 'red')+
-    geom_line(aes(time, estimate), color = 'blue')
-    
-
-
+g |>
+  plotly::ggplotly()
 ```
 
 
 ## B
+Vamos interpolar para encontrar o tempo mediano:
+$$
+\frac{y - y_0}{y_1 - y_0} = \frac{x - x_0}{x_1 - x_0}
+$$
+Aqui queremos portanto encontrar o $t$ tal que S(t) = 0.5, assim, vamos tomar
+
+$(t_0, S(t_0)) = (173, 0.52)$
+
+$(t_1, S(t_1)) = (176, 0.49)$
+
+$$
+\frac{0.5 - 0.52}{0.49 - 0.52} = \frac{t - 173}{176- 173}
+$$
+Assim temos que $t=175$ (observado foi 173)
+
+```{r}
+interpol <- function(df, x0, x1, x) {
+  df |>
+    filter(time %in% c(x0, x1)) |>
+    select(time, estimate) |>
+    (\(d) approx(x = d$time, y = d$estimate, xout = x))() |>
+    (\(d) d$y)()
+}
+```
+Para a média
+
+```{r}
+mean_time <- function(time, estimate) {
+  s <- time[1]
+  for (i in 1:(length(estimate) - 1)) {
+    s <- s + (estimate[i] * (time[i + 1] - time[i]))
+  }
+
+  s
+}
+
+mean_time(kaplan$time, kaplan$estimate)
+
+
+```
+
 
 ## C
 a) Probabilidade de um paciente sobreviver:
 
-* 42 dias : `r kaplan |> filter(time==42) |> select(time)`
+* 42 dias : `r kaplan |> interpol(34, 63, 42)`
+* 100 dias :  `r kaplan |> interpol(91, 108, 100)`  
+* 300 dias :  `r kaplan |> interpol(297, 319, 300)`  
+* 1000 dias :  `r kaplan |> interpol(594, 1101, 1000)` 
+
+
+
+## D
+```{r}
+kaplan |>
+  filter(time > 594) |>
+  (\(d) mean_time(d$time, d$estimate))() 
+    
+    kaplan |> interpol(594, 1101, 1000)
+```
+```{r, echo=F}
+tempo_medio_restante <- function(obj, param){
+  y = prob(obj, param)
+  if(obj |> tail(n=1) |> filter(n.event != 0) |> nrow() == 0){
+    temp = obj |> tail(n=1) |> with(time)
+  }else{
+    temp = c()
+  }
+  obj <- obj |> filter(n.event != 0) |> select(estimate, time)
+  temp <- obj |> filter(time > param) |> with(time) |> c(temp)
+  sobre <- obj |> filter(time > param) |> with(estimate)
+  sobre1 <- c(as.double(y$prob), sobre)
+  sobre <- c(as.double(y$inter),sobre)
+  temp <- c(param, temp)
+  temp_medio_restante = 0
+  temp_medio_restante1 = 0
+  for(i in 1:(length(temp)-1)){
+    temp_medio_restante = temp_medio_restante+sobre[i]*(temp[i+1] - temp[i])
+    temp_medio_restante1 = temp_medio_restante1+sobre1[i]*(temp[i+1] - temp[i])
+  }
+  temp_medio_restante = temp_medio_restante/sobre[1]
+  temp_medio_restante1 = temp_medio_restante1/sobre1[1]
+  list(temp_medio_restante = temp_medio_restante1, temp_medio_restante_inter = temp_medio_restante)
+
+}
+
+tempo_medio_restante(kaplan, 1000)$temp_medio_restante_inter
+```
+## E
+
+## F
+
+* Tem-se $\hat{S}(t) = 0.8$ para $t = 108$  
+* $\hat{S}(t) = 0.3$  para $t = 417$
+* n sei
+
+
+
+
+
+
 
 # Questão 4
+# A
+```{r}
+df <- survival::leukemia
 
 
 
+kaplanNM <-
+  kaplan |>
+  ggplot(aes(time, estimate)) +
+  geom_line()
+
+
+maintained <- df |>
+  filter(x == "Maintained")
+
+not_maintained <- df |>
+  filter(x != "Maintained")
+
+#default is log
+
+kaplanM <- survfit(Surv(maintained$time, maintained$status) ~ 1, conf.type="log") |>
+  broom::tidy()
+
+kaplanN <- survfit(Surv(not_maintained$time, not_maintained$status) ~ 1 ,conf.type="log") |>
+  broom::tidy()
+
+
+
+plot <- kaplanM |>
+  select(time, estimate) |>
+  bind_rows(kaplanN |> select(time, estimate)) |>
+  mutate(group = c(rep("M", nrow(kaplanM)), rep("N", nrow(kaplanN)))) |>
+  ggplot(aes(time, estimate, group = group, color = group)) +
+  geom_line()
+plotly::ggplotly(plot)
+```
+
+## B
+
+* Para 30 semana no grupo "M" tem-se : `r kaplanM |> interpol(28, 34, 30)`;  
+* Para 30 semana no grupo "N" tem-se : `r kaplanN |> interpol(27, 33, 30)`
+```{r}
+kaplanM |> interpol(28, 34, 30)
+```
+```{r}
+
+kaplanN |> interpol(27, 33, 30)
+```
+
+Intervalo de confiança
+
+
+
+## C
+
+```{r}
+teste <- function() {
+  survdiff(Surv(df$time, df$status) ~ df$x, rho = 0) |> (\(d) d$p)()
+}
+
+df <- survival::leukemia
+test <- survival::survdiff(survival::Surv(df$time, df$status) ~ df$x)
+test
+```
+```{r}
+
+
+```
+
+```{r, echo=F}
+tempo_medio_restante <- function(obj, param){
+  y = prob(obj, param)
+  if(obj |> tail(n=1) |> filter(n.event != 0) |> nrow() == 0){
+    temp = obj |> tail(n=1) |> with(time)
+  } else{
+    temp = c()
+  }
+  obj <- obj |> filter(n.event != 0) |> select(estimate, time)
+  temp <- obj |> filter(time > param) |> with(time) |> c(temp)
+  sobre <- obj |> filter(time > param) |> with(estimate)
+  sobre1 <- c(as.double(y$prob), sobre)
+  sobre <- c(as.double(y$inter), sobre)
+  temp <- c(param, temp)
+  temp_medio_restante = 0
+  temp_medio_restante1 = 0
+  for(i in 1:(length(temp)-1)){
+    temp_medio_restante = temp_medio_restante+sobre[i]*(temp[i+1] - temp[i])
+    temp_medio_restante1 = temp_medio_restante1+sobre1[i]*(temp[i+1] - temp[i])
+  }
+  temp_medio_restante = temp_medio_restante/sobre[1]
+  temp_medio_restante1 = temp_medio_restante1/sobre1[1]
+  list(temp_medio_restante = temp_medio_restante1, temp_medio_restante_inter = temp_medio_restante)
+
+}
+
+tempo_medio_restante(kaplan, 1000)$temp_medio_restante_inter
+```
+
+
+
+Oww! p-value is greater than 0.05!, então não existem evidências de diferença nas funções de sobrevivência
