@@ -1,81 +1,86 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt"><head>
-  <meta charset="utf-8">
-  <meta name="generator" content="quarto-0.9.242">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>Notas de Aula Análise de Sobrevivência - 1&nbsp; Introdução</title>
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    div.csl-bib-body { }
-    div.csl-entry {
-      clear: both;
-    }
-    .hanging div.csl-entry {
-      margin-left:2em;
-      text-indent:-2em;
-    }
-    div.csl-left-margin {
-      min-width:2em;
-      float:left;
-    }
-    div.csl-right-inline {
-      margin-left:2em;
-      padding-left:1em;
-    }
-    div.csl-indent {
-      margin-left: 2em;
-    }
-  </style>
 
-  <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-  <script src="../site_libs/quarto-nav/headroom.min.js"></script>
-  <script src="../site_libs/clipboard/clipboard.min.js"></script>
-  <meta name="quarto:offset" content="../">
-  <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-  <script src="../site_libs/quarto-search/fuse.min.js"></script>
-  <script src="../site_libs/quarto-search/quarto-search.js"></script>
-  <link href="../caps/def.html" rel="next">
-  <link href="../index.html" rel="prev">
-  <link href="../favicon" rel="icon">
-  <script src="../site_libs/quarto-html/quarto.js"></script>
-  <script src="../site_libs/quarto-html/popper.min.js"></script>
-  <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-  <script src="../site_libs/quarto-html/anchor.min.js"></script>
-  <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-  <link id="quarto-text-highlighting-styles" href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet">
-  <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-  <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-  <link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
-  <script id="quarto-search-options" type="application/json">{
-    "location": "navbar",
-    "copy-button": false,
-    "collapse-after": 3,
-    "panel-placement": "end",
-    "type": "overlay",
-    "limit": 20,
-    "language": {
-      "search-no-results-text": "Nenhum resultado",
-      "search-matching-documents-text": "documentos correspondentes",
-      "search-copy-link-title": "Copiar link para a busca",
-      "search-hide-matches-text": "Esconder correspondências adicionais",
-      "search-more-match-text": "mais correspondência neste documento",
-      "search-more-matches-text": "mais correspondências neste documento",
-      "search-clear-button-title": "Limpar",
-      "search-detached-cancel-button-title": "Cancelar",
-      "search-submit-button-title": "Enviar"
-    }
-  }</script>
+<meta charset="utf-8">
+<meta name="generator" content="quarto-0.9.483">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Notas de Aula Análise de Sobrevivência - 1&nbsp; Introdução</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar"
+  }
+}</script>
+
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../caps/def.html" rel="next">
+<link href="../index.html" rel="prev">
+<link href="../favicon" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet">
 </head>
-<body class="floating nav-fixed">
+
+<body class="nav-sidebar floating nav-fixed">
+
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
@@ -123,11 +128,29 @@
   <a href="../index.html" class="sidebar-item-text sidebar-link">Prefácio</a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Introdução</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../caps/intro.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></a>
   </div>
 </li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Conceitos Básicos</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../caps/def.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Definições básicas</span></a>
@@ -138,19 +161,69 @@
   <a href="../caps/prog.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Layout dos dados</span></a>
   </div>
 </li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Análise Não paramétrica</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../caps/eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></a>
   </div>
 </li>
+    </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../caps/summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Análise Paramétrica</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../caps/apend.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Apêndice</span></a>
+  <a href="../caps/parametric.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Em construção</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Modelagem</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Em construção</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Apêndices</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/apend.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apêndice</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -159,28 +232,44 @@
   </div>
 </li>
     </ul>
+  </li>
+    </ul>
     </div>
 </nav>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc">
-<h2 id="toc-title">Índice</h2>
-<ul>
-<li><a href="#breve-história" id="toc-breve-história" class="nav-link active" data-scroll-target="#breve-história"> <span class="header-section-number">1.1</span> Breve História</a></li>
-<li><a href="#porque-estudar-análise-de-sobrevivência" id="toc-porque-estudar-análise-de-sobrevivência" class="nav-link" data-scroll-target="#porque-estudar-análise-de-sobrevivência"> <span class="header-section-number">1.2</span> Porque estudar análise de sobrevivência?</a></li>
-<li><a href="#censura" id="toc-censura" class="nav-link" data-scroll-target="#censura"> <span class="header-section-number">1.3</span> Censura</a>
-<ul class="collapse">
-<li><a href="#tipos-de-censura" id="toc-tipos-de-censura" class="nav-link" data-scroll-target="#tipos-de-censura"> <span class="header-section-number">1.3.1</span> Tipos de censura</a></li>
-</ul></li>
-<li><a href="#modelos-para-censura-aleatória-independentes" id="toc-modelos-para-censura-aleatória-independentes" class="nav-link" data-scroll-target="#modelos-para-censura-aleatória-independentes"> <span class="header-section-number">1.4</span> Modelos para censura aleatória independentes</a></li>
-</ul>
+    <h2 id="toc-title">Índice</h2>
+   
+  <ul>
+  <li><a href="#breve-história" id="toc-breve-história" class="nav-link active" data-scroll-target="#breve-história"> <span class="header-section-number">1.1</span> Breve História</a></li>
+  <li><a href="#porque-estudar-análise-de-sobrevivência" id="toc-porque-estudar-análise-de-sobrevivência" class="nav-link" data-scroll-target="#porque-estudar-análise-de-sobrevivência"> <span class="header-section-number">1.2</span> Porque estudar análise de sobrevivência?</a></li>
+  <li><a href="#censura" id="toc-censura" class="nav-link" data-scroll-target="#censura"> <span class="header-section-number">1.3</span> Censura</a>
+  <ul class="collapse">
+  <li><a href="#tipos-de-censura" id="toc-tipos-de-censura" class="nav-link" data-scroll-target="#tipos-de-censura"> <span class="header-section-number">1.3.1</span> Tipos de censura</a></li>
+  </ul></li>
+  <li><a href="#modelos-para-censura-aleatória-independentes" id="toc-modelos-para-censura-aleatória-independentes" class="nav-link" data-scroll-target="#modelos-para-censura-aleatória-independentes"> <span class="header-section-number">1.4</span> Modelos para censura aleatória independentes</a></li>
+  </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
-<header id="title-block-header" class="quarto-title-block default">
 
-<div class="quarto-title"><h1 class="title d-none d-lg-block display-7"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1></div></header>
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introdução</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
 
 <p>Análise de sobrevivência é a área que estuda o <strong>tempo</strong> até acontecer um evento de interesse acontecer. Como por exemplo:</p>
 <ul>
@@ -226,7 +315,8 @@ Censura
 <h2 data-number="1.4" class="anchored" data-anchor-id="modelos-para-censura-aleatória-independentes"><span class="header-section-number">1.4</span> Modelos para censura aleatória independentes</h2>
 <p>Considere que para os indivíduos <span class="math inline">\(i = 1,....,n\)</span> temos um tempo de vida de <span class="math inline">\(T_i\)</span> e um tempo de censura <span class="math inline">\(C_i\)</span> (á direita) e suponha que essas variáveis aleatórias são independentes, assim podemos definir uma nova variável <span class="math inline">\(T_{i}^{*} = \text{min}(T_i, C_i)\)</span>.<br>
 Assim, se o indivíduo possuir o evento de interesse <span class="math inline">\(T_{i}^{*} = T_i\)</span> do contrário ele foi censurado, então <span class="math inline">\(T_{i}^{*} = C_i\)</span>.<br>
-Podemos além disso definir a seguinte função indicadora: <span class="math display">\[
+Podemos além disso definir a seguinte função indicadora:</p>
+<p><span class="math display">\[
 \delta_i = \begin{cases}
   1  &amp; \text{se }  T_i \leq C_i\\
   0 &amp; \text{se } T_i &gt; C_i
@@ -254,7 +344,6 @@ Nota
 <p>Se possuírmos além disso covariáveis, aqui denotadas por <span class="math inline">\(x_i^{t}\)</span> a estrutura vai ser definida pela tupla <span class="math inline">\((t_i,\delta_i, x_i)\)</span>.</p>
 
 
-
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
 <div id="ref-colosimo2006analise" class="csl-entry" role="doc-biblioentry">
 Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. <em>An<span>á</span>lise de sobreviv<span>ê</span>ncia aplicada</em>. Editora Blucher.
@@ -273,8 +362,9 @@ Liu, Xian. 2012. <em>Survival analysis: models and applications</em>. John Wiley
 </div>
 </div>
 </section>
+
 </main> <!-- /main -->
-<script type="application/javascript">
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const icon = "";
   const anchorJS = new window.AnchorJS();
@@ -295,7 +385,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     button.blur();
     // flash "checked"
     button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiada");
     setTimeout(function() {
+      button.setAttribute("title", currentTitle);
       button.classList.remove('code-copy-button-checked');
     }, 1000);
     // clear code selection
@@ -363,6 +456,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 </body></html>
