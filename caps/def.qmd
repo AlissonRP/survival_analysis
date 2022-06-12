@@ -19,7 +19,7 @@ S(t) = P(T>t) = 1 - F(t)
 $$
 
 ```{r}
-#| echo: FALSE
+#| echo: false
 #| label: fig-plot
 #| fig-cap: "Exemplo de uma função de densidade"
 set.seed(41)
