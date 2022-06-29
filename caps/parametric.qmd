@@ -1,1 +1,15 @@
-# Em construção
+# Análise Paramétrica
+
+## Algumas distribuições importantes
+
+
+## Estimação
+
+
+## Escolha do modelo
+
+
+## Exercícios
+
+
+

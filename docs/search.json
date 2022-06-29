@@ -156,7 +156,7 @@
   {
     "objectID": "caps/parametric.html",
     "href": "caps/parametric.html",
-    "title": "6  Em construção",
+    "title": "6  Análise Paramétrica",
     "section": "",
     "text": "Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
   },
@@ -166,5 +166,33 @@
     "title": "7  Em construção",
     "section": "",
     "text": "Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
+    "objectID": "caps/parametric.html#propriedades",
+    "href": "caps/parametric.html#propriedades",
+    "title": "6  Análise Paramétrica",
+    "section": "6.2 Propriedades",
+    "text": "6.2 Propriedades\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
+    "objectID": "caps/parametric.html#estimação",
+    "href": "caps/parametric.html#estimação",
+    "title": "6  Análise Paramétrica",
+    "section": "6.2 Estimação",
+    "text": "6.2 Estimação"
+  },
+  {
+    "objectID": "caps/parametric.html#escolha-do-modelo",
+    "href": "caps/parametric.html#escolha-do-modelo",
+    "title": "6  Análise Paramétrica",
+    "section": "6.3 Escolha do modelo",
+    "text": "6.3 Escolha do modelo"
+  },
+  {
+    "objectID": "caps/parametric.html#exercícios",
+    "href": "caps/parametric.html#exercícios",
+    "title": "6  Análise Paramétrica",
+    "section": "6.4 Exercícios",
+    "text": "6.4 Exercícios\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
   }
 ]
