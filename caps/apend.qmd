@@ -10,3 +10,6 @@ $$
 
 
 ## Método Delta
+
+
+## Propriedades da função Gamma

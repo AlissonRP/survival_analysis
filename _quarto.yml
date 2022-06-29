@@ -30,6 +30,7 @@ book:
       - caps/models.qmd
   appendices:
     - caps/apend.qmd
+    - caps/relations.qmd
     - references.qmd
   favicon: "favicon"
   navbar:
