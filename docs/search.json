@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Notas de Aula Análise de Sobrevivência",
     "section": "",
-    "text": "Notas de Aula do curso de análise de sobrevivência, as duas referências principais vão ser\n\nColosimo (2006)\n\nEm termos práticos, os códigos vão ser desenvolvidos usando as linguagens Python e R, portanto assume-se conhecimentos básicos de ao menos umas dessas linguagens para um bom aproveitamento.\nEncontrou algum erro? Pode encaminhar uma issue no repósitório ou se preferir pode fazer um pull request, qualquer contribuição construtiva é bem vinda.\n\n\n\n\n\n\n\n\nAtenção\n\n\n\nBlocos dessa maneira indicam definições importantes\n\n\nTextos dessa cor assinalam concepções relevantes\n\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher."
+    "text": "Notas de Aula do curso de análise de sobrevivência, as duas referências principais vão ser\n\nColosimo (2006)\n\nEm termos práticos, os códigos vão ser desenvolvidos usando as linguagens Python e R, portanto assume-se conhecimentos básicos de ao menos umas dessas linguagens para um bom aproveitamento.\nEncontrou algum erro? Pode encaminhar uma issue no repósitório ou se preferir pode fazer um pull request, qualquer contribuição construtiva é bem vinda.\n\n\n\n\n\n\n\n\nAtenção\n\n\n\nBlocos dessa maneira indicam definições importantes\n\n\nTextos dessa cor assinalam concepções relevantes\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
   },
   {
     "objectID": "caps/intro.html",
@@ -18,14 +18,14 @@
     "href": "caps/intro.html#breve-história",
     "title": "1  Introdução",
     "section": "1.1 Breve História",
-    "text": "1.1 Breve História\nOriginalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico John Graunt, por um longo a análise de sobrevivência foi considerada um instrumento analítico para estudos de biomedicina e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas décadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviáveis"
+    "text": "1.1 Breve História\nOriginalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico John Graunt, por um longo a análise de sobrevivência foi considerada um instrumento analítico para estudos de biomedicina e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas décadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviáveis."
   },
   {
     "objectID": "caps/intro.html#porque-estudar-análise-de-sobrevivência",
     "href": "caps/intro.html#porque-estudar-análise-de-sobrevivência",
     "title": "1  Introdução",
     "section": "1.2 Porque estudar análise de sobrevivência?",
-    "text": "1.2 Porque estudar análise de sobrevivência?\nOk, porque não usar usar modelos de regressão em geral para modelar o Tempo (T)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura"
+    "text": "1.2 Porque estudar análise de sobrevivência?\nOk, porque não usar usar modelos de regressão em geral para modelar o Tempo (T)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura."
   },
   {
     "objectID": "caps/intro.html#censura",
@@ -35,39 +35,46 @@
     "text": "1.3 Censura\nQuando estamos fazendo uma análise de sobrevivência podemos ter indivíduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de censurados\n\n\n\n\n\n\nCensura\n\n\n\nTemos informações sobre o tempo de sobrevivência mas não sabemos exatamente quando acontece o evento de interesse.\n\n\n\n1.3.1 Tipos de censura\nAqui vamos definir alguns tipos de censuras\nCensura Tipo I : O estudo será finalizado após um período pré estabelecido de tempo. Censura Tipo II  O estudo será finalizado após ter ocorrido o evento de interesse em um número pré-estabelecido de indivíduos.\nCensura Aleatória : Acontece quando o indivíduo é removido do estudo sem ter ocorrido a falha."
   },
   {
+    "objectID": "caps/intro.html#modelos-para-censura-aleatória-independentes",
+    "href": "caps/intro.html#modelos-para-censura-aleatória-independentes",
+    "title": "1  Introdução",
+    "section": "1.4 Modelos para censura aleatória independentes",
+    "text": "1.4 Modelos para censura aleatória independentes\nConsidere que para os indivíduos \\(i = 1,....,n\\) temos um tempo de vida de \\(T_i\\) e um tempo de censura \\(C_i\\) (á direita) e suponha que essas variáveis aleatórias são independentes, assim podemos definir uma nova variável \\(T_{i}^{*} = \\text{min}(T_i, C_i)\\).\nAssim, se o indivíduo possuir o evento de interesse \\(T_{i}^{*} = T_i\\) do contrário ele foi censurado, então \\(T_{i}^{*} = C_i\\).\nPodemos além disso definir a seguinte função indicadora:\n\\[\n\\delta_i = \\begin{cases}\n  1  & \\text{se }  T_i \\leq C_i\\\\\n  0 & \\text{se } T_i > C_i\n\\end{cases}\n\\]\nDessa maneira conseguimos estruturar os dados para um indivíduo \\(i\\) pelo par \\((t_i,\\delta_i)\\) em que:\n\n\\(t_i\\) é o tempo de falha observado;\n\n\\(\\delta_i\\) é a variável indicadora de falha ou censura.\n\n\n\n\n\n\n\nNota\n\n\n\nRelembre que \\(\\delta_i\\) vai ter valor 1 se o indivíduo não for censurado, ou seja observamos um tempo para o evento de interesse.\n\n\nSe possuírmos além disso covariáveis, aqui denotadas por \\(x_i^{t}\\) a estrutura vai ser definida pela tupla \\((t_i,\\delta_i, x_i)\\).\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
     "objectID": "caps/def.html",
     "href": "caps/def.html",
     "title": "2  Definições básicas",
     "section": "",
-    "text": "Seja \\(f(t)\\) a função densidade de probabilidade da variável aleatória \\(T\\) (tempo até o evento ocorrer). Definimos a função de distribuição acumulada da variável aleatória \\(T\\) como sendo:\n\\[\nF(t) = P(T < t) = \\int_{0}^{t}f(u)du\n\\]"
+    "text": "Seja \\(f(t)\\) a função densidade de probabilidade da variável aleatória \\(T\\) (tempo até o evento ocorrer). Definimos a função de distribuição acumulada da variável aleatória \\(T\\) como sendo:\n\\[\nF(t) = P(T < t) = \\int_{0}^{t}f(u)du\n\\]\nE por consequência \\(f(t)\\) fica definida como:\n\\[\nf(t) = \\lim_{\\Delta t \\rightarrow 0^{+}} \\dfrac{P(t<T \\leq t + \\Delta t)}{\\Delta t} =\n\\dfrac{dF(t)}{dt}\n\\]"
   },
   {
     "objectID": "caps/def.html#função-de-sobrevivência",
     "href": "caps/def.html#função-de-sobrevivência",
     "title": "2  Definições básicas",
     "section": "2.1 Função de Sobrevivência",
-    "text": "2.1 Função de Sobrevivência\nA função de sobrevivência é o complemento da função de distribuição acumulada, isso é:\nA probabilidade de uma observação não falhar até um tempo \\(t\\): \\[\nS(t) = P(T>t) = 1 - F(t)\n\\]\n\n\n\n\n\nFigura 2.1: Exemplo de uma função de densidade\n\n\n\n\nPela Figura 2.1 podemos ter um vislumbre que \\(S(0) = 1\\) e \\(S(\\infty) = 0\\).\nA demonstração de tais fatos fica a cargo do leitor, basta notar que \\(S(t) = 1 - F(t)\\) e usar as propriedades da \\(F\\).\nPor consequência a probabilidade de não sobreviver até um certo tempo \\(t\\) é: \\[\n1- S(t)\n\\] Assim a probabilidade de não sobreviver em um intervalo \\((t_1,t_2)\\) é dado por:\n\\[\n1-S(t_2) - (1-S(t_1)) = S(t_1) - S(t_2)\n\\]"
+    "text": "2.1 Função de Sobrevivência\nA função de sobrevivência é o complemento da função de distribuição acumulada, isso é:\nA probabilidade de uma observação não falhar até um tempo \\(t\\):\n\\[\nS(t) = P(T>t) = 1 - F(t)\n\\]\n\n\n\n\n\nFigura 2.1: Exemplo de uma função de densidade\n\n\n\n\nPela Figura 2.1 podemos ter um vislumbre que \\(S(0) = 1\\) e \\(S(\\infty) = 0\\).\nA demonstração de tais fatos fica a cargo do leitor, basta notar que \\(S(t) = 1 - F(t)\\) e usar as propriedades da \\(F\\).\nPor consequência a probabilidade de não sobreviver até um certo tempo \\(t\\) é:\n\\[\n1- S(t)\n\\]\nAssim a probabilidade de não sobreviver em um intervalo \\((t_1,t_2)\\) é dado por:\n\\[\n1-S(t_2) - (1-S(t_1)) = S(t_1) - S(t_2)\n\\]"
   },
   {
     "objectID": "caps/def.html#função-taxa-de-falha",
     "href": "caps/def.html#função-taxa-de-falha",
     "title": "2  Definições básicas",
     "section": "2.2 Função taxa de falha",
-    "text": "2.2 Função taxa de falha\nFornece o potencial instântaneo do evento ocorrer, dado que o indivíduo sobreviveu até o tempo \\(t\\):\n\\[\n\\lambda(t)= \\dfrac{P(t \\leq T < t + \\Delta t| T \\geq t )}{\\Delta t}\n\\]\nNote que estamos interessados em que o evento ocorra, ou seja, em termos de interpretação é o oposto da função de sobrevivência.\n\n2.2.1 Consequências\n\n\\(\\lambda(t) \\geq 0\\)\n\n\nDemonstração\n\nÉ trivial pois por definição medidas de probabilidade \\(\\in [0,1]\\) e \\(\\Delta_t \\geq 0\\) portanto um produto de números positivos\n\n\\(\\lambda(t) =\\dfrac{f(t)}{S(t)} = -\\dfrac{d}{dt}\\bigg(log(S(t))\\bigg)\\)"
+    "text": "2.2 Função taxa de falha\nFornece o potencial (taxa de falha) instantâneo do evento ocorrer, dado que o indivíduo sobreviveu até o tempo \\(t\\):\n\\[\n\\lambda(t)= \\lim_{\\Delta t \\rightarrow 0^{+}} \\dfrac{P(t \\leq T < t + \\Delta t| T \\geq t )}{\\Delta t}\n\\]\nAssim estamos interessados em saber qual a probabilidade dele não sobreviver o tempo adicional \\(\\Delta_t\\).\nOu seja, temos interesse que o evento ocorra, em termos de interpretação é o oposto da função de sobrevivência.\n\n\n\n\n\n\nNota\n\n\n\nA taxa de falha não é uma probabilidade! Pois quando dividimos por \\(\\Delta_t\\) obtemos uma probabilidade por unidade de tempo, ou seja a imagem de \\(\\lambda\\) é positiva mas não limitada.\n\n\nPelas relações a seguir vemos que a função taxa de falha determina completamente a distribuição de \\(t\\).\n\n2.2.1 Relações\n\n\\(\\lambda(t) \\geq 0\\)\n\n\nDemonstração\n\nÉ trivial pois por definição medidas de probabilidade \\(\\in [0,1]\\) e \\(\\Delta_t \\geq 0\\) portanto um produto de números positivos\n\n\\(\\lambda(t) =\\dfrac{f(t)}{S(t)} = -\\dfrac{d}{dt}\\bigg(\\text{log}(S(t))\\bigg)\\)\n\n\nDemonstração\n\nSabemos que \\(S(t) = P(T>t)\\), substituindo, obtemos:\n\n\\[\n\\lambda(t) = \\dfrac{f(t)}{1 - F(t)} = \\dfrac{\\dfrac{dF(t)}{dt}}{1 - F(t)} = -\\dfrac{-\\dfrac{dF(t)}{dt}}{1 - F(t)} = -\\dfrac{d}{d_t}\\text{log}(S(t))\n\\]\nMultiplica-se e divide-se a expressão por \\(-1\\), e utiliza-se que a derivada é um operador linear.\n\n\nvmr(t) = \\(\\dfrac{\\int_{t}^{\\infty}(u-t)f(u)du}{S(t)} = \\dfrac{\\int_{t}^{\\infty}S(u)du}{S(t)}\\)\n\n\nDemonstração\n\nVamos utilizar integral por partes, usando a fórmula definida no Apêndice. Tomando \\(f = u - t\\) e \\(g' = f(u)\\), obtemos:\n\n\\[\n=  \\lim_{b \\rightarrow \\infty} (u-t)S(u)\\bigg|_{t}^{b} - \\int_{t}^{\\infty}- S(u)du = \\int_{t}^{\\infty}S(u)du\n\\]\nOnde o resultado final é encontrado usando \\(f(u)du = - \\dfrac{d}{du}S(u)\\) e sabendo que \\(S(t) \\rightarrow\\) 0, quando \\(t\\) \\(\\rightarrow \\infty\\)\n\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
   },
   {
     "objectID": "caps/prog.html",
     "href": "caps/prog.html",
-    "title": "3  Programando",
+    "title": "3  Layout dos dados",
     "section": "",
-    "text": "Nessa seção vamos aplicar o conceitos em três linguagens de programação, a saber: Python e R"
+    "text": "Nessa seção vamos inserir os alguns dados em duas linguagens de programação, a saber: Python e R"
   },
   {
     "objectID": "caps/prog.html#layout-básico",
     "href": "caps/prog.html#layout-básico",
-    "title": "3  Programando",
+    "title": "3  Layout dos dados",
     "section": "3.1 Layout Básico",
-    "text": "3.1 Layout Básico\nOs dados de sobrevivência possuem um layout estabelecido, que é dado a seguir:\n\n\n\nId\n\\(T\\)\n\\(s_i\\)\n\\(X_i\\)\n…\n\\(X_p\\)\n\n\n\n\n1\n\\(t_1\\)\n\\(s_1\\)\n\\(x_{1i}\\)\n…\n\\(x_{1p}\\)\n\n\n2\n\\(t_2\\)\n\\(s_2\\)\n\\(x_{2i}\\)\n…\n\\(x_{2p}\\)\n\n\n.\n.\n.\n.\n.\n.\n\n\n.\n.\n.\n.\n.\n.\n\n\nn\n\\(t_n\\)\n\\(s_n\\)\n\\(x_{ni}\\)\n…\n\\(x_{np}\\)\n\n\n\n\n\nR\n\n\ntempo <- c(1, 2, 3, 3, 3, 5, 5, 16, 16, 16, 16, 16, 16, 6, 16, 1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16)\ncensura <- c(0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0)\ngrupo <- c(rep(1, 15), rep(0, 14))\ndados <- tempo  |> \n            cbind(censura)  |> \n            cbind(grupo)\ndados  |> \n        head()\n\n     tempo censura grupo\n[1,]     1       0     1\n[2,]     2       0     1\n[3,]     3       1     1\n[4,]     3       1     1\n[5,]     3       0     1\n[6,]     5       0     1\n\n\n\n\n\nPython\n\n\nimport pandas as pd\nimport numpy as np\n\ntempo = [1, 2, 3, 3, 3, 5, 5, 16, 16, 16, 16, 16, 16, 16, 16, 1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16]\ncensura = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0]\ngrupo = np.concatenate((np.repeat(1, 15), np.repeat(0, 14)))\n\ndados = pd.DataFrame({'tempo':tempo,'censura':censura,'grupo':grupo})\ndados.head()\n\n   tempo  censura  grupo\n0      1        0      1\n1      2        0      1\n2      3        1      1\n3      3        1      1\n4      3        0      1"
+    "text": "3.1 Layout Básico\nOs dados de sobrevivência possuem um layout estabelecido, que é dado a seguir:\n\n\n\nId\n\\(T\\)\n\\(s_i\\)\n\\(X_i\\)\n…\n\\(X_p\\)\n\n\n\n\n1\n\\(t_1\\)\n\\(s_1\\)\n\\(x_{1i}\\)\n…\n\\(x_{1p}\\)\n\n\n2\n\\(t_2\\)\n\\(s_2\\)\n\\(x_{2i}\\)\n…\n\\(x_{2p}\\)\n\n\n.\n.\n.\n.\n.\n.\n\n\n.\n.\n.\n.\n.\n.\n\n\nn\n\\(t_n\\)\n\\(s_n\\)\n\\(x_{ni}\\)\n…\n\\(x_{np}\\)\n\n\n\n\n\nR\n\n\ntempo <- c(1, 2, 3, 3, 3, 5, 5, 16, 16, 16, 16, 16, 16, 6, 16, 1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16)\ncensura <- c(0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0)\ngrupo <- c(rep(1, 15), rep(0, 14))\ndados <- tempo  |> \n            cbind(censura)  |> \n            cbind(grupo)\ndados  |> \n        head()\n\n     tempo censura grupo\n[1,]     1       0     1\n[2,]     2       0     1\n[3,]     3       1     1\n[4,]     3       1     1\n[5,]     3       0     1\n[6,]     5       0     1\n\n\n\n\n\nPython\n\n\nimport pandas as pd\nimport numpy as np\n\ntempo = [1, 2, 3, 3, 3, 5, 5, 16, 16, 16, 16, 16, 16, 16, 16, 1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16]\ncensura = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0]\ngrupo = np.concatenate((np.repeat(1, 15), np.repeat(0, 14)))\n\ndados = pd.DataFrame({'tempo':tempo,'censura':censura,'grupo':grupo})\ndados.head()\n\n   tempo  censura  grupo\n0      1        0      1\n1      2        0      1\n2      3        1      1\n3      3        1      1\n4      3        0      1\n\n\n\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
   },
   {
     "objectID": "caps/eda.html",
@@ -81,7 +88,7 @@
     "href": "caps/eda.html#estimando-a-função-de-sobrevivência",
     "title": "4  Análise Descritiva",
     "section": "4.1 Estimando a função de sobrevivência",
-    "text": "4.1 Estimando a função de sobrevivência\nVamos nessa subseção estudar algumas maneiras de estimar a função de sobrevivência \\(S(t)\\)\n\n4.1.1 Sem dados de censura\nUma maneira bastante intuitiva para estimarmos \\(S(t)\\) é tomarmos a quantidade de indíviduos que não falharam até o tempo \\(t\\) dividindo pelo total de indíviduos no estudo \\[\n\\hat{S}(t) = \\dfrac{\\# \\text{Observações que não falharam até t}}{\\# \\text{Observações}}\n\\]\nNa prática, \\(S(t)\\) será obtida por algum estimador, e portanto seu gráfico terá um formato de escada, como dado a seguir:\n\n\n\n\n\nFigura 4.1: Exemplo de uma função de sobrevivência na prática\n\n\n\n\nPelo Figura 4.1 nota-se que a função mantém-se constante em alguns intervalos e tem um decaimento em alguns pontos específicos, a proxima seção formaliza tal ideia."
+    "text": "4.1 Estimando a função de sobrevivência\nVamos nessa subseção estudar algumas maneiras de estimar a função de sobrevivência \\(S(t)\\)\n\n4.1.1 Sem dados de censura\nUma maneira bastante intuitiva para estimarmos \\(S(t)\\) é tomarmos a quantidade de indíviduos que não falharam até o tempo \\(t\\) dividindo pelo total de indíviduos no estudo\n\\[\n\\hat{S}(t) = \\dfrac{\\# \\text{Observações que não falharam até t}}{\\# \\text{Observações}}\n\\]\nNa prática, \\(S(t)\\) será obtida por algum estimador, e portanto seu gráfico terá um formato de escada, como dado a seguir:\n\n\n\n\n\nFigura 4.1: Exemplo de uma função de sobrevivência na prática\n\n\n\n\nPelo Figura 4.1 nota-se que a função mantém-se constante em alguns intervalos e tem um decaimento em alguns pontos específicos, a proxima seção formaliza tal ideia."
   },
   {
     "objectID": "caps/eda.html#outra-maneira-de-layout-para-os-dados",
@@ -95,28 +102,49 @@
     "href": "caps/eda.html#formalizando",
     "title": "4  Análise Descritiva",
     "section": "5.2 Formalizando",
-    "text": "5.2 Formalizando\nSabemos que \\(S(t) = P(T>t)\\), vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: \\[S(3) = P(T>3)\\]\nPodemos fazer a seguinte manipulação: \\[\nS(3) = P(T>3) = P(T>1,T>3) = P(T>1)P(T>3|T>1)\n\\]\n\n\n\n\n\n\nNota\n\n\n\nLembre que \\(f(X|Y) = \\dfrac{f(X,Y)}{f(Y)}\\)\nE que se A é subconjunto de B, então A \\(\\cap\\) B \\(=\\) A (relacione aos intervalos \\((1,\\infty)\\) e \\((3,\\infty)\\)\n\n\nVamos utilizar o seguinte exemplo para ilustrar a ideia anterior:\n\n\n\nt ordenados\nint\n# de falhas (\\(d_j\\))\n\\(n_j\\)\n\\(\\hat{S}(.)\\)\n\n\n\n\n\n0\n\\([0,1)\\)\n\\(0\\)\n\\(14\\)\n\\(1\\)\n\n\n\n\\(1\\)\n\\([1,5)\\)\n\\(3\\)\n\\(14\\)\n\\(0.78\\)\n\n\n\n\\(5\\)\n\\([5,7)\\)\n\\(1\\)\n\\(9\\)\n.\n\n\n\n\\(7\\)\n\\([7,8)\\)\n\\(1\\)\n\\(8\\)\n.\n\n\n\n\\(8\\)\n\\([8,10)\\)\n\\(1\\)\n\\(7\\)\n.\n\n\n\n\\(10\\)\n\\([10,16)\\)\n\\(1\\)\n\\(6\\)\n\\(x_{np}\\)\n\n\n\n\nPara calcular \\(\\hat{S}(1)\\), fazemos então: \\[\nP(T>1) = P(T>0,T>1) = P(T>0)P(T>1 |T>0)\n\\] Sabemos que \\(P(T>0) = 1\\) como comentado anteriormente. Temos 3 acontecimentos do evento de interesse no tempo \\(t=1\\) e 14 observações restantes, assim a probabilidade de ‘falhar’ nesse intervalo é \\(\\dfrac{3}{14}\\), portanto a probabilidade de sobreviver é \\(1 - \\dfrac{3}{14}\\), substituindo as informações tem-se portanto que \\(\\hat{S}(1) = 0.786\\)\nPara \\(\\hat{S}(5)\\), fazemos a mesma decomposição de probabilidade e chegamos em:\n\\[\n\\hat{S}(5) =  P(T>1)P(T>5|T>1)\n\\] Como calculado anteriormente \\(P(T>1) = 1-\\dfrac{3}{14}\\) e \\(P(T>5|T>1) = 1 - \\dfrac{1}{9}\\).\nFica claro então a relação de recursão, pois para o cálculo da estimativa utiliza-se todas as probabilidades calculadas anteriormente, generalizando temos:\n\\[\nS(t_j) =(1-q_1)(1-q_2)...(1-q_j) =  \\prod_{j:t_j<t} \\bigg(1 - \\dfrac{d_j}{n_j}\\bigg) = \\prod_{j:t_j<t} \\bigg(\\dfrac{n_j - d_j}{n_j}\\bigg)\n\\]\nOnde \\(q_j\\) é a probabilidade de uma observação ter o evento de interesse no intervalo \\([t_{j-1},t_j)\\) sabendo-se que não teve em \\(t_{j-1}\\), formalizando tem-se:\n\\[\nq_j = P(T \\in [t_{j-1},t_j)] | T> t_{j-1})\n\\]\nAssim o estimador reduz-se a estimar os \\(q_j\\), reescrevendo usando alguns termos já citados temos:\n\\[\n\\hat{q}_j = \\dfrac{\\# \\quad \\text{de falhas em} \\quad t_j}{\\# \\quad  \\text{Observações sobre risco}}\n\\]\n\n\n\n\n\n\nImportante\n\n\n\nOs métodos construídos anteriormente são ditos não-paramétricos, pois para a derivação dos estimadores não se faz pressuposto de distribuição para a variável aleatória \\(T\\)"
+    "text": "5.2 Formalizando\nSabemos que \\(S(t) = P(T>t)\\), vamos supor que já construímos a tabela e possuímos o tempo 3 e 1, assim queremos calcular, por exemplo: \\[S(3) = P(T>3)\\]\nPodemos fazer a seguinte manipulação:\n\\[\nS(3) = P(T>3) = P(T>1,T>3) = P(T>1)P(T>3|T>1)\n\\]\n\n\n\n\n\n\nNota\n\n\n\nLembre que \\(f(X|Y) = \\dfrac{f(X,Y)}{f(Y)}\\)\nE que se A é subconjunto de B, então A \\(\\cap\\) B \\(=\\) A (relacione aos intervalos \\((1,\\infty)\\) e \\((3,\\infty)\\)\n\n\nVamos utilizar o seguinte exemplo para ilustrar a ideia anterior:\n\n\n\nt ordenados\nint\n# de falhas (\\(d_j\\))\n\\(n_j\\)\n\\(\\hat{S}(.)\\)\n\n\n\n\n\n0\n\\([0,1)\\)\n\\(0\\)\n\\(14\\)\n\\(1\\)\n\n\n\n\\(1\\)\n\\([1,5)\\)\n\\(3\\)\n\\(14\\)\n\\(0.78\\)\n\n\n\n\\(5\\)\n\\([5,7)\\)\n\\(1\\)\n\\(9\\)\n.\n\n\n\n\\(7\\)\n\\([7,8)\\)\n\\(1\\)\n\\(8\\)\n.\n\n\n\n\\(8\\)\n\\([8,10)\\)\n\\(1\\)\n\\(7\\)\n.\n\n\n\n\\(10\\)\n\\([10,16)\\)\n\\(1\\)\n\\(6\\)\n\\(x_{np}\\)\n\n\n\n\nPara calcular \\(\\hat{S}(1)\\), fazemos então:\n\\[\nP(T>1) = P(T>0,T>1) = P(T>0)P(T>1 |T>0)\n\\]\nSabemos que \\(P(T>0) = 1\\) como comentado anteriormente. Temos 3 acontecimentos do evento de interesse no tempo \\(t=1\\) e 14 observações restantes, assim a probabilidade de ‘falhar’ nesse intervalo é \\(\\dfrac{3}{14}\\), portanto a probabilidade de sobreviver é \\(1 - \\dfrac{3}{14}\\), substituindo as informações tem-se portanto que \\(\\hat{S}(1) = 0.786\\)\nPara \\(\\hat{S}(5)\\), fazemos a mesma decomposição de probabilidade e chegamos em:\n\\[\n\\hat{S}(5) =  P(T>1)P(T>5|T>1)\n\\]\nComo calculado anteriormente \\(P(T>1) = 1-\\dfrac{3}{14}\\) e \\(P(T>5|T>1) = 1 - \\dfrac{1}{9}\\).\nFica claro então a relação de recursão, pois para o cálculo da estimativa utiliza-se todas as probabilidades calculadas anteriormente, generalizando temos:\n\\[\nS(t_j) =(1-q_1)(1-q_2)...(1-q_j) =  \\prod_{j:t_j<t} \\bigg(1 - \\dfrac{d_j}{n_j}\\bigg) = \\prod_{j:t_j<t} \\bigg(\\dfrac{n_j - d_j}{n_j}\\bigg)\n\\]\nOnde \\(q_j\\) é a probabilidade de uma observação ter o evento de interesse no intervalo \\([t_{j-1},t_j)\\) sabendo-se que não teve em \\(t_{j-1}\\), formalizando tem-se:\n\\[\nq_j = P(T \\in [t_{j-1},t_j)] | T> t_{j-1})\n\\]\nAssim o estimador reduz-se a estimar os \\(q_j\\), reescrevendo usando alguns termos já citados temos:\n\\[\n\\hat{q}_j = \\dfrac{\\# \\quad \\text{de falhas em} \\quad t_j}{\\# \\quad  \\text{Observações sobre risco}}\n\\]\n\n\n\n\n\n\nImportante\n\n\n\nOs métodos construídos anteriormente são ditos não-paramétricos, pois para a derivação dos estimadores não se faz pressuposto de distribuição para a variável aleatória \\(T\\)"
   },
   {
     "objectID": "caps/eda.html#propriedades-do-estimador",
     "href": "caps/eda.html#propriedades-do-estimador",
     "title": "4  Análise Descritiva",
     "section": "5.3 Propriedades do estimador",
-    "text": "5.3 Propriedades do estimador\nComo temos um estimador pontual, podemos também construir intervalos de confiança para a estimativas.\n\n5.3.1 Variância do Estimador\nOra ora, para calcular a variância do estimador precisamos saber a distribuição do estimador, então aqui vamos nos conter com o estimador da variância do estimador, que é dado por: \\[\n\\widehat{\\text{Var}}(\\hat{S}(t)) = [\\hat{S}(t)]^{2}\\sum_{j:t_j<t}\\dfrac{d_j}{n_j(n_j - d_j)}\n\\]"
+    "text": "5.3 Propriedades do estimador\nComo temos um estimador pontual, podemos também construir intervalos de confiança para a estimativas.\n\n5.3.1 Variância do Estimador\nOra ora, para calcular a variância do estimador precisamos saber a distribuição do estimador, então aqui vamos nos conter com o estimador da variância do estimador, que é dado por:\n\\[\n\\widehat{\\text{Var}}(\\hat{S}(t)) = [\\hat{S}(t)]^{2}\\sum_{j:t_j<t}\\dfrac{d_j}{n_j(n_j - d_j)}\n\\]"
   },
   {
     "objectID": "caps/eda.html#códigos",
     "href": "caps/eda.html#códigos",
     "title": "4  Análise Descritiva",
     "section": "5.4 Códigos",
-    "text": "5.4 Códigos\n\n\nPython\n\n\nimport pandas as pd\nimport numpy as np\nfrom lifelines import KaplanMeierFitter\n#%% \ntempo = [1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16]\nfalha = [1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0]\n\ndados = pd.DataFrame({'tempo':tempo,'censura':falha})\n\n#%%\nKaplanMeierFitter().fit(dados['tempo'],dados['censura']).survival_function_\n\n          KM_estimate\ntimeline             \n0.0          1.000000\n1.0          0.785714\n4.0          0.785714\n5.0          0.698413\n7.0          0.611111\n8.0          0.523810\n10.0         0.436508\n12.0         0.436508\n16.0         0.436508"
+    "text": "5.4 Códigos\n\n\nPython\n\n\nimport pandas as pd\nimport numpy as np\nfrom lifelines import KaplanMeierFitter\n#%% \ntempo = [1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16]\nfalha = [1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0]\n\ndados = pd.DataFrame({'tempo':tempo,'censura':falha})\n\n#%%\nKaplanMeierFitter().fit(dados['tempo'],dados['censura']).survival_function_\n\n          KM_estimate\ntimeline             \n0.0          1.000000\n1.0          0.785714\n4.0          0.785714\n5.0          0.698413\n7.0          0.611111\n8.0          0.523810\n10.0         0.436508\n12.0         0.436508\n16.0         0.436508\n\n\n\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
   },
   {
     "objectID": "caps/summary.html",
     "href": "caps/summary.html",
     "title": "5  Summary",
     "section": "",
-    "text": "In summary, this book has no content whatsoever."
+    "text": "Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
+    "objectID": "caps/apend.html",
+    "href": "caps/apend.html",
+    "title": "Appendix A — Apêndice",
+    "section": "",
+    "text": "A expressão pode ser obtida facilmente lembrando a regra do produto para derivadas e integrando em ambos os lados, assim obtemos:\n\\[\n\\int_{a}^{b}fg'dx = fg\\bigg|^{b}_{a} - \\int_{a}^{b}f'gdx\n\\]"
+  },
+  {
+    "objectID": "caps/apend.html#estimador-de-máxima-verossimilhança",
+    "href": "caps/apend.html#estimador-de-máxima-verossimilhança",
+    "title": "Appendix A — Apêndice",
+    "section": "A.2 Estimador de máxima verossimilhança",
+    "text": "A.2 Estimador de máxima verossimilhança"
+  },
+  {
+    "objectID": "caps/apend.html#método-delta",
+    "href": "caps/apend.html#método-delta",
+    "title": "Appendix A — Apêndice",
+    "section": "A.3 Método Delta",
+    "text": "A.3 Método Delta\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
   },
   {
     "objectID": "references.html",
@@ -124,5 +152,61 @@
     "title": "Referências",
     "section": "",
     "text": "Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006.\nAnálise de Sobrevivência Aplicada.\nEditora Blucher."
+  },
+  {
+    "objectID": "caps/parametric.html",
+    "href": "caps/parametric.html",
+    "title": "6  Análise Paramétrica",
+    "section": "",
+    "text": "Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
+    "objectID": "caps/models.html",
+    "href": "caps/models.html",
+    "title": "7  Em construção",
+    "section": "",
+    "text": "Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
+    "objectID": "caps/parametric.html#propriedades",
+    "href": "caps/parametric.html#propriedades",
+    "title": "6  Análise Paramétrica",
+    "section": "6.2 Propriedades",
+    "text": "6.2 Propriedades\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
+    "objectID": "caps/parametric.html#estimação",
+    "href": "caps/parametric.html#estimação",
+    "title": "6  Análise Paramétrica",
+    "section": "6.2 Estimação",
+    "text": "6.2 Estimação"
+  },
+  {
+    "objectID": "caps/parametric.html#escolha-do-modelo",
+    "href": "caps/parametric.html#escolha-do-modelo",
+    "title": "6  Análise Paramétrica",
+    "section": "6.3 Escolha do modelo",
+    "text": "6.3 Escolha do modelo"
+  },
+  {
+    "objectID": "caps/parametric.html#exercícios",
+    "href": "caps/parametric.html#exercícios",
+    "title": "6  Análise Paramétrica",
+    "section": "6.4 Exercícios",
+    "text": "6.4 Exercícios\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
+    "objectID": "caps/relations.html",
+    "href": "caps/relations.html",
+    "title": "Appendix B — Algumas Relações Importantes",
+    "section": "",
+    "text": "Colosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
+  },
+  {
+    "objectID": "caps/models.html#modelos-de-cox",
+    "href": "caps/models.html#modelos-de-cox",
+    "title": "7  Em construção",
+    "section": "7.2 Modelos de Cox",
+    "text": "7.2 Modelos de Cox\n\n\n\n\nColosimo, Suely Ruiz, Enrico Antonio e Giolo. 2006. Análise de sobrevivência aplicada. Editora Blucher.\n\n\nFisher, Ronald A. 1922. «On the mathematical foundations of theoretical statistics». Philosophical transactions of the Royal Society of London. Series A, containing papers of a mathematical or physical character 222 (594-604): 309–68.\n\n\nKaplan, Edward L, e Paul Meier. 1958. «Nonparametric estimation from incomplete observations». Journal of the American statistical association 53 (282): 457–81.\n\n\nKleinbaum, David G, Mitchel Klein, et al. 2012. Survival analysis: a self-learning text. Vol. 3. Springer.\n\n\nLiu, Xian. 2012. Survival analysis: models and applications. John Wiley & Sons."
   }
 ]

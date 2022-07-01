@@ -13,10 +13,10 @@ Note portanto, que o evento pode encapsular mais de um fato como  **falhar duas 
 
 ## Breve História
 
-Originalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico [John Graunt](https://en.wikipedia.org/wiki/John_Graunt), por um longo a análise de sobrevivência foi considerada um instrumento analítico para estudos de biomedicina  e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas décadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviáveis
+Originalmente, análise de sobrevivência era usada exclusivamente para para estudos de mortalidade em registros estatísticos. Sabe-se que as primeiras análises estatísticas de processos de sobrevivência foram desenvolvidas pelo estatístico [John Graunt](https://en.wikipedia.org/wiki/John_Graunt), por um longo a análise de sobrevivência foi considerada um instrumento analítico para estudos de biomedicina  e estudos demográficos, mas assim como estatística em geral alterou-se fortemente nas últimas décadas junto (causa?) com avanços computacionais, a análise de sobrevivência não foi diferente, pois atualmente possuímos um grande poder computacional para desenvolvimento de métodos estatísticos antes inviáveis.
 
 ## Porque estudar análise de sobrevivência?
-Ok, porque não usar usar modelos de regressão em geral para modelar o Tempo (*T*)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura
+Ok, porque não usar usar modelos de regressão em geral para modelar o Tempo (*T*)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura.
 
 ## Censura
 Quando estamos fazendo uma análise de sobrevivência podemos ter indivíduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de **censurados**  
@@ -35,3 +35,25 @@ Aqui vamos definir alguns tipos de censuras
 <span style="color:blue">Censura Tipo II </span> O estudo será finalizado após ter ocorrido o evento de interesse em um número pré-estabelecido de indivíduos.  
 <span style="color:blue">Censura Aleatória </span>: Acontece quando o indivíduo é removido do estudo sem ter ocorrido a falha.
 
+## Modelos para censura aleatória independentes  
+Considere que para os indivíduos $i = 1,....,n$ temos um tempo de vida de $T_i$ e um tempo de censura $C_i$ (á direita) e suponha que essas variáveis aleatórias são independentes, assim podemos definir uma nova variável $T_{i}^{*} = \text{min}(T_i, C_i)$.  
+Assim, se o indivíduo possuir o evento de interesse $T_{i}^{*} = T_i$ do contrário ele foi censurado, então $T_{i}^{*} = C_i$.   
+Podemos além disso definir  a seguinte função indicadora:
+$$
+\delta_i = \begin{cases}
+  1  & \text{se }  T_i \leq C_i\\
+  0 & \text{se } T_i > C_i
+\end{cases}
+$$
+
+Dessa maneira conseguimos estruturar os dados para um indivíduo $i$ pelo par $(t_i,\delta_i)$ em que:
+
+* $t_i$ é o tempo de falha observado;  
+* $\delta_i$ é  a variável indicadora de falha ou censura.
+
+
+:::{.callout-note}
+Relembre que $\delta_i$ vai ter valor 1 se o indivíduo **não** for censurado, ou seja observamos um tempo para o evento de interesse.
+:::
+
+Se possuírmos além disso covariáveis, aqui denotadas por $x_i^{t}$ a estrutura vai ser definida pela tupla $(t_i,\delta_i, x_i)$.

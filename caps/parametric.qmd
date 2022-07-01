@@ -1,0 +1,15 @@
+# Análise Paramétrica
+
+## Algumas distribuições importantes
+
+
+## Estimação
+
+
+## Escolha do modelo
+
+
+## Exercícios
+
+
+

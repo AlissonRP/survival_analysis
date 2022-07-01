@@ -1,0 +1,15 @@
+# Apêndice
+## Integração por partes 
+A expressão pode ser obtida facilmente lembrando a regra do produto para derivadas e integrando em ambos os lados, assim obtemos: 
+$$
+\int_{a}^{b}fg'dx = fg\bigg|^{b}_{a} - \int_{a}^{b}f'gdx
+$$
+
+## Estimador de máxima verossimilhança
+
+
+
+## Método Delta
+
+
+## Propriedades da função Gamma

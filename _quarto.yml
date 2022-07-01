@@ -2,6 +2,7 @@ project:
   type: book
   output-dir: docs
 lang: pt
+nocite: '@*'
 
 
 book:
@@ -10,11 +11,26 @@ book:
   date: ""
   chapters:
     - index.qmd
-    - caps/intro.qmd
-    - caps/def.qmd
-    - caps/prog.qmd
-    - caps/eda.qmd
+    - part: "Introdução"
+      chapters:
+      - caps/intro.qmd
+    - part: "Conceitos Básicos"
+      chapters:
+      - caps/def.qmd
+      - caps/prog.qmd
+    - part: "Análise Não paramétrica"
+      chapters:
+      - caps/eda.qmd
     - caps/summary.qmd
+    - part: "Análise Paramétrica"
+      chapters:
+      - caps/parametric.qmd
+    - part: "Modelagem"
+      chapters:
+      - caps/models.qmd
+  appendices:
+    - caps/apend.qmd
+    - caps/relations.qmd
     - references.qmd
   favicon: "favicon"
   navbar:
