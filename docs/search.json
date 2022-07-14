@@ -11,7 +11,7 @@
     "href": "caps/intro.html",
     "title": "1  Introdução",
     "section": "",
-    "text": "Análise de sobrevivência é a área que estuda o tempo até acontecer um evento de interesse acontecer. Como por exemplo:\nNote portanto, que o evento pode encapsular mais de um fato como falhar duas vezes"
+    "text": "Análise de sobrevivência é a área que estuda o tempo até um evento de interesse acontecer. Como por exemplo:\nNote portanto, que o evento pode encapsular mais de um fato como falhar duas vezes"
   },
   {
     "objectID": "caps/intro.html#breve-história",
@@ -25,14 +25,14 @@
     "href": "caps/intro.html#porque-estudar-análise-de-sobrevivência",
     "title": "1  Introdução",
     "section": "1.2 Porque estudar análise de sobrevivência?",
-    "text": "1.2 Porque estudar análise de sobrevivência?\nOk, porque não usar usar modelos de regressão em geral para modelar o Tempo (T)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura."
+    "text": "1.2 Porque estudar análise de sobrevivência?\nOk, por que não usar usar modelos de regressão em geral para modelar o Tempo (T)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura."
   },
   {
     "objectID": "caps/intro.html#censura",
     "href": "caps/intro.html#censura",
     "title": "1  Introdução",
     "section": "1.3 Censura",
-    "text": "1.3 Censura\nQuando estamos fazendo uma análise de sobrevivência podemos ter indivíduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de censurados\n\n\n\n\n\n\nCensura\n\n\n\nTemos informações sobre o tempo de sobrevivência mas não sabemos exatamente quando acontece o evento de interesse.\n\n\n\n1.3.1 Tipos de censura\nAqui vamos definir alguns tipos de censuras\nCensura Tipo I : O estudo será finalizado após um período pré estabelecido de tempo. Censura Tipo II  O estudo será finalizado após ter ocorrido o evento de interesse em um número pré-estabelecido de indivíduos.\nCensura Aleatória : Acontece quando o indivíduo é removido do estudo sem ter ocorrido a falha."
+    "text": "1.3 Censura\nQuando estamos fazendo uma análise de sobrevivência podemos ter indivíduos que por algum motivo tiveram que sair do estudo e não apresentaram o evento de interesse, portanto os dados desses indivíduos são chamados de censurados\n\n\n\n\n\n\nCensura\n\n\n\nTemos informações sobre o tempo de sobrevivência mas não sabemos exatamente quando acontece o evento de interesse.\n\n\nPor que simplesmente não jogamos fora as observações desse indivíduos “censurados”? Note que eles agregam informação, pois indicam que o tempo para o evento de interesse é maior que seu tempo de censura, em outras palavras, em geral eles vão inflar o tempo observado.\n\n1.3.1 Tipos de censura\nAqui vamos definir alguns tipos de censuras\nCensura Tipo I : O estudo será finalizado após um período pré estabelecido de tempo. Censura Tipo II  O estudo será finalizado após ter ocorrido o evento de interesse em um número pré-estabelecido de indivíduos.\nCensura Aleatória : Acontece quando o indivíduo é removido do estudo sem ter ocorrido a falha."
   },
   {
     "objectID": "caps/intro.html#modelos-para-censura-aleatória-independentes",

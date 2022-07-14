@@ -193,7 +193,7 @@ div.csl-indent {
     <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../caps/parametric.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Em construção</span></a>
+  <a href="../caps/parametric.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análise Paramétrica</span></a>
   </div>
 </li>
     </ul>
@@ -224,6 +224,11 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../caps/apend.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apêndice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/relations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algumas Relações Importantes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -271,7 +276,7 @@ div.csl-indent {
 
 </header>
 
-<p>Análise de sobrevivência é a área que estuda o <strong>tempo</strong> até acontecer um evento de interesse acontecer. Como por exemplo:</p>
+<p>Análise de sobrevivência é a área que estuda o <strong>tempo</strong> até um evento de interesse acontecer. Como por exemplo:</p>
 <ul>
 <li>Tempo até os modelos convergirem</li>
 <li>Tempo até o equipamento falhar duas vezes</li>
@@ -286,7 +291,7 @@ div.csl-indent {
 </section>
 <section id="porque-estudar-análise-de-sobrevivência" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="porque-estudar-análise-de-sobrevivência"><span class="header-section-number">1.2</span> Porque estudar análise de sobrevivência?</h2>
-<p>Ok, porque não usar usar modelos de regressão em geral para modelar o Tempo (<em>T</em>)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura.</p>
+<p>Ok, por que não usar usar modelos de regressão em geral para modelar o Tempo (<em>T</em>)? Um ponto fundamental aqui, é que nem sempre o evento de interesse acontece, assim gerando o que é conhecido como censura.</p>
 </section>
 <section id="censura" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="censura"><span class="header-section-number">1.3</span> Censura</h2>
@@ -304,6 +309,7 @@ Censura
 <p>Temos informações sobre o tempo de sobrevivência mas não sabemos exatamente <strong>quando</strong> acontece o evento de interesse.</p>
 </div>
 </div>
+<p>Por que simplesmente não jogamos fora as observações desse indivíduos “censurados”? Note que eles agregam informação, pois indicam que o tempo para o evento de interesse é maior que seu tempo de censura, em outras palavras, em geral eles vão inflar o tempo observado.</p>
 <section id="tipos-de-censura" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="tipos-de-censura"><span class="header-section-number">1.3.1</span> Tipos de censura</h3>
 <p>Aqui vamos definir alguns tipos de censuras</p>
