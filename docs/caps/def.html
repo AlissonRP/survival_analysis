@@ -163,19 +163,72 @@ div.csl-indent {
 </li>
     </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Análise Não paramétrica</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../caps/eda.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Análise Descritiva</span></a>
   </div>
 </li>
+    </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../caps/summary.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Análise Paramétrica</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../caps/apend.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Apêndice</span></a>
+  <a href="../caps/parametric.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Análise Paramétrica</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Modelagem</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/models.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Em construção</span></a>
+  </div>
+</li>
+    </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+    <div class="sidebar-item-container"> 
+        <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">Apêndices</a>
+      <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true">
+        <i class="bi bi-chevron-right ms-2"></i>
+      </a>
+    </div>
+    <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/apend.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Apêndice</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../caps/relations.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Algumas Relações Importantes</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -183,6 +236,8 @@ div.csl-indent {
   <a href="../references.html" class="sidebar-item-text sidebar-link">Referências</a>
   </div>
 </li>
+    </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -288,31 +343,31 @@ Demonstração
 </summary>
 É trivial pois por definição medidas de probabilidade <span class="math inline">\(\in [0,1]\)</span> e <span class="math inline">\(\Delta_t \geq 0\)</span> portanto um produto de números positivos
 </details></li>
-<li><span class="math inline">\(\lambda(t) =\dfrac{f(t)}{S(t)} = -\dfrac{d}{dt}\bigg(\text{log}(S(t))\bigg)\)</span>
+<li><span class="math inline">\(\lambda(t) =\dfrac{f(t)}{S(t)} = -\dfrac{d}{dt}\bigg(\text{log}(S(t))\bigg)\)</span></li>
+</ul>
 <details>
 <summary>
 Demonstração
 </summary>
-Sabemos que <span class="math inline">\(S(t) = P(T&gt;t)\)</span>, substituindo, obtemos:</details></li>
-</ul>
+<p>Sabemos que <span class="math inline">\(S(t)=P(T&gt;t)\)</span>, substituindo, obtemos:</p>
 <p><span class="math display">\[
-\lambda(t) = \dfrac{f(t)}{1 - F(t)} = \dfrac{\dfrac{dF(t)}{dt}}{1 - F(t)} = -\dfrac{-\dfrac{dF(t)}{dt}}{1 - F(t)} = -\dfrac{d}{d_t}\text{log}(S(t))
+\lambda(t)=\dfrac{f(t)}{1-F(t)}=\dfrac{\dfrac{dF(t)}{dt}}{1-F(t)}=-\dfrac{-\dfrac{dF(t)}{dt}}{1-F(t)}=-\dfrac{d}{d_t}\text{log}(S(t))
 \]</span></p>
 Multiplica-se e divide-se a expressão por <span class="math inline">\(-1\)</span>, e utiliza-se que a derivada é um operador linear.
-
+</details>
 <ul>
-<li>vmr(t) = <span class="math inline">\(\dfrac{\int_{t}^{\infty}(u-t)f(u)du}{S(t)} = \dfrac{\int_{t}^{\infty}S(u)du}{S(t)}\)</span>
+<li>vmr(t) = <span class="math inline">\(\dfrac{\int_{t}^{\infty}(u-t)f(u)du}{S(t)} = \dfrac{\int_{t}^{\infty}S(u)du}{S(t)}\)</span></li>
+</ul>
 <details>
 <summary>
 Demonstração
 </summary>
-Vamos utilizar integral por partes, usando a fórmula definida no <a href="../caps/apend.html">Apêndice</a>. Tomando <span class="math inline">\(f = u - t\)</span> e <span class="math inline">\(g' = f(u)\)</span>, obtemos:</details></li>
-</ul>
+<p>Vamos utilizar integral por partes, usando a fórmula definida no <a href="../caps/apend.html">Apêndice</a>. Tomando <span class="math inline">\(f = u - t\)</span> e <span class="math inline">\(g' = f(u)\)</span>, obtemos:</p>
 <p><span class="math display">\[
-=  \lim_{b \rightarrow \infty} (u-t)S(u)\bigg|_{t}^{b} - \int_{t}^{\infty}- S(u)du = \int_{t}^{\infty}S(u)du
+=\lim_{b \rightarrow \infty} (u-t)S(u)\bigg|_{t}^{b} - \int_{t}^{\infty}- S(u)du = \int_{t}^{\infty}S(u)du
 \]</span></p>
 Onde o resultado final é encontrado usando <span class="math inline">\(f(u)du = - \dfrac{d}{du}S(u)\)</span> e sabendo que <span class="math inline">\(S(t) \rightarrow\)</span> 0, quando <span class="math inline">\(t\)</span> <span class="math inline">\(\rightarrow \infty\)</span>
-
+</details>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">

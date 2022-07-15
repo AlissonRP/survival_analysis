@@ -4,7 +4,28 @@
 
 
 ## Estimação
+Para a estimação vamos utilizar do estimador de máxima verossimilhança, a qual se recomenda-se a leitura do artigo @fisher1922mathematical, a ideia principal é que dado uma amostrada observada $x_1, x_2 \dots x_n$ vamos encontrar o(s) valor(es) dos parâmetros mais **plausíveis** de terem gerado essa amostra.   
+O método de máxima verossimilhança se reduz então a encontrar o máximo da função de verossimilhança, como pode ser visto no [Apêndice](apend.qmd) a verossimilhança em sua forma geral é dada por:
 
+$$
+L(\theta) = \prod_{i=1}^{n}f(x_i;\theta)
+$$
+Porém em análise de sobrevivência a verossimilhança sofre uma leva alteração como vamos ver a seguir
+
+### Estimação dos parâmetros com a presença de censura
+Seja $T$ a variável aleatória que informa o tempo até o evento ocorrer, se a função indicadora $\delta_i$ definida [aqui](def.qmd) é igual a 1, então esse tempo pode ser modelado usando a $f(t)$, porém para observações em que $\delta_i=0$ (censura) a informação do tempo somente nos informa que o tempo de falha é maior que o tempo de censura observado, assim para essas observações a contribuição na verossimilhança é fornecida pela função de sobrevivência, dessa maneira a verossimilhança  para todos os mecanismos de censura agora fica expressa como:
+
+$$
+L(\theta) = \prod_{i=1}^{r}f(t_i;\theta)\prod_{i=r+1}^{n}S(t_i;\theta)
+$$
+
+Onde $r$ é a quantidade de censura observadas   
+De forma equivalente a verossimilhança pode ser escrita:
+$$
+L(\theta) = \prod_{i=1}^{r}[f(t_i;\theta)]^{\delta_i}[S(t_i;\theta)]^{1-\delta_i}
+$$
+
+No momento a demonstração para casos particulares de mecanismo de censura fica a cargo do leitor
 
 ## Escolha do modelo
 

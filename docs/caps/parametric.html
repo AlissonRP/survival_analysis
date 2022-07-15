@@ -56,6 +56,7 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
@@ -247,7 +248,10 @@ div.csl-indent {
    
   <ul>
   <li><a href="#algumas-distribuições-importantes" id="toc-algumas-distribuições-importantes" class="nav-link active" data-scroll-target="#algumas-distribuições-importantes"> <span class="header-section-number">6.1</span> Algumas distribuições importantes</a></li>
-  <li><a href="#estimação" id="toc-estimação" class="nav-link" data-scroll-target="#estimação"> <span class="header-section-number">6.2</span> Estimação</a></li>
+  <li><a href="#estimação" id="toc-estimação" class="nav-link" data-scroll-target="#estimação"> <span class="header-section-number">6.2</span> Estimação</a>
+  <ul class="collapse">
+  <li><a href="#estimação-dos-parâmetros-com-a-presença-de-censura" id="toc-estimação-dos-parâmetros-com-a-presença-de-censura" class="nav-link" data-scroll-target="#estimação-dos-parâmetros-com-a-presença-de-censura"> <span class="header-section-number">6.2.1</span> Estimação dos parâmetros com a presença de censura</a></li>
+  </ul></li>
   <li><a href="#escolha-do-modelo" id="toc-escolha-do-modelo" class="nav-link" data-scroll-target="#escolha-do-modelo"> <span class="header-section-number">6.3</span> Escolha do modelo</a></li>
   <li><a href="#exercícios" id="toc-exercícios" class="nav-link" data-scroll-target="#exercícios"> <span class="header-section-number">6.4</span> Exercícios</a></li>
   </ul>
@@ -277,6 +281,25 @@ div.csl-indent {
 </section>
 <section id="estimação" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="estimação"><span class="header-section-number">6.2</span> Estimação</h2>
+<p>Para a estimação vamos utilizar do estimador de máxima verossimilhança, a qual se recomenda-se a leitura do artigo <span class="citation" data-cites="fisher1922mathematical">Fisher (<a href="../references.html#ref-fisher1922mathematical" role="doc-biblioref">1922</a>)</span>, a ideia principal é que dado uma amostrada observada <span class="math inline">\(x_1, x_2 \dots x_n\)</span> vamos encontrar o(s) valor(es) dos parâmetros mais <strong>plausíveis</strong> de terem gerado essa amostra.<br>
+O método de máxima verossimilhança se reduz então a encontrar o máximo da função de verossimilhança, como pode ser visto no <a href="../caps/apend.html">Apêndice</a> a verossimilhança em sua forma geral é dada por:</p>
+<p><span class="math display">\[
+L(\theta) = \prod_{i=1}^{n}f(x_i;\theta)
+\]</span></p>
+<p>Porém em análise de sobrevivência a verossimilhança sofre uma leva alteração como vamos ver a seguir</p>
+<section id="estimação-dos-parâmetros-com-a-presença-de-censura" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="estimação-dos-parâmetros-com-a-presença-de-censura"><span class="header-section-number">6.2.1</span> Estimação dos parâmetros com a presença de censura</h3>
+<p>Seja <span class="math inline">\(T\)</span> a variável aleatória que informa o tempo até o evento ocorrer, se a função indicadora <span class="math inline">\(\delta_i\)</span> definida <a href="../caps/def.html">aqui</a> é igual a 1, então esse tempo pode ser modelado usando a <span class="math inline">\(f(t)\)</span>, porém para observações em que <span class="math inline">\(\delta_i=0\)</span> (censura) a informação do tempo somente nos informa que o tempo de falha é maior que o tempo de censura observado, assim para essas observações a contribuição na verossimilhança é fornecida pela função de sobrevivência, dessa maneira a verossimilhança para todos os mecanismos de censura agora fica expressa como:</p>
+<p><span class="math display">\[
+L(\theta) = \prod_{i=1}^{r}f(t_i;\theta)\prod_{i=r+1}^{n}S(t_i;\theta)
+\]</span></p>
+<p>Onde <span class="math inline">\(r\)</span> é a quantidade de censura observadas<br>
+De forma equivalente a verossimilhança pode ser escrita:</p>
+<p><span class="math display">\[
+L(\theta) = \prod_{i=1}^{r}[f(t_i;\theta)]^{\delta_i}[S(t_i;\theta)]^{1-\delta_i}
+\]</span></p>
+<p>No momento a demonstração para casos particulares de mecanismo de censura fica a cargo do leitor</p>
+</section>
 </section>
 <section id="escolha-do-modelo" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="escolha-do-modelo"><span class="header-section-number">6.3</span> Escolha do modelo</h2>

@@ -74,21 +74,27 @@ Pelas relações a seguir vemos que a função taxa de falha determina completam
 </details>
 
 * $\lambda(t) =\dfrac{f(t)}{S(t)} = -\dfrac{d}{dt}\bigg(\text{log}(S(t))\bigg)$
+
 <details>
   <summary markdown="span">Demonstração</summary> 
-Sabemos que $S(t) = P(T>t)$, substituindo, obtemos:
-$$
-\lambda(t) = \dfrac{f(t)}{1 - F(t)} = \dfrac{\dfrac{dF(t)}{dt}}{1 - F(t)} = -\dfrac{-\dfrac{dF(t)}{dt}}{1 - F(t)} = -\dfrac{d}{d_t}\text{log}(S(t))
+Sabemos que $S(t)=P(T>t)$, substituindo, obtemos:  
+$$ 
+\lambda(t)=\dfrac{f(t)}{1-F(t)}=\dfrac{\dfrac{dF(t)}{dt}}{1-F(t)}=-\dfrac{-\dfrac{dF(t)}{dt}}{1-F(t)}=-\dfrac{d}{d_t}\text{log}(S(t))
 $$
 Multiplica-se e divide-se a expressão por $-1$, e utiliza-se que a derivada é um operador linear.
 </details>
 
+
 * vmr(t) = $\dfrac{\int_{t}^{\infty}(u-t)f(u)du}{S(t)} = \dfrac{\int_{t}^{\infty}S(u)du}{S(t)}$
+
+
+
 <details>
   <summary markdown="span">Demonstração</summary> 
-Vamos utilizar integral por partes, usando a fórmula definida no [Apêndice](apend.qmd). Tomando $f = u - t$ e $g' = f(u)$, obtemos: 
-$$
- =  \lim_{b \rightarrow \infty} (u-t)S(u)\bigg|_{t}^{b} - \int_{t}^{\infty}- S(u)du = \int_{t}^{\infty}S(u)du
+Vamos utilizar integral por partes, usando a fórmula definida no [Apêndice](apend.qmd). Tomando $f = u - t$ e $g' = f(u)$, obtemos:
+$$ 
+=\lim_{b \rightarrow \infty} (u-t)S(u)\bigg|_{t}^{b} - \int_{t}^{\infty}- S(u)du = \int_{t}^{\infty}S(u)du
 $$
 Onde o resultado final é encontrado usando $f(u)du = - \dfrac{d}{du}S(u)$ e sabendo que $S(t) \rightarrow$ 0, quando $t$ $\rightarrow \infty$
 </details>
+
