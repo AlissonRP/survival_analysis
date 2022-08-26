@@ -318,12 +318,10 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#outra-maneira-de-layout-para-os-dados" id="toc-outra-maneira-de-layout-para-os-dados" class="nav-link" data-scroll-target="#outra-maneira-de-layout-para-os-dados"> <span class="header-section-number">5.1</span> Outra maneira de layout para os dados</a></li>
   <li><a href="#formalizando" id="toc-formalizando" class="nav-link" data-scroll-target="#formalizando"> <span class="header-section-number">5.2</span> Formalizando</a></li>
-  <li><a href="#propriedades-do-estimador" id="toc-propriedades-do-estimador" class="nav-link" data-scroll-target="#propriedades-do-estimador"> <span class="header-section-number">5.3</span> Propriedades do estimador</a>
-  <ul class="collapse">
-  <li><a href="#variância-do-estimador" id="toc-variância-do-estimador" class="nav-link" data-scroll-target="#variância-do-estimador"> <span class="header-section-number">5.3.1</span> Variância do Estimador</a></li>
-  </ul></li>
+  <li><a href="#propriedades-do-estimador" id="toc-propriedades-do-estimador" class="nav-link" data-scroll-target="#propriedades-do-estimador"> <span class="header-section-number">5.3</span> Propriedades do estimador</a></li>
   <li><a href="#códigos" id="toc-códigos" class="nav-link" data-scroll-target="#códigos"> <span class="header-section-number">5.4</span> Códigos</a></li>
   </ul></li>
+  <li><a href="#estimador-de-nelson---aalen" id="toc-estimador-de-nelson---aalen" class="nav-link" data-scroll-target="#estimador-de-nelson---aalen"> <span class="header-section-number">6</span> Estimador de Nelson - Aalen</a></li>
   </ul>
 </nav>
     </div>
@@ -589,33 +587,64 @@ Importante
 </section>
 <section id="propriedades-do-estimador" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="propriedades-do-estimador"><span class="header-section-number">5.3</span> Propriedades do estimador</h2>
-<p>Como temos um estimador pontual, podemos também construir intervalos de confiança para a estimativas.</p>
-<section id="variância-do-estimador" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="variância-do-estimador"><span class="header-section-number">5.3.1</span> Variância do Estimador</h3>
-<p>Ora ora, para calcular a variância do estimador precisamos saber a distribuição do estimador, então aqui vamos nos conter com o estimador da variância do estimador, que é dado por:</p>
+<p>O estimador de Kaplan-Meyer possui as seguintes propriedades:</p>
+<ol type="1">
+<li>Assintoticamente não viesado,</li>
+<li>Fracamente consistente,</li>
+<li>É o estimador de máxima verossimilhança de <span class="math inline">\(S(t)\)</span></li>
+</ol>
+<p>Sabendo da propriedade 3 e utilizando o método delta, podemos facilmente derivar a variância do estimador, que é dada por:</p>
 <p><span class="math display">\[
-\widehat{\text{Var}}(\hat{S}(t)) = [\hat{S}(t)]^{2}\sum_{j:t_j&lt;t}\dfrac{d_j}{n_j(n_j - d_j)}
+\widehat{\text{Var}}(\widehat{S}(t)) = [\hat{S}(t)]^{2}\sum_{j:t_j&lt;t}\dfrac{d_j}{n_j(n_j - d_j)}
 \]</span></p>
-</section>
+<p>Como temos um estimador pontual, podemos também construir intervalos de confiança para as estimativas. Utilizando da normalidade assintótica dos EMV, temos o seguinte intervalo de confiança <span class="math inline">\(100(1 - \alpha)\)</span> aproximado:</p>
+<p><span class="math display">\[
+\widehat{S}(t) \pm q_{\alpha / 2}\sqrt{\widehat{\text{Var}}\big(\widehat{S}(t)\big)},
+\]</span></p>
 </section>
 <section id="códigos" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="códigos"><span class="header-section-number">5.4</span> Códigos</h2>
 <details>
 <summary>
+R
+</summary>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>tempo <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">16</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>falha <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>ekm <span class="ot">&lt;-</span> <span class="fu">survfit</span>(<span class="fu">Surv</span>(tempo, falha) <span class="sc">~</span> <span class="dv">1</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>ekm <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call: survfit(formula = Surv(tempo, falha) ~ 1)
+
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+    1     14       3    0.786   0.110        0.598        1.000
+    5      9       1    0.698   0.128        0.488        0.999
+    7      8       1    0.611   0.138        0.392        0.952
+    8      7       1    0.524   0.143        0.306        0.896
+   10      6       1    0.437   0.144        0.229        0.832</code></pre>
+</div>
+</div>
+</details>
+<details>
+<summary>
 Python
 </summary>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lifelines <span class="im">import</span> KaplanMeierFitter</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#%% </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>tempo <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">16</span>]</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>falha <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>dados <span class="op">=</span> pd.DataFrame({<span class="st">'tempo'</span>:tempo,<span class="st">'censura'</span>:falha})</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>KaplanMeierFitter().fit(dados[<span class="st">'tempo'</span>],dados[<span class="st">'censura'</span>]).survival_function_</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lifelines <span class="im">import</span> KaplanMeierFitter</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">#%% </span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>tempo <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">16</span>]</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>falha <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>dados <span class="op">=</span> pd.DataFrame({<span class="st">'tempo'</span>:tempo,<span class="st">'censura'</span>:falha})</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">#%%</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>KaplanMeierFitter().fit(dados[<span class="st">'tempo'</span>],dados[<span class="st">'censura'</span>]).survival_function_</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          KM_estimate
 timeline             
@@ -631,6 +660,18 @@ timeline
 </div>
 </div>
 </details>
+</section>
+</section>
+<section id="estimador-de-nelson---aalen" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Estimador de Nelson - Aalen</h1>
+<p>Um estimador para função taxa de falha acumulada <span class="math inline">\(\Lambda(t)\)</span> é:</p>
+<p><span class="math display">\[
+\hat{\Lambda}(t) = \sum_{j:tj &lt; t} \big(\dfrac{d_j}{n_j}\bigg)
+\]</span></p>
+<p>Usando a ralação entre a função de sobrevivência e a taxa de falha acumulada podemos encontrar outro estimador para <span class="math inline">\(S(t)\)</span>:</p>
+<p><span class="math display">\[
+\widehat{S}(t) = \exp\big(-\hat{\Lambda}(t))
+\]</span></p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
@@ -650,7 +691,6 @@ Kleinbaum, David G, Mitchel Klein, et al. 2012. <em>Survival analysis: a self-le
 Liu, Xian. 2012. <em>Survival analysis: models and applications</em>. John Wiley &amp; Sons.
 </div>
 </div>
-</section>
 </section>
 
 </main> <!-- /main -->

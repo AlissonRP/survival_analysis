@@ -113,15 +113,43 @@ Os métodos construídos anteriormente são ditos **não-paramétricos**, pois p
 :::
 
 ## Propriedades do estimador
-Como temos um estimador pontual, podemos também construir intervalos de confiança para a estimativas.
 
-### Variância do Estimador
-Ora ora, para calcular a variância do estimador precisamos saber a distribuição do estimador, então aqui vamos nos conter com o estimador da variância do estimador, que é dado por:
+O estimador de Kaplan-Meyer possui as seguintes propriedades:
+
+1. Assintoticamente não viesado,
+2. Fracamente consistente,
+3. É o estimador de máxima verossimilhança de $S(t)$
+
+Sabendo da propriedade 3 e utilizando o método delta, podemos facilmente derivar a variância do estimador, que é dada por:
+
 $$
-\widehat{\text{Var}}(\hat{S}(t)) = [\hat{S}(t)]^{2}\sum_{j:t_j<t}\dfrac{d_j}{n_j(n_j - d_j)} 
+\widehat{\text{Var}}(\widehat{S}(t)) = [\hat{S}(t)]^{2}\sum_{j:t_j<t}\dfrac{d_j}{n_j(n_j - d_j)} 
 $$
+
+Como temos um estimador pontual, podemos também construir intervalos de confiança para as estimativas. Utilizando da normalidade assintótica dos EMV, temos o seguinte intervalo de confiança $100(1 - \alpha)$ aproximado:
+$$
+\widehat{S}(t) \pm q_{\alpha / 2}\sqrt{\widehat{\text{Var}}\big(\widehat{S}(t)\big)},
+$$
+
 
 ## Códigos
+
+<details>
+  <summary markdown="span">R</summary>
+
+```{r}
+library(survival)
+tempo <- c(1, 1, 1, 1, 4, 5, 7, 8, 10, 10, 12, 16, 16, 16)
+falha <- c(1, 1, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0)
+
+ekm <- survfit(Surv(tempo, falha) ~ 1)
+
+
+ekm |> summary()
+
+```
+</details>
+
 <details>
   <summary markdown="span">Python</summary>
 
@@ -140,3 +168,15 @@ KaplanMeierFitter().fit(dados['tempo'],dados['censura']).survival_function_
 ```
 </details>
 
+# Estimador de Nelson - Aalen
+
+Um estimador para função taxa de falha acumulada $\Lambda(t)$ é:
+$$
+\hat{\Lambda}(t) = \sum_{j:tj < t} \big(\dfrac{d_j}{n_j}\bigg)
+$$
+
+Usando a ralação entre a função de sobrevivência e a taxa de falha acumulada podemos encontrar outro estimador para $S(t)$:
+
+$$
+\widehat{S}(t) = \exp\big(-\hat{\Lambda}(t))
+$$
